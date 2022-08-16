@@ -1254,6 +1254,11 @@
 			<location>C:/Users/bogd/esp-idf-v4.4.1/components/esp_eth/src/esp_eth_mac_esp.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/esp_eth/src/esp_eth_mac_w5500.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.1/components/esp_eth/src/esp_eth_mac_w5500.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/esp_eth/src/esp_eth_netif_glue.c</name>
 			<type>1</type>
 			<location>C:/Users/bogd/esp-idf-v4.4.1/components/esp_eth/src/esp_eth_netif_glue.c</location>
@@ -1287,6 +1292,11 @@
 			<name>esp_idf_components/esp_eth/src/esp_eth_phy_rtl8201.c</name>
 			<type>1</type>
 			<location>C:/Users/bogd/esp-idf-v4.4.1/components/esp_eth/src/esp_eth_phy_rtl8201.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/esp_eth/src/esp_eth_phy_w5500.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.1/components/esp_eth/src/esp_eth_phy_w5500.c</location>
 		</link>
 		<link>
 			<name>esp_idf_components/esp_gdbstub/esp_common/gdbstub_common.c</name>

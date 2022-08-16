@@ -9,4 +9,4 @@ project(${ProjectId})
 
 # Include espfs ROM in foldef HTML
 include(components/libespfs/cmake/include.cmake)
-target_add_espfs(web-gui-application-test.elf espfs HTML)
+target_add_espfs(WebGUIApp.elf espfs HTML)

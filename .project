@@ -1479,6 +1479,11 @@
 			<location>C:/Users/bogd/esp-idf-v4.4.1/components/esp_netif/lwip/esp_netif_lwip_defaults.c</location>
 		</link>
 		<link>
+			<name>esp_idf_components/esp_netif/lwip/esp_netif_lwip_ppp.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.1/components/esp_netif/lwip/esp_netif_lwip_ppp.c</location>
+		</link>
+		<link>
 			<name>esp_idf_components/esp_netif/lwip/esp_netif_sta_list.c</name>
 			<type>1</type>
 			<location>C:/Users/bogd/esp-idf-v4.4.1/components/esp_netif/lwip/esp_netif_sta_list.c</location>
@@ -8457,6 +8462,31 @@
 			<name>esp_idf_components/libsodium/libsodium/src/libsodium/crypto_verify/sodium/verify.c</name>
 			<type>1</type>
 			<location>C:/Users/bogd/esp-idf-v4.4.1/components/libsodium/libsodium/src/libsodium/crypto_verify/sodium/verify.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/arc4.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.1/components/lwip/lwip/src/netif/ppp/polarssl/arc4.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/des.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.1/components/lwip/lwip/src/netif/ppp/polarssl/des.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/md4.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.1/components/lwip/lwip/src/netif/ppp/polarssl/md4.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/md5.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.1/components/lwip/lwip/src/netif/ppp/polarssl/md5.c</location>
+		</link>
+		<link>
+			<name>esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/sha1.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.1/components/lwip/lwip/src/netif/ppp/polarssl/sha1.c</location>
 		</link>
 		<link>
 			<name>components/libespfs/esp_idf_components/libsodium/libsodium/src/libsodium/crypto_auth/crypto_auth.c</name>

@@ -37,7 +37,19 @@ void app_main(void)
     //init rom file system
      init_rom_fs("/espfs");
 
-#ifdef CONFIG_WEBGUIAPP_WIFI_ENABLE
+#if CONFIG_WEBGUIAPP_GPRS_ENABLE
+    /*Start PPP modem*/
+    if (GetSysConf()->gsmSettings.Flags1.bIsGSMEnabled)
+        PPPModemStart();
+#endif
+
+#if CONFIG_WEBGUIAPP_ETHERNET_ENABLE
+    /*Start Ethernet connection*/
+    if (GetSysConf()->ethSettings.Flags1.bIsETHEnabled)
+        EthStart();
+#endif
+
+#if CONFIG_WEBGUIAPP_WIFI_ENABLE
      /*Start WiFi connection*/
      if (GetSysConf()->wifiSettings.Flags1.bIsWiFiEnabled)
      {

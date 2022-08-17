@@ -35,7 +35,7 @@ void app_main(void)
     ESP_ERROR_CHECK(InitSysConfig());
 
     //init rom file system
-     init_rom_fs("/espfs");
+    init_rom_fs("/espfs");
 
 #if CONFIG_WEBGUIAPP_GPRS_ENABLE
     /*Start PPP modem*/
@@ -50,18 +50,30 @@ void app_main(void)
 #endif
 
 #if CONFIG_WEBGUIAPP_WIFI_ENABLE
-     /*Start WiFi connection*/
-     if (GetSysConf()->wifiSettings.Flags1.bIsWiFiEnabled)
-     {
-         if (GetSysConf()->wifiSettings.Flags1.bIsAP)
-             WiFiAPStart();
-         else
-             WiFiSTAStart();
-     }
+    /*Start WiFi connection*/
+    if (GetSysConf()->wifiSettings.Flags1.bIsWiFiEnabled)
+    {
+        if (GetSysConf()->wifiSettings.Flags1.bIsAP)
+            WiFiAPStart();
+        else
+            WiFiSTAStart();
+    }
 #endif
-     ESP_ERROR_CHECK(start_file_server());
 
-    while (true) {
+    /*Start time synchronization*/
+    if (CONFIG_WEBGUIAPP_GPRS_ENABLE ||
+    CONFIG_WEBGUIAPP_ETHERNET_ENABLE ||
+            (CONFIG_WEBGUIAPP_WIFI_ENABLE && GetSysConf()->wifiSettings.Flags1.bIsAP))
+        StartTimeGet();
+
+    /*Start web server*/
+    if (CONFIG_WEBGUIAPP_GPRS_ENABLE ||
+    CONFIG_WEBGUIAPP_ETHERNET_ENABLE ||
+    CONFIG_WEBGUIAPP_WIFI_ENABLE)
+        ESP_ERROR_CHECK(start_file_server());
+
+    while (true)
+    {
         printf("Hello from app_main!\n");
         sleep(1);
     }

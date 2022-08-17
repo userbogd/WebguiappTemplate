@@ -64,7 +64,14 @@ void app_main(void)
     if (CONFIG_WEBGUIAPP_GPRS_ENABLE ||
     CONFIG_WEBGUIAPP_ETHERNET_ENABLE ||
             (CONFIG_WEBGUIAPP_WIFI_ENABLE && GetSysConf()->wifiSettings.Flags1.bIsAP))
+    {
         StartTimeGet();
+        if (GetSysConf()->mqttStation[0].Flags1.bIsGlobalEnabled
+                || GetSysConf()->mqttStation[1].Flags1.bIsGlobalEnabled)
+        {
+            MQTTRun();
+        }
+    }
 
     /*Start web server*/
     if (CONFIG_WEBGUIAPP_GPRS_ENABLE ||

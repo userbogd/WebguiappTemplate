@@ -66,11 +66,15 @@ void app_main(void)
             (CONFIG_WEBGUIAPP_WIFI_ENABLE && GetSysConf()->wifiSettings.Flags1.bIsAP))
     {
         StartTimeGet();
+
+#if CONFIG_WEBGUIAPP_MQTT_ENABLE
         if (GetSysConf()->mqttStation[0].Flags1.bIsGlobalEnabled
                 || GetSysConf()->mqttStation[1].Flags1.bIsGlobalEnabled)
         {
             MQTTRun();
         }
+#endif
+
     }
 
     /*Start web server*/

@@ -1,0 +1,28 @@
+~inc:head.inc~</head>
+<body>
+<div class = 'frm'>
+<script>PrintMenu();</script>
+<div class = "mform">
+<div class='stg'>
+<div id = 'name'>
+Сеть|Ethernet[~dname~]
+</div>
+<form name="conf" method="post">				
+<table><tr>
+<script>PrintCheckBox('Включить ETHERNET','ethen','~ethen~','configIPBoxes()');
+PrintCheckBox('Включить DHCP','dhcp','~ecbdh~','configIPBoxes()');
+PrintIPInput('IP Станции:','ipa','~eip~');
+PrintIPInput('Маска подсети:','mas','~emsk~');
+PrintIPInput(' Адрес шлюза:','gte','~egate~');
+PrintIPInput('DNS1:','dns1','~edns~');
+PrintIPInput('DNS2:','dns2','~bkedns~');
+PrintIPInput('DNS3:','dns3','~fledns~');
+PrintMACInput('MAC:','mac','~emacadr~');</script>
+<tr><td></td></tr></table><br/>	
+</div>  
+<script>PrintSaveFail('~status_fail~');
+PrintSaveBtn();</script>				
+</form>
+</div>
+</body>
+</html>

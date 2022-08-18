@@ -1,0 +1,30 @@
+~inc:head.inc~</head>
+<body>
+<div class = 'frm'>
+<script>PrintMenu();</script>
+<div class = "mform">
+<div class='stg'>	
+<div id = 'name'>
+Сеть|GPRS[~dname~]
+</div>
+<form name="conf" method="post">			
+<table>
+<script>PrintCheckBox('Включить GSM','gsmen','~gsmen~',null);
+PrintLabel('Модуль:','~gsmmod~');
+PrintLabel('Оператор:','~gsmopr~');
+PrintLabel('IMEI:','~gimei~');
+PrintLabel('IMSI:','~gimsi~');
+PrintLabel('IP адрес:','~gsmip~');
+PrintLabel('Маска подсети:','~gsmmsk~');
+PrintLabel('Адрес шлюза:','~gsmgate~');
+PrintLabel('DNS1:','~gsmdns~');
+PrintLabel('DNS2:','~bkgsmdns~');
+PrintLabel('DNS3:','~flgsmdns~');</script>
+<tr><td></td></tr></table><br/>	
+</div>  
+<script>PrintSaveFail('~status_fail~');
+PrintSaveBtn();</script>				
+</form>
+</div>
+</body>
+</html>

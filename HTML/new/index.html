@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="iconsfont.css">
+		<script src="ioscr.js"></script>
+        <title>Charge Point Type2</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__container">
+                <img src="logo.png" alt="" class="header__img">
+                <a href="#" class="header__logo">ChargeStation2</a>
+                <div class="header__toggle">
+                    <i class='icon-menu' id="header-toggle"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="nav" id="navbar">
+            <nav class="nav__container">
+                <div>
+                    <a href="#" class="nav__link nav__logo">
+                        <i class='icon-home nav__icon' ></i>
+                        <span class="nav__logo-name">Home</span>
+                    </a>
+                    <div class="nav__list">
+						<div class="nav__items">
+							<h3 class="nav__subtitle">ENERGY</h3>
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class='icon-chart-bar' ></i>
+                                    <span class="nav__name">Monitor</span>
+                                    <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">Realtime</a>
+                                        <a href="#" class="nav__dropdown-item">History</a>
+                                    </div>
+                                </div>
+                            </div>
+							
+						  <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class='icon-wrench nav__icon' ></i>
+                                    <span class="nav__name">Utilities</span>
+                                    <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">Control</a>
+                                        <a href="#" class="nav__dropdown-item">Protection</a>
+                                        <a href="#" class="nav__dropdown-item">Logs</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+    
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">SETTINGS</h3>
+    
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class='icon-wifi nav__icon' ></i>
+                                    <span class="nav__name">Network</span>
+                                    <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">Ethernet</a>
+                                        <a href="#" class="nav__dropdown-item">WiFi</a>
+                                        <a href="#" class="nav__dropdown-item">GPRS</a>
+                                    </div>
+                                </div>
+
+                            </div>
+							<div class="nav__dropdown">
+								<a href="#" class="nav__link">
+                                    <i class='icon-cog-alt nav__icon' ></i>
+                                    <span class="nav__name">Station</span>
+                                    <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">General</a>
+                                        <a href="#" class="nav__dropdown-item">Services</a>
+                                        <a href="#" class="nav__dropdown-item">Time</a>
+                                    </div>
+                                </div>
+							</div>
+							
+						     <a href="#" class="nav__link">
+                                <i class='icon-user' ></i>
+                                <span class="nav__name">Help</span>
+                            </a>	
+							
+                        </div>
+						
+						
+                    </div>
+                </div>
+
+                <a href="#" class="nav__link nav__logout">
+                    <i class='bx bx-log-out nav__icon' ></i>
+                    <span class="nav__name">Log Out</span>
+                </a>
+            </nav>
+        </div>
+
+        <!--========== CONTENTS ==========-->
+        <main>
+            <section>
+			<div >
+             <table class='cntr'><tr>
+				<script>PrintCheckBox('Включить ETHERNET','ethen','~ethen~','configIPBoxes()');
+				PrintCheckBox('Включить DHCP','dhcp','~ecbdh~','configIPBoxes()');
+				PrintIPInput('IP Станции:','ipa','~eip~');
+				PrintIPInput('Маска подсети:','mas','~emsk~');
+				PrintIPInput(' Адрес шлюза:','gte','~egate~');
+				PrintIPInput('DNS1:','dns1','~edns~');
+				PrintIPInput('DNS2:','dns2','~bkedns~');
+				PrintIPInput('DNS3:','dns3','~fledns~');
+				PrintMACInput('MAC:','mac','~emacadr~');</script>
+				<tr><td></td></tr>
+			</table>
+			</div>
+			</section>
+        </main>
+
+        <!--========== MAIN JS ==========-->
+        <script src="main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+~inc:head.inc~</head>
+<body>
+<div class = 'frm'>
+<script>PrintMenu();</script>
+<div class = "mform">
+<div class='stg'>
+<div id = 'name'>
+Настройки|Система[~dname~]
+</div>
+</br></br>
+<form name="conf" method="post" accept-charset='UTF-8'>
+<table><script>PrintTextInputNoReg('Имя устройства:','nam','~dname~', 3, 31 );
+PrintTextInput('Имя пользователя:','lgn','~login~', 3, 31 );
+PrintTextInput('Пароль пользователя','psn','~pass~', 5, 31 );
+PrintCheckBox('Подтверждать TCP','tcpdel','~tcpdel~',null);
+PrintCheckBox('Подтверждать LoRaWAN','lrdel','~lrdel~',null);
+PrintCheckBox('Включить OTA обновление','ota','~ota~',null);</script></table>
+<table><tr><td align="center">URL файла обновления:</td></tr>
+<tr><td align="center"><textarea type="text" cols="40" raws="5" name='otaurl'  title="64 символа" ">~otaurl~</textarea></td></tr>
+</table>
+<table><script>
+PrintSep();
+PrintLabel('Версия ПО:','~fver~');
+PrintLabel('Версия IDF:','~idfver~');
+PrintLabel('Дата сборки:','~builddate~');
+PrintLabel('Серийный номер:','~serial10~');</script></table>
+</div>
+<div class="resfail" style="text-align:center;display:~status_fail~"  color="#F00" >
+<font color="red">
+Data format error!</font><br /> </div>
+<div style='margin:auto;text-align:center'>
+<button type="submit" class ='btn' name='upd' value='prs'>Обновить ПО</button>
+<button type="submit" class ='btn' name='rst' value='prs'>Перезагрузить</button><br /><br />
+<button type="submit" class ='btn' name='sav' value='prs'>Сохранить</button>
+</div>
+</form>
+</div>
+</div>
+</body>
+</html>

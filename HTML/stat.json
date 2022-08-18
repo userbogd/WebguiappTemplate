@@ -1,0 +1,11 @@
+{
+"ethstat":"~ethstat~",
+"wfstat":"~wfstat~",
+"gsmstat":"~gsmstat~",
+"lrstat":"~lrstat~",
+"mqtt1st":"~mqtt1st~",
+"mqtt2st":"~mqtt2st~",
+"defadp":"~defadp~",
+"freeram":"~freeram~",
+"minram":"~minram~"
+}

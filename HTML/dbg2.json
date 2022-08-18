@@ -1,0 +1,11 @@
+{
+"files":"~pagesnum~",
+"pkt":"~pktok~",
+"pkt_lost":"~pktloss~",
+"http_tmt":"~httptmt~",
+"mqtt_tmt":"~mqttrcn~",
+"wifi_rbt":"~esptmt~",
+"rx_ovr":"~rxoverload~",
+"mqttping_err":"~mpger~",
+"mqttpub_err":"~mpber~"
+}

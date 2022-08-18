@@ -16,6 +16,8 @@
 
 #define MANUAL_RESET 0
 
+int HTTPPrintCustom(httpd_req_t *req, char *buf, char *var);
+
 void app_main(void)
 {
 
@@ -81,8 +83,11 @@ void app_main(void)
     if (CONFIG_WEBGUIAPP_GPRS_ENABLE ||
     CONFIG_WEBGUIAPP_ETHERNET_ENABLE ||
     CONFIG_WEBGUIAPP_WIFI_ENABLE)
+    {
         ESP_ERROR_CHECK(start_file_server());
+        regHTTPPrintCustom(&HTTPPrintCustom);
 
+    }
     while (true)
     {
         printf("Hello from app_main!\n");

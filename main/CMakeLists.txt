@@ -3,6 +3,7 @@
 
 idf_component_register(
     SRCS main.c
-    	 HTTPPrintCustom.c        
+    	 HTTPPrintCustom.c
+    	 HTTPPostCustom.c        
   
 )

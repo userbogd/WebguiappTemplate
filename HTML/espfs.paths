@@ -5,14 +5,8 @@ favicon.ico
 gendata.json
 head.inc
 index.html
-index20.html
-index21.html
-index22.html
 index23.html
 index30.html
-index31.html
-index32.html
-index33.html
 index40.html
 index41.html
 ioscr.js
@@ -29,6 +23,12 @@ reboot.html
 set1.json
 set2.json
 set3.json
+set_eth.html
+set_gprs.html
+set_mqtt.html
+set_sys.html
+set_time.html
+set_wifi.html
 stat.json
 status.json
 style.css

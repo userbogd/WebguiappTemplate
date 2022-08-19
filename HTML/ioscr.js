@@ -30,14 +30,14 @@ document.write("<li><a href='index41.html'>Статистика</a></li></ul></l
 
 document.write("<li><a href='#'>Настройки</a><ul>");
 document.write("<li><a href='index30.html'>Панель</a></li>");
-document.write("<li><a href='index31.html'>Станция</a></li>");
-document.write("<li><a href='index32.html'>Система</a></li>");
-document.write("<li><a href='index33.html'>Время</a></li></ul></li>");
+document.write("<li><a href='set_mqtt.html'>MQTT</a></li>");
+document.write("<li><a href='set_sys.html'>System</a></li>");
+document.write("<li><a href='set_time.html'>Time</a></li></ul></li>");
 
 document.write("<li><a href='#'>Сеть</a><ul>");
-document.write("<li><a href='index20.html'>Ethernet</a></li>");
-document.write("<li><a href='index21.html'>WiFi</a></li>");
-document.write("<li><a href='index22.html'>GPRS</a></li>");
+document.write("<li><a href='set_eth.html'>Ethernet</a></li>");
+document.write("<li><a href='set_wifi.html'>WiFi</a></li>");
+document.write("<li><a href='set_gprs.html'>GPRS</a></li>");
 document.write("<li><a href='index23.html'>LoRaWAN</a></li></ul></li>");
 document.write("</ul></nav></div>");}
 

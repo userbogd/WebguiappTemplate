@@ -28,11 +28,6 @@ static void HTTPPrint_DEF(char *VarData, void *arg)
     snprintf(VarData, MAX_DYNVAR_LENGTH, "#DEF");
 }
 
-void HTTPPrint_topic2(char *VarData, void *arg)
-{
-    snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", "custom-dyn_var");
-}
-
 static void HTTPPrint_status_fail(char *VarData, void *arg)
 {
     snprintf(VarData, MAX_DYNVAR_LENGTH, "none");
@@ -41,7 +36,6 @@ static void HTTPPrint_status_fail(char *VarData, void *arg)
 dyn_var_handler_t HANDLERS_ARRAY_CUST[] = {
 
         /*ERROR report*/
-        { "topic2", sizeof("topic2") - 1, &HTTPPrint_topic2 },
         { "status_fail", sizeof("status_fail") - 1, &HTTPPrint_status_fail },
 
 };
@@ -50,33 +44,13 @@ dyn_var_handler_t HANDLERS_ARRAY_CUST[] = {
 int HTTPPrintCustom(httpd_req_t *req, char *buf, char *var)
 {
     char VarData[MAX_DYNVAR_LENGTH];
-    const char incPat[] = "inc:";
-    const int incPatLen = sizeof(incPat) - 1;
-    if (!memcmp(var, incPat, incPatLen))
-    {
-        const char rootFS[] = "/";
-        char filename[32];
-        filename[0] = 0x00;
-        var += incPatLen;
-        strcat(filename, rootFS);
-        strcat(filename, var);
-        espfs_file_t *file = espfs_fopen(fs, filename);
-        struct espfs_stat_t stat;
-        if (file)
-        {
-            espfs_fstat(file, &stat);
-            int readBytes = espfs_fread(file, buf, stat.size);
-            espfs_fclose(file);
-            return readBytes;
-        }
-    }
-
     bool fnd = false;
     char *p2 = var + strlen(var) - 1; //last var symbol
     int arg = 0;
     //searching for tag in handles array
     for (int i = 0; i < (sizeof(HANDLERS_ARRAY_CUST) / sizeof(HANDLERS_ARRAY_CUST[0])); ++i)
     {
+        //Try to extract integer parameter from dynamic variable
         if (*p2 == ')')
         { //found close brace
             char *p1 = p2;
@@ -84,12 +58,13 @@ int HTTPPrintCustom(httpd_req_t *req, char *buf, char *var)
                 --p1;
             if (*p1 == '(')
             { //found open brace
-                *p1 = 0x00; //trim variable to name part
-                ++p1; //to begin of argument
-                *p2 = 0x00; //set end of argument
+                *p1 = 0x00;         //trim variable to name part
+                ++p1;               //to begin of argument
+                *p2 = 0x00;         //set end of argument
                 arg = atoi(p1);
             }
         }
+
         if (strcmp(var, HANDLERS_ARRAY_CUST[i].tag) == 0
                 && HANDLERS_ARRAY_CUST[i].HandlerRoutine != NULL)
         {

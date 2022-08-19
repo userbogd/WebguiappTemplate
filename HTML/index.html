@@ -7,35 +7,10 @@
 Home|State[<span id='dn'>?</span>]
 </div>
 <div style='text-align:center;margin-top:20px'>
-<span id="name" ><div class='hdr1'>Станция 'Etherbox-07'</div></span>
+<span id="name" ><div class='hdr1'>Your device name'</div></span>
 <span id='localtime'>?</span><br/>
 Время работы:<span id='uptime'>?</span><br/><br/>
-Входное напряжение:<span id='volt2'>?</span> В<br/>
-Системное напряжение:<span id='volt'>?</span> В<br/>
-Напряжение батареи:<span id='volt3'>?</span> В<br/>
 Уровень WiFi:<span id='wlev' style="color:#0099ff;font-weight:bold">?</span><br/>
-</div>
-<div class='stg indic'>
-<table><tr><td>
-<table>
-<tr><td align='right'>Район 1</td><td align='left'><span class='dot' id='led1'></span></td></tr>
-<tr><td align='right'>Район 2</td><td align='left'><span class='dot' id='led2'></span></td></tr>
-<tr><td align='right'>Район 3</td><td align='left'><span class='dot' id='led3'></span></td></tr>
-<tr><td align='right'>Район 4</td><td align='left'><span class='dot' id='led4'></span></td></tr>
-<tr><td align='right'>Район 5</td><td align='left'><span class='dot' id='led5'></span></td></tr>
-<tr><td align='right'>Район 6</td><td align='left'><span class='dot' id='led6'></span></td></tr>
-<tr><td align='right'>Район 7</td><td align='left'><span class='dot' id='led7'></span></td></tr>
-<tr><td align='right'>Район 8</td><td align='left'><span class='dot' id='led8'></span></td></tr>
-</table>
-</td><td  valign='top'>
-<table>
-<tr><td align='right'><span class='dot' id='sys1'></span></td><td align='left'>Система</td></tr>
-<tr><td align='right'><span class='dot' id='sys2'></span></td><td align='left'>Питание</td></tr>
-<tr><td align='right'><span class='dot' id='sys3'></span></td><td align='left'>Батарея</td></tr>
-<tr><td align='right'><span class='dot' id='sys4'></span></td><td align='left'>Связь</td></tr>
-</table>
-</td>
-</tr></table>
 </div>
 </div>
 </div>
@@ -45,56 +20,18 @@ var tmr;
 function updateStatus(xmlData) {
 var dat = JSON.parse(xmlData);
 var theDate,sec,wl,volt,dnam;
-var zr,zy,zg;
-var sr,sy,sg;
 try{
 theDate = new Date(dat.time * 1000);
 sec = dat.uptime;
 wl = dat.wlev;
-volt = dat.vlsys;
-volt2 = dat.vlin;
-volt3 = dat.vlbat;
 dnam = dat.dname;
-zr = dat.zred; 
-zy = dat.zyel;
-zg = dat.zgrn;
-sr = dat.sred; 
-sy = dat.syel;
-sg = dat.sgrn;
 }
 catch(e){return;}
-
-volt = (volt*4.7/1000).toFixed(1);
-volt2 = (volt2*11/1000+1.4).toFixed(1);
-volt3 = (volt3*6.8/1000).toFixed(1);
-
 document.getElementById('localtime').innerHTML = (theDate.toString()).slice(0,34);	
 document.getElementById('uptime').innerHTML= secondsToHms(sec);
-document.getElementById('volt').innerHTML= volt;
-document.getElementById('volt2').innerHTML= volt2;
-document.getElementById('volt3').innerHTML= volt3;
 document.getElementById('wlev').innerHTML= wl;
 document.getElementById('dn').innerHTML= dnam;
-for(i=1; i<=8; ++i)
-	{
-	document.getElementById('led'+i).style.backgroundColor = '#d0d0d0'
-	if(zg & 1) document.getElementById('led'+i).style.backgroundColor = '#00cc00';
-	if(zy & 1) document.getElementById('led'+i).style.backgroundColor = '#ffff00';
-	if(zr & 1) document.getElementById('led'+i).style.backgroundColor = '#ff0000';	
-	zg >>=1;
-	zy >>=1;
-	zr >>=1;
-  }
-for(i=1;i<=4;++i)
-	{
-	document.getElementById('sys'+i).style.backgroundColor = '#d0d0d0'
-	if(sg & 8) document.getElementById('sys'+i).style.backgroundColor = '#00cc00';
-	if(sy & 8) document.getElementById('sys'+i).style.backgroundColor = '#ffff00';
-	if(sr & 8) document.getElementById('sys'+i).style.backgroundColor = '#ff0000';	
-	sg <<=1;
-	sy <<=1;
-	sr <<=1;
-	}  
+ 
   function secondsToHms(d) {
   d = Number(d);
   var dd = Math.floor(d/86400);

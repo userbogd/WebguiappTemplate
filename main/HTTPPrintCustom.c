@@ -28,6 +28,11 @@ static void HTTPPrint_DEF(char *VarData, void *arg)
     snprintf(VarData, MAX_DYNVAR_LENGTH, "#DEF");
 }
 
+void HTTPPrint_topic2(char *VarData, void *arg)
+{
+    snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", "custom-dyn_var");
+}
+
 static void HTTPPrint_status_fail(char *VarData, void *arg)
 {
     snprintf(VarData, MAX_DYNVAR_LENGTH, "none");
@@ -36,6 +41,7 @@ static void HTTPPrint_status_fail(char *VarData, void *arg)
 dyn_var_handler_t HANDLERS_ARRAY_CUST[] = {
 
         /*ERROR report*/
+        { "topic2", sizeof("topic2") - 1, &HTTPPrint_topic2 },
         { "status_fail", sizeof("status_fail") - 1, &HTTPPrint_status_fail },
 
 };

@@ -4,3 +4,6 @@
 [submodule "components/jReadWrite"]
 	path = components/jReadWrite
 	url = git@github.com:userbogd/jReadWrite.git
+[submodule "components/webguiapp"]
+	path = components/webguiapp
+	url = git@gitlab.com:userbogd/webguiapp.git

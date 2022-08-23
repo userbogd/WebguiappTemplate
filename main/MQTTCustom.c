@@ -21,9 +21,7 @@
  *	\copyright Apache License, Version 2.0
  */
 
-#include "MQTT.h"
-#include "SystemConfiguration.h"
-#include "esp_log.h"
+#include "webguiapp.h"
 #define TAG "MQTTCustom"
 
 

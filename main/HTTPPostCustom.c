@@ -20,7 +20,7 @@
  *    \details 
  *	\copyright Apache License, Version 2.0
  */
-#include "HTTPServer.h"
+#include "webguiapp.h"
 
 const char pg_40[] = "index40.html";
 const char pg_42[] = "index42.html";

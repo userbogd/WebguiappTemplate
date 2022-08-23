@@ -20,7 +20,7 @@
  *    \details 
  *	\copyright Apache License, Version 2.0
  */
-#include "HTTPServer.h"
+#include "webguiapp.h"
 
 //Default string if not found handler
 static void HTTPPrint_DEF(char *VarData, void *arg)

@@ -22,23 +22,23 @@ xhr.send(null);
 
 function PrintMenu(){
 document.write("<div id='conteiner'><nav id='menu1'><ul>");
-document.write("<li><a href='index.html'>Главная</a></li>");
+document.write("<li><a href='index.html'>Main</a></li>");
 
-document.write("<li><a href='#'>Сервис</a><ul>");
-document.write("<li><a href='index40.html'>Управление</a></li>");
-document.write("<li><a href='index41.html'>Статистика</a></li></ul></li>");
+document.write("<li><a href='#'>Service</a><ul>");
+document.write("<li><a href='sys/control.html'>Control</a></li>");
+document.write("<li><a href='sys/stats.html'>Stats</a></li></ul></li>");
 
-document.write("<li><a href='#'>Настройки</a><ul>");
-document.write("<li><a href='index30.html'>Панель</a></li>");
+document.write("<li><a href='#'>Settings</a><ul>");
+//document.write("<li><a href='app/set_app.html'>Application</a></li>");
 document.write("<li><a href='sys/set_mqtt.html'>MQTT</a></li>");
 document.write("<li><a href='sys/set_sys.html'>System</a></li>");
 document.write("<li><a href='sys/set_time.html'>Time</a></li></ul></li>");
 
-document.write("<li><a href='#'>Сеть</a><ul>");
+document.write("<li><a href='#'>Network</a><ul>");
 document.write("<li><a href='sys/set_eth.html'>Ethernet</a></li>");
 document.write("<li><a href='sys/set_wifi.html'>WiFi</a></li>");
 document.write("<li><a href='sys/set_gprs.html'>GPRS</a></li>");
-document.write("<li><a href='index23.html'>LoRaWAN</a></li></ul></li>");
+//document.write("<li><a href='sys/set_lora.html'>LoRaWAN</a></li></ul></li>");
 document.write("</ul></nav></div>");}
 
 function PrintIPInput(title,name,value){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value='"+value+"' title='IP адрес xxx.xxx.xxx.xxx' pattern='^\\d{1,3}\.\\d{1,3}\.\\d{1,3}\.\\d{1,3}$' /></td></tr>");}

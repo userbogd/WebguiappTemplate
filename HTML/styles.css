@@ -319,7 +319,14 @@ img {
 .btn {color:var(--text-color);
 		font: 14px consolas,monospace;padding:15px 5px;
 		min-width:100px;
-		border-style:none;
+		border-style:border:solid 1px #CCCCCC;;
+}
+
+input {
+	color:#000;
+	font:14px consolas,monospace;
+	padding-left:3px;
+	border:solid 1px #CCCCCC;
 }
 
 .cntr {

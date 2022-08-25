@@ -1226,7 +1226,7 @@ CONFIG_ESPFS_USE_HEATSHRINK=y
 # end of libespfs
 
 #
-# WebGuiApp configuration
+# webguiapp configuration
 #
 CONFIG_WEBGUIAPP_PROJECT_VER="0.0.0.0002"
 CONFIG_WEBGUIAPP_HOSTNAME="DEVICE_HOSTNAME"
@@ -1322,7 +1322,7 @@ CONFIG_WEBGUIAPP_DNS1_ADDRESS_DEFAULT="8.8.8.8"
 CONFIG_WEBGUIAPP_DNS2_ADDRESS_DEFAULT="8.8.4.4"
 CONFIG_WEBGUIAPP_DNS3_ADDRESS_DEFAULT="1.1.1.1"
 # end of DNS settings
-# end of WebGuiApp configuration
+# end of webguiapp configuration
 # end of Component config
 
 #

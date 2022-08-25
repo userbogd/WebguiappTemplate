@@ -64,6 +64,7 @@ var hedmen = `
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
+										<a href="set_network.html" class="nav__dropdown-item">Network</a>
                                         <a href="set_eth.html" class="nav__dropdown-item">Ethernet</a>
                                         <a href="set_wifi.html" class="nav__dropdown-item">WiFi</a>
                                         <a href="set_gprs.html" class="nav__dropdown-item">GPRS</a>

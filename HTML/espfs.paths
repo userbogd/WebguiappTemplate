@@ -22,6 +22,7 @@ res/ca_cert.pem
 set_eth.html
 set_gprs.html
 set_mqtt.html
+set_network.html
 set_sys.html
 set_time.html
 set_wifi.html

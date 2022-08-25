@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="iconsfont.css">
+		<script src="main.js"></script>
+		<script src="res.js"></script>
+        <title>~name~</title>
+    </head>
+    <body>
+		<script>PageSurround();</script>
+        <!--========== CONTENTS ==========-->
+        <main>
+            <section>
+				<form name="conf" method="post">
+				<table class='cntr'>
+				<script>PrintCheckBox('Включить MQTT 1','mqttenb1','~mqtten1~',null);
+				PrintTextInput('URL шлюза сообщений','cld1','~ipcld1~',3,31);
+				PrintInt('Порт шлюза сообщений','mprt1','~mport1~',1000,65534);
+				PrintTextInput('ID станции','idd1','~idcld1~',3,31);
+				PrintTextInput('Корневая тема','top1','~topic1~',3,31);
+				PrintTextInput('Логин','clnm1','~clname1~',3,31);
+				PrintTextInput('Пароль','clps1','~clpass1~',3,31);
+				PrintSep();
+				PrintCheckBox('Включить MQTT 2','mqttenb2','~mqtten2~',null);
+				PrintTextInput('URL шлюза сообщений','cld2','~ipcld2~',3,31);
+				PrintInt('Порт шлюза сообщений','mprt2','~mport2~',1000,65534);
+				PrintTextInput('ID станции','idd2','~idcld2~',3,31);
+				PrintTextInput('Корневая тема','top2','~topic2~',3,31);
+				PrintTextInput('Логин','clnm2','~clname2~',3,31);
+				PrintTextInput('Пароль','clps2','~clpass2~',3,31);</script>
+				</table>
+				</div>
+				<script>PrintSaveFail('~status_fail~');
+				PrintSaveBtn();</script>
+				</form>
+			</section>			
+        </main>
+		<script>
+		showMenu('header-toggle','navbar');
+		linkColor.forEach(l => l.addEventListener('click', colorLink))
+		</script>		
+    </body>
+</html>

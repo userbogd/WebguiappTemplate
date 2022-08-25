@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="iconsfont.css">
+		<script src="main.js"></script>
+		<script src="res.js"></script>
+        <title>~name~</title>
+    </head>
+    <body>
+		<script>PageSurround();</script>
+        <!--========== CONTENTS ==========-->
+        <main>
+            <section>
+				<div class='cntr'>
+				<form name="conf" method="post" accept-charset='UTF-8'>
+				
+				<table class='cntr'>
+				<tr><td class='rl'>Включить SNTP клиент</td><td><input type="checkbox" name="sntpen" value="1" ~sntpen~></td></tr>
+				<tr><td class='rl'>Адрес SNTP сервера:</td><td><input type="text" required size="20" name='tsr' value="~tmsrv~" title="3-32 символов A-Z,a-z,0-9,." pattern="^[0-9a-zA-Z\.]{3,32}$"/></td></tr><tr><td></td></tr><tr><td></td></tr>
+				</table>
+				
+			
+				<table class='cntr'> 
+				<tr><td width=90% align='center'>
+				 Установить текущее время вручную:<br/>
+				<input type='datetime-local' id="curdt">
+				<button id='sendt' type='button' class ='btn sbtn'>Передать</button><br/><br/><br/>	    	
+				</td></tr>
+				</table>
+				
+				<div class="resfail" style="text-align:center;display:~status_fail~"  color="#F00" >
+				<font color="red">
+				<h2>Ошибка формата данных!</h2></font><br /> </div>
+				<div style='margin:auto;text-align:center'>
+				<button type="submit" class ='btn' name='sav' value='prs'>Сохранить</button>
+				</div>
+				</form>
+				</div>
+			</section>
+        </main>
+		<script>
+		showMenu('header-toggle','navbar');
+		linkColor.forEach(l => l.addEventListener('click', colorLink))
+		</script>
+    </body>
+</html>

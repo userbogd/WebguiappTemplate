@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="iconsfont.css">
+		<script src="main.js"></script>
+		<script src="res.js"></script>
+        <title>~name~</title>
+    </head>
+    <body>
+		<script>PageSurround();</script>
+        <!--========== CONTENTS ==========-->
+        <main>
+            <section>
+				<table class='cntr'>
+					<tr><td class='rl'>Ethernet:</td><td><span id='eth'>?</span></td></tr>
+					<tr><td class='rl'>WiFi:</td><td><span id='wfi'>?</span></td></tr>
+					<tr><td class='rl'>GPRS:</td><td><span id='gpr'>?</span></td></tr>
+					<tr><td class='rl'>LoRaWAN:</td><td><span id='lrw'>?</span></td></tr>
+					<tr><td height='20px'></td></tr>
+					<tr><td class='rl'>Основной адаптер:</td><td><span id='adp'>?</span></td></tr>
+					<tr><td height='20px'></td></tr>
+					<tr><td class='rl'>MQTT соединение 1:</td><td><span id='mq1'>?</span></td></tr>
+					<tr><td class='rl'>MQTT соединение 2:</td><td><span id='mq2'>?</span></td></tr>
+					<tr><td height='20px'></td></tr>
+					<tr><td class='rl'>Свободной памяти:</td><td><span id='mem'>?</span></td></tr>
+					<tr><td class='rl'>Минимум памяти:</td><td><span id='mmem'>?</span></td></tr>
+					</table>
+					<form name="conf" method="post" accept-charset='UTF-8'>
+					<div style='margin:auto;text-align:center'>
+					</br>
+					<button type="submit" class ='btn' name='cmd' value='1'>BAT ON</button>
+					<button type="submit" class ='btn' name='cmd' value='2'>BAT OFF</button></br></br>
+					<button type="submit" class ='btn' name='cmd' value='3'>MQTT ON</button>
+					<button type="submit" class ='btn' name='cmd' value='4'>MQTT OFF</button></br></br>
+					<button type="submit" class ='btn' name='cmd' value='5'>LORA RJN</button>
+					<button type="submit" class ='btn' name='cmd' value='6'>FREE</button></br></br>
+					<button type="submit" class ='btn' name='cmd' value='7'>DEF ETH</button>
+					<button type="submit" class ='btn' name='cmd' value='8'>DEF WIFI</button></br></br>
+					<button type="submit" class ='btn' name='cmd' value='9'>DEF PPP</button>
+					<button type="submit" class ='btn' name='cmd' value='10'>IF NEXT</button></br></br>
+					<button type="submit" class ='btn' name='cmd' value='11'>IF PRINT</button>
+					<button type="submit" class ='btn' name='cmd' value='12'>TEST</button></br></br>
+					</div>
+					</form>					
+			</section>
+        </main>
+		<script>
+		showMenu('header-toggle','navbar');
+		linkColor.forEach(l => l.addEventListener('click', colorLink))
+		function updateStatus(data) {
+		var dat = JSON.parse(data);
+		try
+			{
+			document.getElementById('eth').innerHTML= dat.ethstat;
+			document.getElementById('wfi').innerHTML= dat.wfstat;
+			document.getElementById('gpr').innerHTML= dat.gsmstat;
+			document.getElementById('lrw').innerHTML= dat.lrstat;
+			document.getElementById('adp').innerHTML= dat.defadp;
+			document.getElementById('mq1').innerHTML= dat.mqtt1st;
+			document.getElementById('mq2').innerHTML= dat.mqtt2st;
+			document.getElementById('mem').innerHTML= dat.freeram;
+			document.getElementById('mmem').innerHTML= dat.minram;
+			}
+		catch(e){return;}
+		}
+		function ReadAndUpdate() {
+		GetDataFile("/stat.json", function(data){updateStatus(data);});
+		}
+		ReadAndUpdate();
+		setInterval("ReadAndUpdate()",1000);
+		</script>		
+    </body>
+</html>

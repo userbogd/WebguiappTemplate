@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="iconsfont.css">
+		<script src="main.js"></script>
+		<script src="res.js"></script>
+        <title>~name~</title>
+    </head>
+    <body>
+		<script>PageSurround();</script>
+        <!--========== CONTENTS ==========-->
+        <main>
+            <section>
+				<form name="conf" method="post" accept-charset='UTF-8'>
+				<table class='cntr'><script>PrintTextInputNoReg('Имя устройства:','nam','~dname~', 3, 31 );
+				PrintTextInput('Имя пользователя:','lgn','~login~', 3, 31 );
+				PrintTextInput('Пароль пользователя','psn','~pass~', 5, 31 );
+				PrintCheckBox('Подтверждать TCP','tcpdel','~tcpdel~',null);
+				PrintCheckBox('Подтверждать LoRaWAN','lrdel','~lrdel~',null);
+				PrintCheckBox('Включить OTA обновление','ota','~ota~',null);</script></table>
+				<table class='cntr'><tr><td align="center">URL файла обновления:</td></tr>
+				<tr><td align="center"><textarea type="text" cols="40" raws="5" name='otaurl'  title="64 символа" ">~otaurl~</textarea></td></tr>
+				</table>
+				<table class='cntr'><script>
+				PrintSep();
+				PrintLabel('Версия ПО:','~fver~');
+				PrintLabel('Версия IDF:','~idfver~');
+				PrintLabel('Дата сборки:','~builddate~');
+				PrintLabel('Серийный номер:','~serial10~');</script></table>
+				</div>
+				<div class="resfail" style="text-align:center;display:~status_fail~"  color="#F00" >
+				<font color="red">
+				Data format error!</font><br /> </div>
+				<div style='margin:auto;text-align:center'>
+				<button type="submit" class ='btn' name='upd' value='prs'>Обновить ПО</button>
+				<button type="submit" class ='btn' name='rst' value='prs'>Перезагрузить</button><br /><br />
+				<button type="submit" class ='btn' name='sav' value='prs'>Сохранить</button>
+				</div>
+				</form>
+			</section>
+        </main>
+		<script>
+		showMenu('header-toggle','navbar');
+		linkColor.forEach(l => l.addEventListener('click', colorLink))
+		</script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="iconsfont.css">
+		<script src="main.js"></script>
+		<script src="res.js"></script>
+        <title>~name~</title>
+    </head>
+    <body>
+		<script>PageSurround();</script>
+        <!--========== CONTENTS ==========-->
+        <main>
+            <section>
+				<form name="conf" method="post">				
+				<table class='cntr'><tr>
+				<script>PrintCheckBox('Включить ETHERNET','ethen','~ethen~','configIPBoxes()');
+				PrintCheckBox('Включить DHCP','dhcp','~ecbdh~','configIPBoxes()');
+				PrintIPInput('IP Станции:','ipa','~eip~');
+				PrintIPInput('Маска подсети:','mas','~emsk~');
+				PrintIPInput(' Адрес шлюза:','gte','~egate~');
+				PrintIPInput('DNS1:','dns1','~edns~');
+				PrintIPInput('DNS2:','dns2','~bkedns~');
+				PrintIPInput('DNS3:','dns3','~fledns~');
+				PrintMACInput('MAC:','mac','~emacadr~');</script>
+				<tr><td></td></tr></table><br/>	
+				</div>  
+				<script>PrintSaveFail('~status_fail~');
+				PrintSaveBtn();</script>				
+				</form>
+			</section>
+        </main>
+		<script>
+		showMenu('header-toggle','navbar');
+		linkColor.forEach(l => l.addEventListener('click', colorLink))
+		</script>		
+    </body>
+</html>

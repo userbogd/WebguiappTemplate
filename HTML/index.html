@@ -1,51 +1,29 @@
-~inc:head.inc~</head>
-<body>
-<div class = 'frm'>
-<script>PrintMenu();</script>
-<div class = "mform">
-<div id = 'name'>
-Home|State[<span id='dn'>?</span>]
-</div>
-<div style='text-align:center;margin-top:20px'>
-<span id="name" ><div class='hdr1'>Your device name'</div></span>
-<span id='localtime'>?</span><br/>
-Время работы:<span id='uptime'>?</span><br/><br/>
-Уровень WiFi:<span id='wlev' style="color:#0099ff;font-weight:bold">?</span><br/>
-</div>
-</div>
-</div>
-</body>
-<script>
-var tmr;
-function updateStatus(xmlData) {
-var dat = JSON.parse(xmlData);
-var theDate,sec,wl,volt,dnam;
-try{
-theDate = new Date(dat.time * 1000);
-sec = dat.uptime;
-wl = dat.wlev;
-dnam = dat.dname;
-}
-catch(e){return;}
-document.getElementById('localtime').innerHTML = (theDate.toString()).slice(0,34);	
-document.getElementById('uptime').innerHTML= secondsToHms(sec);
-document.getElementById('wlev').innerHTML= wl;
-document.getElementById('dn').innerHTML= dnam;
- 
-  function secondsToHms(d) {
-  d = Number(d);
-  var dd = Math.floor(d/86400);
-  var h = Math.floor(d%86400/3600);
-  var m = Math.floor(d%3600/60);
-  var s = Math.floor(d%3600%60);
-  return (' '+dd+'d '+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s); }
-}
-
-function ReadAndUpdate() {
-	GetDataFile("/status.json", function(text){
-		updateStatus(text);});
-}
-ReadAndUpdate();
-setInterval("ReadAndUpdate()",1000);
-</script>
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="iconsfont.css">
+		<script src="main.js"></script>
+		<script src="res.js"></script>
+        <title>~name~</title>
+    </head>
+    <body>
+		<script>PageSurround();</script>
+        <!--========== CONTENTS ==========-->
+        <main>
+            <section>
+			<div >
+             <table class='cntr'>
+				<tr><td>~name~</td></tr>
+			</table>
+			</div>
+			</section>
+        </main>
+		<script>
+		showMenu('header-toggle','navbar');
+		linkColor.forEach(l => l.addEventListener('click', colorLink))
+		</script>
+    </body>
 </html>

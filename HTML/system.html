@@ -19,12 +19,10 @@
 			  <div class="masonry-layout__panel">
 				<div class="masonry-layout__panel-content">
 				 <form name="conf1" method="post">
-				<h3>SYSTEM</h3>				  
+				<div class="mlhdr">SYSTEM</div>				  
 				<table class='cntr'><script>PrintTextInputNoReg('Имя устройства:','nam','~dname~', 3, 31 );
 				PrintTextInput('Имя пользователя:','lgn','~login~', 3, 31 );
-				PrintTextInput('Пароль пользователя','psn','~pass~', 5, 31 );
-				PrintCheckBox('Подтверждать TCP','tcpdel','~tcpdel~',null);
-				PrintCheckBox('Подтверждать LoRaWAN','lrdel','~lrdel~',null);
+				PrintTextInput('Пароль пользователя:','psn','~pass~', 5, 31 );
 				PrintCheckBox('Включить OTA обновление','ota','~ota~',null);</script></table>
 				<table class='cntr'><tr><td align="center">URL файла обновления:</td></tr>
 				<tr><td align="center"><textarea type="text" cols="40" raws="5" name='otaurl'  title="64 символа" ">~otaurl~</textarea></td></tr>
@@ -46,20 +44,19 @@
 			  <div class="masonry-layout__panel">
 				<div class="masonry-layout__panel-content">
 				<form name="conf2" method="post">
-				<h3>STAT</h3>
+				<div class="mlhdr">STAT</div>
 				<table class='cntr'>
-				<tr><td class='rl'>Ethernet:</td><td><span id='eth'>?</span></td></tr>
-				<tr><td class='rl'>WiFi:</td><td><span id='wfi'>?</span></td></tr>
-				<tr><td class='rl'>GPRS:</td><td><span id='gpr'>?</span></td></tr>
-				<tr><td class='rl'>LoRaWAN:</td><td><span id='lrw'>?</span></td></tr>
+				<tr><td class='rl lab'>Ethernet:</td><td><span id='eth'>?</span></td></tr>
+				<tr><td class='rl lab'>WiFi:</td><td><span id='wfi'>?</span></td></tr>
+				<tr><td class='rl lab'>GPRS:</td><td><span id='gpr'>?</span></td></tr>
 				<tr><td height='20px'></td></tr>
-				<tr><td class='rl'>Основной адаптер:</td><td><span id='adp'>?</span></td></tr>
+				<tr><td class='rl lab'>Основной адаптер:</td><td><span id='adp'>?</span></td></tr>
 				<tr><td height='20px'></td></tr>
-				<tr><td class='rl'>MQTT соединение 1:</td><td><span id='mq1'>?</span></td></tr>
-				<tr><td class='rl'>MQTT соединение 2:</td><td><span id='mq2'>?</span></td></tr>
+				<tr><td class='rl lab'>MQTT соединение 1:</td><td><span id='mq1'>?</span></td></tr>
+				<tr><td class='rl lab'>MQTT соединение 2:</td><td><span id='mq2'>?</span></td></tr>
 				<tr><td height='20px'></td></tr>
-				<tr><td class='rl'>Свободной памяти:</td><td><span id='mem'>?</span></td></tr>
-				<tr><td class='rl'>Минимум памяти:</td><td><span id='mmem'>?</span></td></tr>
+				<tr><td class='rl lab'>Свободной памяти:</td><td><span id='mem'>?</span></td></tr>
+				<tr><td class='rl lab'>Минимум памяти:</td><td><span id='mmem'>?</span></td></tr>
 				</table>
 				</form>
 				</div>
@@ -68,7 +65,7 @@
 			  <div class="masonry-layout__panel">
 				<div class="masonry-layout__panel-content">
 				<form name="conf2" method="post">
-				<h3>CONTROL</h3>
+				<div class="mlhdr">CONTROL</div>
 				<div style='margin:auto;text-align:center'>
 				</br>
 				<button type="submit" class ='btn' name='cmd' value='1'>BAT ON</button>

@@ -1,7 +1,7 @@
 var hedmen = `
         <header class="header">
             <div class="header__container">
-                <img src="youlogo.gif" alt="LOGO" class="header__img">
+                <img src="logo.png" alt="LOGO" class="header__img"/>
                 <a href="index.html" class="header__logo">YouDevice</a>
                 <div class="header__toggle">
                     <i class='icon-menu' id="header-toggle"></i>
@@ -47,8 +47,8 @@ var hedmen = `
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-										<a href="set_network.html" class="nav__dropdown-item">Adapters</a>
-										<a href="set_services.html" class="nav__dropdown-item">Services</a>
+										<a href="adapters.html" class="nav__dropdown-item">Adapters</a>
+										<a href="services.html" class="nav__dropdown-item">Services</a>
                                     </div>
                                 </div>
 
@@ -56,13 +56,13 @@ var hedmen = `
 							<div class="nav__dropdown">
 								<a href="#" class="nav__link">
                                     <i class='icon-cog-alt nav__icon' ></i>
-                                    <span class="nav__name">STSTEM</span>
+                                    <span class="nav__name">DEVICE</span>
                                     <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
                                 </a>
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-                                        <a href="set_system.html" class="nav__dropdown-item">System</a>
+                                        <a href="system.html" class="nav__dropdown-item">Maintain</a>
                                     </div>
                                 </div>
 							</div>
@@ -84,7 +84,7 @@ function PrintMACInput(title,name,value){document.write("<tr><td class='rl'>"+ti
 function PrintTextInput(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов A-Za-z0-9_\-*!<>)(.@,/'  pattern='^[0-9a-zA-Z_\\-*!<>.@\,/)(\s]{"+min+","+max+"}$' /></td></tr>");}
 function PrintHexInput(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов A-Fa-f0-9'  pattern='^[0-9a-fA-F]{"+min+","+max+"}$' /></td></tr>");}
 function PrintTextInputNoReg(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов'/></td></tr>");}
-function PrintLabel(title,value){document.write("<tr><td class='rl'>"+title+"</td><td align='left'>"+value+"</td></tr>");}
+function PrintLabel(title,value){document.write("<tr><td class='rl lab'>"+title+"</td><td align='left' class='lab'>"+value+"</td></tr>");}
 function PrintSpanLabel(title,idx){document.write("<tr><td class='rl'>"+title+"</td><td align='left'><span id='"+idx+"'>?</span></td></tr>");}
 function PrintCheckBox(title,name,checked,action){document.write("<tr><td class='rl'>"+title+"</td><td><input type='checkbox' name='"+name+"' value='1' onclick="+action+" "+checked+" /></td></tr>");}
 function PrintInt(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='number' required min='"+min+"' max='"+max+"' name='"+name+"' value ='"+value+"'/></td></tr>");}

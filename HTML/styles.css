@@ -8,12 +8,12 @@
 
   /*========== Colors ==========*/
   --first-color: #FFFFFF;
-  --first-color-light: #D6DBDF ;
-  --title-color: #85929E;
+  --first-color-light: #90C0E0;
+  --title-color: #336699;
   --text-color: #444444;
-  --text-color-light: #85929E;
+  --text-color-light: #336699;
   --body-color: #FFFFFF;
-  --container-color: #AEB6BF;
+  --container-color: #3399CC;
 
   /*========== Font and typography ==========*/
   --body-font: 'Arial', sanf-serif;
@@ -327,6 +327,7 @@ input {
 	font:14px consolas,monospace;
 	padding-left:3px;
 	border:solid 1px #CCCCCC;
+	height:2.0rem;
 }
 
 .cntr {

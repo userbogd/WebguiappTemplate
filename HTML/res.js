@@ -21,34 +21,17 @@ var hedmen = `
                             <div class="nav__dropdown">
                                 <a href="#" class="nav__link">
                                     <i class='icon-chart-bar nav__icon'></i>
-                                    <span class="nav__name">APPLICATION1</span>
+                                    <span class="nav__name">APPLICATION</span>
                                     <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
                                 </a>
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-                                        <a href="#" class="nav__dropdown-item">App1</a>
-                                        <a href="#" class="nav__dropdown-item">App2</a>
-										<a href="#" class="nav__dropdown-item">App3</a>
+                                        <a href="#" class="nav__dropdown-item">Menu1</a>
+                                        <a href="#" class="nav__dropdown-item">Menu2</a>
+										<a href="#" class="nav__dropdown-item">Menu3</a>
                                     </div>
                                 </div>
-                            </div>
-							
-						  <div class="nav__dropdown">
-                                <a href="#" class="nav__link">
-                                    <i class='icon-chart-bar nav__icon' ></i>
-                                    <span class="nav__name">APPLICATION2</span>
-                                    <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
-                                </a>
-
-                                <div class="nav__dropdown-collapse">
-                                    <div class="nav__dropdown-content">
-                                        <a href="#" class="nav__dropdown-item">App1</a>
-                                        <a href="#" class="nav__dropdown-item">App2</a>
-                                        <a href="#" class="nav__dropdown-item">App3</a>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
     
@@ -58,17 +41,14 @@ var hedmen = `
                             <div class="nav__dropdown">
                                 <a href="#" class="nav__link">
                                     <i class='icon-wifi nav__icon' ></i>
-                                    <span class="nav__name">NETWORK</span>
+                                    <span class="nav__name">CONNECTION</span>
                                     <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
                                 </a>
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-										<a href="set_network.html" class="nav__dropdown-item">Network</a>
-                                        <a href="set_eth.html" class="nav__dropdown-item">Ethernet</a>
-                                        <a href="set_wifi.html" class="nav__dropdown-item">WiFi</a>
-                                        <a href="set_gprs.html" class="nav__dropdown-item">GPRS</a>
-										<a href="set_mqtt.html" class="nav__dropdown-item">MQTT</a>
+										<a href="set_network.html" class="nav__dropdown-item">Adapters</a>
+										<a href="set_services.html" class="nav__dropdown-item">Services</a>
                                     </div>
                                 </div>
 
@@ -82,9 +62,7 @@ var hedmen = `
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-                                        <a href="set_sys.html" class="nav__dropdown-item">System</a>
-                                        <a href="set_time.html" class="nav__dropdown-item">Time</a>
-										<a href="control.html" class="nav__dropdown-item">Control</a>
+                                        <a href="set_system.html" class="nav__dropdown-item">System</a>
                                     </div>
                                 </div>
 							</div>

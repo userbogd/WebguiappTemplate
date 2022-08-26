@@ -9,7 +9,6 @@ api/set3.json
 api/stat.json
 api/status.json
 api/tmr.json
-control.html
 favicon.ico
 iconsfont.css
 iconsfont.woff2
@@ -19,11 +18,7 @@ reboot.html
 res
 res.js
 res/ca_cert.pem
-set_eth.html
-set_gprs.html
-set_mqtt.html
-set_network.html
-set_sys.html
-set_time.html
-set_wifi.html
+set_adapters.html
+set_services.html
+set_system.html
 styles.css

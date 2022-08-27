@@ -1,6 +1,6 @@
 /*========== VARIABLES CSS ==========*/
 :root {
-  --header-height: 3.5rem;
+  --header-height: 4.0rem;
   --nav-width: 220px;
 
   /*========== Colors ==========*/
@@ -82,8 +82,8 @@ img {
 }
 
 .header__img {
-  width: 50px;
-  height: 50px;
+  width: 3.0rem;
+  height: 3.0rem;
   border-radius: 5%;
 }
 
@@ -249,10 +249,10 @@ img {
 
 @media screen and (min-width: 768px) {
   body {
-    padding: 1rem 3rem 0 6rem;
+    padding: 1rem 3rem 0 5rem;
   }
   .header {
-    padding: 0 3rem 0 6rem;
+    padding: 0 3rem 0 5rem;
   }
   .header__container {
     height: calc(var(--header-height) + .5rem);
@@ -275,7 +275,7 @@ img {
   .nav {
     left: 0;
     padding: 1.2rem 1.5rem 0;
-    width: 68px; /* Reduced navbar */
+    width: 5.0rem; /* Reduced navbar */
   }
   .nav__items {
     row-gap: 1.7rem;
@@ -335,9 +335,8 @@ input, .btn, .lab, textarea {
 .lab {border: none;}
 
 textarea {
-	height: 3.0rem;
-	width: auto;
-	margin:10px;
+	height: 4.0rem;
+	margin:auto;
 	vertical-align: top;
 }
 
@@ -354,9 +353,9 @@ textarea {
 
 .masonry-layout__panel {
   break-inside: avoid;
-  padding: 5px;
 }
 .masonry-layout__panel-content {
+  margin: 10px 0 0 10px;
   padding: 10px;
   border-radius: 10px;
   border:solid 1px #CCCCCC;

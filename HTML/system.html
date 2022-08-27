@@ -24,8 +24,8 @@
 				PrintTextInput('Имя пользователя:','lgn','~login~', 3, 31 );
 				PrintTextInput('Пароль пользователя:','psn','~pass~', 5, 31 );
 				PrintCheckBox('Включить OTA обновление','ota','~ota~',null);</script></table>
-				<table class='cntr'><tr><td align="center">URL файла обновления:</td></tr>
-				<tr><td align="center"><textarea type="text" cols="40" raws="5" name='otaurl'  title="64 символа" ">~otaurl~</textarea></td></tr>
+				<table class='cntr'><tr><td align="center">URL файла обновления:</td></tr></table>
+				<table class='cntr'><tr><td><textarea type="text"  raws="5" name='otaurl'  title="64 символа" ">~otaurl~</textarea></td></tr>
 				</table>
 				<table class='cntr'><script>
 				PrintSep();
@@ -93,4 +93,26 @@
 		linkColor.forEach(l => l.addEventListener('click', colorLink))
 		</script>		
     </body>
+    <script>
+	function updateStatus(data) {
+	var dat = JSON.parse(data);
+	try
+		{
+		document.getElementById('eth').innerHTML= dat.ethstat;
+		document.getElementById('wfi').innerHTML= dat.wfstat;
+		document.getElementById('gpr').innerHTML= dat.gsmstat;
+		document.getElementById('adp').innerHTML= dat.defadp;
+		document.getElementById('mq1').innerHTML= dat.mqtt1st;
+		document.getElementById('mq2').innerHTML= dat.mqtt2st;
+		document.getElementById('mem').innerHTML= dat.freeram;
+		document.getElementById('mmem').innerHTML= dat.minram;
+		}
+	catch(e){return;}
+	}
+	function ReadAndUpdate() {
+	GetDataFile("/api/stat.json", function(data){updateStatus(data);});
+	}
+	ReadAndUpdate();
+	setInterval("ReadAndUpdate()",1000);
+	</script>
 </html>

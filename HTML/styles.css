@@ -42,7 +42,7 @@
 
 body {
   margin: var(--header-height) 0 0 0;
-  padding: 1rem 1rem 0;
+  padding: 0 0 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
@@ -249,7 +249,7 @@ img {
 
 @media screen and (min-width: 768px) {
   body {
-    padding: 1rem 3rem 0 5rem;
+    padding: 0 0 0 5rem;
   }
   .header {
     padding: 0 3rem 0 5rem;
@@ -353,9 +353,11 @@ textarea {
 
 .masonry-layout__panel {
   break-inside: avoid;
+  padding:5px;
+  
 }
 .masonry-layout__panel-content {
-  margin: 10px 0 0 10px;
+  margin: 10px 0;
   padding: 10px;
   border-radius: 10px;
   border:solid 1px #CCCCCC;

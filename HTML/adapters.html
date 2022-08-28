@@ -18,7 +18,7 @@
 			  
 			  <div class="masonry-layout__panel">
 				<div class="masonry-layout__panel-content">
-				 <form name="conf1" method="post">
+				 <form name="eth" method="post">
 				<div class="mlhdr">ETHERNET</div>				  
 				<table class='cntr'><tr>
 				<script>PrintCheckBox('Включить ETHERNET','ethen','~ethen~','configIPBoxes()');
@@ -33,14 +33,14 @@
 				<tr><td></td></tr></table><br/>	
 				
 				<script>PrintSaveFail('~status_fail~');
-				PrintSaveBtn();</script>				
+				PrintSaveBtn('eth'); PrintApplyBtn('eth');</script>				
 				</form>
 				</div>
 			  </div>
 			  
 			  <div class="masonry-layout__panel">
 				<div class="masonry-layout__panel-content">
-				<form name="conf2" method="post">
+				<form name="wifi" method="post">
 				<div class="mlhdr">WiFi</div>
 				<table class='cntr'>
 				<tr><td class='rl'>Включить WiFi</td><td><input type="checkbox" name="wifien" value="1"  ~wfen~/></td></tr>
@@ -67,7 +67,7 @@
 				<tr><td></td></tr></table><br/>	
 			
 				<script>PrintSaveFail('~status_fail~');
-				PrintSaveBtn();</script>			
+				PrintSaveBtn('wifi'); PrintApplyBtn('wifi');</script>			
 				</form>
 				</div>
 			  </div>
@@ -75,7 +75,7 @@
 			  <div class="masonry-layout__panel">
 				<div class="masonry-layout__panel-content">
 				<div class="mlhdr">GPRS</div>
-				<form name="conf3" method="post">			
+				<form name="gprs" method="post">			
 				<table class='cntr'>
 				<script>PrintCheckBox('Включить GSM','gsmen','~gsmen~',null);
 				PrintLabel('Модуль:','~gsmmod~');
@@ -90,7 +90,7 @@
 				PrintLabel('DNS3:','~flgsmdns~');</script>
 				<tr><td></td></tr></table><br/>	
 				<script>PrintSaveFail('~status_fail~');
-				PrintSaveBtn();</script>				
+				PrintSaveBtn('gprs'); PrintApplyBtn('gprs');</script>				
 				</form>
 				</div>
 			  </div>

@@ -90,5 +90,6 @@ function PrintCheckBox(title,name,checked,action){document.write("<tr><td class=
 function PrintInt(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='number' required min='"+min+"' max='"+max+"' name='"+name+"' value ='"+value+"'/></td></tr>");}
 function PrintIntId(title,id,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='number' required min='"+min+"' max='"+max+"' id='"+id+"' value ='"+value+"'/></td></tr>");}
 function PrintSep(){document.write("<tr><td height='20px'></td></tr>");}
-function PrintSaveBtn(){document.write("<div style='text-align:center;margin-top:10px'><button type='submit' class='btn' name='sav' value='prs'>Сохранить</button></div>");}
-function PrintSaveFail(isfail){document.write("<div class='resfail' style='text-align:center;display:"+isfail+"' color='#F00'><font color='red'><h4>Неверный формат данных!</h4></font><br/></div>");}
+function PrintSaveBtn(form){document.write("<button type='submit' class='btn' name='save' value='"+form+"'>Save</button>");}
+function PrintApplyBtn(form){document.write("<button type='submit' class='btn' name='apply' value='"+form+"'>Apply</button>");}
+function PrintSaveFail(isfail){document.write("<div class='resfail' style='text-align:center;display:"+isfail+"' color='#F00'><font color='red'><h4>Wrong data format!</h4></font><br/></div>");}

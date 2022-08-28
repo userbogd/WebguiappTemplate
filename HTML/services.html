@@ -32,12 +32,8 @@
 				<button id='sendt' type='button' class ='btn sbtn'>Передать</button><br/><br/><br/>	    	
 				</td></tr>
 				</table>
-				<div class="resfail" style="text-align:center;display:~status_fail~"  color="#F00" >
-				<font color="red">
-				<h2>Ошибка формата данных!</h2></font><br /> </div>
-				<div style='margin:auto;text-align:center'>
-				<button type="submit" class ='btn' name='sav' value='prs'>Сохранить</button>
-				</div>			
+				<script>PrintSaveFail('~status_fail~');
+				PrintSaveBtn('sntp'); PrintApplyBtn('sntp')</script>		
 				</form>
 				</div>
 			  </div>
@@ -55,16 +51,17 @@
 				PrintTextInput('Логин','clnm1','~clname1~',3,31);
 				PrintTextInput('Пароль','clps1','~clpass1~',3,31);
 				PrintSep();
+				if(~ifc_mq2~){
 				PrintCheckBox('Включить MQTT 2','mqttenb2','~mqtten2~',null);
 				PrintTextInput('URL шлюза сообщений','cld2','~ipcld2~',3,31);
 				PrintInt('Порт шлюза сообщений','mprt2','~mport2~',1000,65534);
 				PrintTextInput('ID станции','idd2','~idcld2~',3,31);
 				PrintTextInput('Корневая тема','top2','~topic2~',3,31);
 				PrintTextInput('Логин','clnm2','~clname2~',3,31);
-				PrintTextInput('Пароль','clps2','~clpass2~',3,31);</script>
+				PrintTextInput('Пароль','clps2','~clpass2~',3,31);}</script>
 				</table>
 				<script>PrintSaveFail('~status_fail~');
-				PrintSaveBtn();</script>			
+				PrintSaveBtn('mqtt'); PrintApplyBtn('mqtt')</script>			
 				</form>
 				</div>
 			  </div>

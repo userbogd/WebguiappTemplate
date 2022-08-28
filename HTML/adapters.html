@@ -72,7 +72,9 @@
 				<div class="mlhdr">GPRS</div>
 				<form name="gprs" method="post">			
 				<table class='cntr'>
-				<script>PrintCheckBox('Включить GSM','gsmen','~gsmen~',null);
+				<script>
+				if(~ifc_gprs~){
+				PrintCheckBox('Включить GSM','gsmen','~gsmen~',null);
 				PrintLabel('Модуль:','~gsmmod~');
 				PrintLabel('Оператор:','~gsmopr~');
 				PrintLabel('IMEI:','~gimei~');
@@ -82,10 +84,13 @@
 				PrintLabel('Адрес шлюза:','~gsmgate~');
 				PrintLabel('DNS1:','~gsmdns~');
 				PrintLabel('DNS2:','~bkgsmdns~');
-				PrintLabel('DNS3:','~flgsmdns~');</script>
-				<tr><td></td></tr></table><br/>	
-				<script>PrintSaveFail('~status_fail~');
-				PrintSaveBtn('gprs'); PrintApplyBtn('gprs');</script>				
+				PrintLabel('DNS3:','~flgsmdns~');
+				PrintSep();	
+				PrintSaveFail('~status_fail~');
+				PrintSaveBtn('gprs'); PrintApplyBtn('gprs');}
+				else 
+			    PrintLabel("GPRS is not supported by the hardware","");
+				</script>				
 				</form>
 				</div>
 			  </div>

@@ -40,36 +40,27 @@ var hedmen = `
     
                             <div class="nav__dropdown">
                                 <a href="#" class="nav__link">
-                                    <i class='icon-wifi nav__icon' ></i>
-                                    <span class="nav__name">CONNECTION</span>
+                                    <i class='icon-cog-alt nav__icon' ></i>
+                                    <span class="nav__name">SETTINGS</span>
                                     <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
                                 </a>
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-										<a href="adapters.html" class="nav__dropdown-item">Adapters</a>
+										<a href="adapters.html" class="nav__dropdown-item">Network</a>
 										<a href="services.html" class="nav__dropdown-item">Services</a>
+										<a href="system.html" class="nav__dropdown-item">System</a>
                                     </div>
                                 </div>
 
                             </div>
-							<div class="nav__dropdown">
-								<a href="#" class="nav__link">
-                                    <i class='icon-cog-alt nav__icon' ></i>
-                                    <span class="nav__name">DEVICE</span>
-                                    <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
-                                </a>
-
-                                <div class="nav__dropdown-collapse">
-                                    <div class="nav__dropdown-content">
-                                        <a href="system.html" class="nav__dropdown-item">Maintain</a>
-                                    </div>
-                                </div>
-							</div>
 							
                         </div>
 						
-						
+						<a href="info.html" class="nav__link nav__logo">
+                        <i class='icon-info-circled nav__icon' ></i>
+                        <span class="nav__logo-name">About</span>
+                    </a>
                     </div>
                 </div>
             </nav>

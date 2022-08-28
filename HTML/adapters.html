@@ -14,10 +14,9 @@
         <!--========== CONTENTS ==========-->
         <main>
             <section>
-			<div class="masonry-layout">
-			  
-			  <div class="masonry-layout__panel">
-				<div class="masonry-layout__panel-content">
+			<div class="ml">			  
+			  <div class="mlp">
+				<div class="mlpc">
 				 <form name="eth" method="post">
 				<div class="mlhdr">ETHERNET</div>				  
 				<table class='cntr'><tr>
@@ -38,18 +37,14 @@
 				</div>
 			  </div>
 			  
-			  <div class="masonry-layout__panel">
-				<div class="masonry-layout__panel-content">
+			  <div class="mlp">
+				<div class="mlpc">
 				<form name="wifi" method="post">
 				<div class="mlhdr">WiFi</div>
 				<table class='cntr'>
 				<tr><td class='rl'>Включить WiFi</td><td><input type="checkbox" name="wifien" value="1"  ~wfen~/></td></tr>
-				
-				
 				<tr><td class='rl'>Режим WiFi:</td><td><input name="netm" type="radio" value="2" onclick="configIPBoxes()" ~cln~>Клиент(CLN)</input></br>
 				<input name="netm" type="radio" value="1" onclick="configIPBoxes()" ~apn~>Точка доступа(AP)</input></td></tr>
-				
-				
 				<script>PrintTextInput('Имя WiFi сети(AP):','wfiap','~ssidap~',3,31);
 				PrintTextInput('Ключ WiFi сети(AP):','wfpap','~wkeyap~',8,31);
 				PrintIPInput('IP адрес(AP):','ipaap','~ipap~');
@@ -72,8 +67,8 @@
 				</div>
 			  </div>
 			  
-			  <div class="masonry-layout__panel">
-				<div class="masonry-layout__panel-content">
+			  <div class="mlp">
+				<div class="mlpc">
 				<div class="mlhdr">GPRS</div>
 				<form name="gprs" method="post">			
 				<table class='cntr'>
@@ -94,10 +89,8 @@
 				</form>
 				</div>
 			  </div>
-
 			</div>
-		</section>
-		
+		</section>		
 		</main>
 		<script>
 		showMenu('header-toggle','navbar');

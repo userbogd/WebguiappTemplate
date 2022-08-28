@@ -351,29 +351,29 @@ textarea {
 	margin: auto;
 }		   
 
-.masonry-layout__panel {
+.mlp {
   break-inside: avoid;
   padding:5px;
   
 }
-.masonry-layout__panel-content {
+.mlpc {
   margin: 10px 0;
   padding: 10px;
   border-radius: 10px;
   border:solid 1px #CCCCCC;
 }		   
 
-.masonry-layout {
+.ml {
   column-count: 1;
   column-gap: 0;
 }
 @media (min-width: 768px) {
-  .masonry-layout {
+  .ml {
     column-count: 2;
   }
 }
 @media (min-width: 1200px) {
-  .masonry-layout {
+  .ml {
     column-count: 3;
   }
 }

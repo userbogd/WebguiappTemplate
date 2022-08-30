@@ -1,7 +1,7 @@
 /*========== VARIABLES CSS ==========*/
 :root {
-  --header-height: 4.0rem;
-  --nav-width: 220px;
+  --header-height: 3.0rem;
+  --nav-width: 200px;
 
   /*========== Colors ==========*/
   --first-color: #FFFFFF;
@@ -200,14 +200,14 @@ img {
 .nav__dropdown-content {
   display: grid;
   row-gap: .5rem;
-  padding: .75rem 2.5rem .75rem 1.8rem;
+  padding: .75rem 2.5rem .75rem 2.5rem;
 }
 
 .nav__dropdown-item {
-  font-size: var(--smaller-font-size);
+  font-size: var(--small-font-size);
   font-weight: var(--font-medium);
   color: var(--text-color);
-  margin: 5px 3px;
+  margin: 3px 3px;
 }
 
 .nav__dropdown-item:hover {
@@ -249,10 +249,10 @@ img {
 
 @media screen and (min-width: 768px) {
   body {
-    padding: 0 0 0 5rem;
+    padding: 0 0 0 4rem;
   }
   .header {
-    padding: 0 3rem 0 5rem;
+    padding: 0 3rem 0 4rem;
   }
   .header__container {
     height: calc(var(--header-height) + .5rem);
@@ -268,17 +268,17 @@ img {
     display: block;
   }
   .header__img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     order: 1;
   }
   .nav {
     left: 0;
-    padding: 1.2rem 1.5rem 0;
-    width: 5.0rem; /* Reduced navbar */
+    padding: 1.2rem 1.2rem 0;
+    width: 4.0rem; /* Reduced navbar */
   }
   .nav__items {
-    row-gap: 1.7rem;
+    row-gap: 2.0rem;
   }
   .nav__icon {
     font-size: 1.0rem;

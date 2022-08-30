@@ -38,7 +38,7 @@
 #define BOOL_OUT(param, name) bool* _ARG(param, name)
 #define INT_OUT(param, name) int* _ARG(param, name)
 #define INTEGER_LIST_IN(param, name) const int* _ARG(param, name)
-#define STRUCT_OUT(struct_name, p1)  struct struct_name* p1
+#define STRUCT_OUT(struct_name, p1)  esp_modem_ ## struct_name ## _t* p1
 #endif
 
 #define DECLARE_ALL_COMMAND_APIS(...) \
@@ -50,9 +50,10 @@ ESP_MODEM_DECLARE_DCE_COMMAND(sync, command_result, 0) \
 /**
  * @brief Reads the operator name
  * @param[out] operator name
+ * @param[out] access technology
  * @return OK, FAIL or TIMEOUT
  */ \
-ESP_MODEM_DECLARE_DCE_COMMAND(get_operator_name, command_result, 1, STRING_OUT(p1, name)) \
+ESP_MODEM_DECLARE_DCE_COMMAND(get_operator_name, command_result, 2, STRING_OUT(p1, name), INT_OUT(p2, act)) \
     \
 /**
  * @brief Stores current user profile
@@ -97,7 +98,7 @@ ESP_MODEM_DECLARE_DCE_COMMAND(set_echo, command_result, 1, BOOL_IN(p1, echo_on))
 ESP_MODEM_DECLARE_DCE_COMMAND(sms_txt_mode, command_result, 1, BOOL_IN(p1, txt)) \
     \
 /**
- * @brief Sets the default (GSM) charater set
+ * @brief Sets the default (GSM) character set
  * @return OK, FAIL or TIMEOUT
  */ \
 ESP_MODEM_DECLARE_DCE_COMMAND(sms_character_set, command_result, 0) \

@@ -1,6 +1,6 @@
 ## IDF Component Manager Manifest File
 dependencies:
-  espressif/esp_modem: "==0.1.18"
+  espressif/esp_modem: "==0.1.19"
   ## Required IDF version
   idf:
     version: ">=4.1.0"

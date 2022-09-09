@@ -1,6 +1,6 @@
 /*========== VARIABLES CSS ==========*/
 :root {
-  --header-height: 3.0rem;
+  --header-height: 60px;
   --nav-width: 200px;
 
   /*========== Colors ==========*/
@@ -82,8 +82,8 @@ img {
 }
 
 .header__img {
-  width: 3.0rem;
-  height: 3.0rem;
+  width: 40px;
+  height: 40px;
   border-radius: 5%;
 }
 
@@ -268,8 +268,8 @@ img {
     display: block;
   }
   .header__img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     order: 1;
   }
   .nav {

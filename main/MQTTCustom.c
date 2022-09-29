@@ -63,7 +63,7 @@ void UserMQTTEventHndlr(void *handler_args, esp_event_base_t base, int32_t event
         case MQTT_EVENT_CONNECTED:
             ComposeTopic(topic,
                          GetSysConf()->mqttStation[ctx->mqtt_index].RootTopic,
-                         "DOWNLINK",
+                         "DWLINK",
                          GetSysConf()->mqttStation[ctx->mqtt_index].ClientID,
                          "USER");
             //Subscribe to the service called "USER"
@@ -74,7 +74,7 @@ void UserMQTTEventHndlr(void *handler_args, esp_event_base_t base, int32_t event
         case MQTT_EVENT_DATA:
             ComposeTopic(topic,
                          GetSysConf()->mqttStation[ctx->mqtt_index].RootTopic,
-                         "DOWNLINK",
+                         "DWLINK",
                          GetSysConf()->mqttStation[ctx->mqtt_index].ClientID,
                          "USER");
             if (!memcmp(topic, event->topic, event->topic_len))

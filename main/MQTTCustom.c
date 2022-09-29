@@ -32,11 +32,7 @@ esp_err_t UserMQTTSendExample(int idx)
     {
         memcpy(buf, resp, strlen(resp));
         DATA_SEND_STRUCT DSS;
-        ComposeTopic(DSS.topic,
-                     GetSysConf()->mqttStation[idx].RootTopic,
-                     "UPLINK",
-                     GetSysConf()->mqttStation[idx].ClientID,
-                     "USER");
+        ComposeTopic(DSS.topic, idx, "USER", "UPLINK");
         DSS.raw_data_ptr = buf;
         DSS.data_length = strlen(resp);
         if (xQueueSend(GetMQTTHandlesPool(idx)->mqtt_queue, &DSS, pdMS_TO_TICKS(1000)) == pdPASS)
@@ -61,22 +57,14 @@ void UserMQTTEventHndlr(void *handler_args, esp_event_base_t base, int32_t event
     switch ((esp_mqtt_event_id_t) event_id)
     {
         case MQTT_EVENT_CONNECTED:
-            ComposeTopic(topic,
-                         GetSysConf()->mqttStation[ctx->mqtt_index].RootTopic,
-                         "DWLINK",
-                         GetSysConf()->mqttStation[ctx->mqtt_index].ClientID,
-                         "USER");
+            ComposeTopic(topic, ctx->mqtt_index, "USER", "DWLINK");
             //Subscribe to the service called "USER"
             msg_id = esp_mqtt_client_subscribe(client, (const char*) topic, 0);
             ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
 
         break;
         case MQTT_EVENT_DATA:
-            ComposeTopic(topic,
-                         GetSysConf()->mqttStation[ctx->mqtt_index].RootTopic,
-                         "DWLINK",
-                         GetSysConf()->mqttStation[ctx->mqtt_index].ClientID,
-                         "USER");
+            ComposeTopic(topic, ctx->mqtt_index, "USER", "DWLINK");
             if (!memcmp(topic, event->topic, event->topic_len))
             {
                 //Here data for service called "USER"

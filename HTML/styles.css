@@ -5,12 +5,12 @@
 
   /*========== Colors ==========*/
   --first-color: #FFFFFF;
-  --first-color-light: #90C0E0;
-  --title-color: #336699;
+  --first-color-light: #ff0000;
+  --title-color: #990000;
   --text-color: #404040;
-  --text-color-light: #336699;
+  --text-color-light: #990000;
   --body-color: #FFFFFF;
-  --container-color: #90C0E0;
+  --container-color: #ff0000;
 
   /*========== Font and typography ==========*/
   --body-font: 'Arial', sanf-serif;
@@ -316,8 +316,6 @@ img {
 
 .rl{text-align:right;}
 
-
-
 input, .btn, .lab, textarea {
 	font:.8rem consolas,monospace;
 	padding-left:3px;
@@ -327,7 +325,6 @@ input, .btn, .lab, textarea {
 	margin: 3px 3px;
 	vertical-align: middle;
 }
-
 .btn{min-width:100px;}
 .btn:active{background-color:  #CCCCCC;}
 .btn:hover {border:solid 1px #999999;}
@@ -339,6 +336,17 @@ textarea {
 	margin:auto;
 	vertical-align: top;
 }
+
+.stg td{width:auto;padding:1px;margin:0}
+.stg input, select {height:25px}
+input[type="radio"] { margin-top: -1px; vertical-align: middle;}
+.stg table{margin: 5px auto}
+.dot {height: 30px;
+	  width: 30px;
+	  background-color: #d0d0d0;
+	  border-radius: 40%;
+	  display: inline-block;
+	  margin: 7px 20px}
 
 .cntr {
    margin:auto;

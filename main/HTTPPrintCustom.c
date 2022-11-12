@@ -41,30 +41,13 @@ dyn_var_handler_t HANDLERS_ARRAY_CUST[] = {
 };
 
 
-int HTTPPrintCustom(httpd_req_t *req, char *buf, char *var)
+int HTTPPrintCustom(httpd_req_t *req, char *buf, char *var, int arg)
 {
     char VarData[MAX_DYNVAR_LENGTH];
     bool fnd = false;
-    char *p2 = var + strlen(var) - 1; //last var symbol
-    int arg = 0;
     //searching for tag in handles array
     for (int i = 0; i < (sizeof(HANDLERS_ARRAY_CUST) / sizeof(HANDLERS_ARRAY_CUST[0])); ++i)
     {
-        //Try to extract integer parameter from dynamic variable
-        if (*p2 == ')')
-        { //found close brace
-            char *p1 = p2;
-            while ((*p1 != '(') && (p1 > var))
-                --p1;
-            if (*p1 == '(')
-            { //found open brace
-                *p1 = 0x00;         //trim variable to name part
-                ++p1;               //to begin of argument
-                *p2 = 0x00;         //set end of argument
-                arg = atoi(p1);
-            }
-        }
-
         if (strcmp(var, HANDLERS_ARRAY_CUST[i].tag) == 0
                 && HANDLERS_ARRAY_CUST[i].HandlerRoutine != NULL)
         {

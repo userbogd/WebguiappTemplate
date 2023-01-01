@@ -1,8 +1,8 @@
 var hedmen = `
         <header class="header">
             <div class="header__container">
-                <img src="logo.png" alt="LOGO" class="header__img"/>
-                <a href="index.html" class="header__logo">YouDevice</a>
+                <img src="res/logo.png" alt="LOGO" class="header__img"/>
+                <a href="index.html" class="header__logo">This device brand name</a>
                 <div class="header__toggle">
                     <i class='icon-menu' id="header-toggle"></i>
                 </div>
@@ -21,15 +21,28 @@ var hedmen = `
                             <div class="nav__dropdown">
                                 <a href="#" class="nav__link">
                                     <i class='icon-chart-bar nav__icon'></i>
-                                    <span class="nav__name">APPLICATION</span>
+                                    <span class="nav__name">CONTROL</span>
                                     <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
                                 </a>
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-                                        <a href="#" class="nav__dropdown-item">Menu1</a>
-                                        <a href="#" class="nav__dropdown-item">Menu2</a>
-										<a href="#" class="nav__dropdown-item">Menu3</a>
+                                        <a href="#" class="nav__dropdown-item">AppControl1</a>
+                                        <a href="#" class="nav__dropdown-item">AppControl2</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class='icon-wrench nav__icon'></i>
+                                    <span class="nav__name">SETTINGS</span>
+                                    <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">AppSettings1</a>
+                                        <a href="#" class="nav__dropdown-item">AppSettings2</a>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +85,7 @@ function PageSurround()
 
 function PrintIPInput(title,name,value){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value='"+value+"' title='IP адрес xxx.xxx.xxx.xxx' pattern='^\\d{1,3}\.\\d{1,3}\.\\d{1,3}\.\\d{1,3}$' /></td></tr>");}
 function PrintMACInput(title,name,value){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value='"+value+"' title='MAC адрес xx-xx-xx-xx-xx-xx' pattern='^([0-9a-fA-F]{2}([-]|$)){6}$|([0-9a-fA-F]{4}([.]|$)){3}$' /></td></tr>");}
-function PrintTextInput(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов A-Za-z0-9_\-*!<>)(.@,/'  pattern='^[0-9a-zA-Z_\\-*!<>.@\,/)(\s]{"+min+","+max+"}$' /></td></tr>");}
+function PrintTextInput(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов'  pattern='^*{"+min+","+max+"}$' /></td></tr>");}
 function PrintHexInput(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов A-Fa-f0-9'  pattern='^[0-9a-fA-F]{"+min+","+max+"}$' /></td></tr>");}
 function PrintTextInputNoReg(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов'/></td></tr>");}
 function PrintLabel(title,value){document.write("<tr><td class='rl lab'>"+title+"</td><td align='left' class='lab'>"+value+"</td></tr>");}
@@ -81,6 +94,6 @@ function PrintCheckBox(title,name,checked,action){document.write("<tr><td class=
 function PrintInt(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='number' required min='"+min+"' max='"+max+"' name='"+name+"' value ='"+value+"'/></td></tr>");}
 function PrintIntId(title,id,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='number' required min='"+min+"' max='"+max+"' id='"+id+"' value ='"+value+"'/></td></tr>");}
 function PrintSep(){document.write("<tr><td height='20px'></td></tr>");}
-function PrintSaveBtn(form){document.write("<button type='submit' class='btn' name='save' value='"+form+"'>Save</button>");}
+function PrintSaveBtn(form){document.write("<button type='submit' class='btn' name='save' value='"+form+"'>Save reboot</button>");}
 function PrintApplyBtn(form){document.write("<button type='submit' class='btn' name='apply' value='"+form+"'>Apply</button>");}
 function PrintSaveFail(isfail){document.write("<div class='resfail' style='text-align:center;display:"+isfail+"' color='#F00'><font color='red'><h4>Wrong data format!</h4></font><br/></div>");}

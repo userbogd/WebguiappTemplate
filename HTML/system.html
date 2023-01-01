@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="iconsfont.css">
-		<script src="main.js"></script>
-		<script src="res.js"></script>
+        <link rel="stylesheet" href="res/styles.css">
+        <link rel="stylesheet" href="res/iconsfont.css">
+		<script src="res/main.js"></script>
+		<script src="res/res.js"></script>
         <title>~name~</title>
     </head>
     <body>
@@ -65,24 +65,20 @@
 			  
 			  <div class="mlp">
 				<div class="mlpc">
-				<form name="cntrl" method="post">
-				<div class="mlhdr">CONTROL</div>
+				<div class="mlhdr">DEBUG</div>
 				<div style='margin:auto;text-align:center'>
 				</br>
-				<button type="submit" class ='btn' name='cmd' value='1'>BAT ON</button>
-				<button type="submit" class ='btn' name='cmd' value='2'>BAT OFF</button></br></br>
-				<button type="submit" class ='btn' name='cmd' value='3'>MQTT ON</button>
-				<button type="submit" class ='btn' name='cmd' value='4'>MQTT OFF</button></br></br>
-				<button type="submit" class ='btn' name='cmd' value='5'>LORA RJN</button>
-				<button type="submit" class ='btn' name='cmd' value='6'>FREE</button></br></br>
-				<button type="submit" class ='btn' name='cmd' value='7'>DEF ETH</button>
-				<button type="submit" class ='btn' name='cmd' value='8'>DEF WIFI</button></br></br>
-				<button type="submit" class ='btn' name='cmd' value='9'>DEF PPP</button>
-				<button type="submit" class ='btn' name='cmd' value='10'>IF NEXT</button></br></br>
-				<button type="submit" class ='btn' name='cmd' value='11'>IF PRINT</button>
-				<button type="submit" class ='btn' name='cmd' value='12'>TEST</button></br></br>
+				<button type="button" class ='btn' name='cmd1' onclick="cmd(1)">F1</button>
+				<button type="button" class ='btn' name='cmd2' onclick="cmd(2)">F2</button></br></br>
+				<button type="button" class ='btn' name='cmd3' onclick="cmd(3)">F3</button>
+				<button type="button" class ='btn' name='cmd4' onclick="cmd(4)">F4</button></br></br>
+				<button type="button" class ='btn' name='cmd5' onclick="cmd(5)">F5</button>
+				<button type="button" class ='btn' name='cmd6' onclick="cmd(6)">F6</button></br></br>
+				<button type="button" class ='btn' name='cmd7' onclick="cmd(7)">F7</button>
+				<button type="button" class ='btn' name='cmd8' onclick="cmd(8)">F8</button></br></br>
+				<button type="button" class ='btn' name='cmd9' onclick="cmd(9)">F9</button>
+				<button type="button" class ='btn' name='cmd10' onclick="cmd(10)">F10</button></br></br>
 				</div>
-				</form>
 				</div>
 			  </div>
 			  
@@ -90,6 +86,10 @@
 			</section>			
         </main>
 		<script>
+		function cmd(n) 
+			{
+			  PostData("cmd="+n, "system.html",false ,false, false);
+			}
 		showMenu('header-toggle','navbar');
 		</script>		
     </body>

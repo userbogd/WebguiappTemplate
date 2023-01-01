@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="iconsfont.css">
-		<script src="main.js"></script>
-		<script src="res.js"></script>
+        <link rel="stylesheet" href="res/styles.css">
+        <link rel="stylesheet" href="res/iconsfont.css">
+		<script src="res/main.js"></script>
+		<script src="res/res.js"></script>
         <title>~name~</title>
     </head>
     <body>
@@ -15,7 +15,7 @@
         <main>
             <section>
 			<div class="ml">			  
-			  <div class="mlp">
+			  <div class="mlp ~hide_eth~">
 				<div class="mlpc">
 				 <form name="eth" method="post">
 				<div class="mlhdr">ETHERNET</div>				  
@@ -30,14 +30,33 @@
 				PrintIPInput('DNS3:','dns3','~fledns~');
 				PrintMACInput('MAC:','mac','~emacadr~');</script>
 				<tr><td></td></tr></table><br/>	
-				
 				<script>PrintSaveFail('~status_fail~');
 				PrintSaveBtn('eth'); PrintApplyBtn('eth');</script>				
 				</form>
 				</div>
 			  </div>
 			  
-			  <div class="mlp">
+			  <div class="mlp ~hide_lora~">
+				<div class="mlpc">
+				<div class="mlhdr">LORAWAN</div>
+				<form name="gprs" method="post">			
+				<table class='cntr'>
+				<table>
+				<script>
+				PrintCheckBox('Включить LoRaWAN','lren','~lren~',null);
+				PrintHexInput('ID устройства:','lrdvid','~lrdvid~',16,16);
+				PrintHexInput('ID приложения:','lrapid','~lrapid~',16,16);</script>
+				</table>
+				<table><tr><td align="center">Ключ приложения:</td></tr>
+				<tr><td align="center"><input type="text" size="40" name='lrapkey' value="~lrapkey~" title="64 символа A-H,a-h,0-9" pattern="^[0-9a-hA-H]{32}$"/></td></tr>
+				</table>			
+				<script>PrintSaveFail('~status_fail~');
+				PrintSaveBtn('lora'); PrintApplyBtn('lora');</script>
+				</form>
+				</div>
+			  </div>
+			  
+			  <div class="mlp ~hide_wifi~">
 				<div class="mlpc">
 				<form name="wifi" method="post">
 				<div class="mlhdr">WiFi</div>
@@ -67,13 +86,12 @@
 				</div>
 			  </div>
 			  
-			  <div class="mlp">
+			  <div class="mlp ~hide_gprs~">
 				<div class="mlpc">
 				<div class="mlhdr">GPRS</div>
 				<form name="gprs" method="post">			
 				<table class='cntr'>
 				<script>
-				if(~ifc_gprs~){
 				PrintCheckBox('Включить GSM','gsmen','~gsmen~',null);
 				PrintLabel('Модуль:','~gsmmod~');
 				PrintLabel('Оператор:','~gsmopr~');
@@ -85,21 +103,25 @@
 				PrintLabel('DNS1:','~gsmdns~');
 				PrintLabel('DNS2:','~bkgsmdns~');
 				PrintLabel('DNS3:','~flgsmdns~');
-				PrintSep();	}
-				else 
-			    PrintLabel("GPRS is not supported by the hardware","");
-				</script></table>				
+				PrintSep();	
+				</script>
+				</table>				
 				<script>PrintSaveFail('~status_fail~');
 				PrintSaveBtn('gprs'); PrintApplyBtn('gprs');</script>
 				</form>
 				</div>
 			  </div>
+			  
+					
+
+	
+			  
+			  
 			</div>
 		</section>		
 		</main>
 		<script>
 		showMenu('header-toggle','navbar');
-		linkColor.forEach(l => l.addEventListener('click', colorLink))
 		</script>
     </body>
 </html>

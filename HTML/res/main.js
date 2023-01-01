@@ -6,7 +6,7 @@ xhr.timeout = 5000;
 xhr.send(data);
 xhr.onreadystatechange = function() { 
 if (xhr.readyState != 4) return;
-if (xhr.status != 200) {alert(xhr.status+': '+xhr.statusText);} 
+if (Number(xhr.status) >= 400) {alert(xhr.status+': '+xhr.statusText);} 
 else {if(reld)location.reload();
 if(alrt) alert(alrt);
 }}}
@@ -131,7 +131,6 @@ location.reload();
 const showMenu = (headerToggle, navbarId) =>{
     const toggleBtn = document.getElementById(headerToggle),
     nav = document.getElementById(navbarId)
-    
     // Validate that variables exist
     if(headerToggle && navbarId){
         toggleBtn.addEventListener('click', ()=>{
@@ -142,6 +141,4 @@ const showMenu = (headerToggle, navbarId) =>{
         })
     }
 }
-
-
 

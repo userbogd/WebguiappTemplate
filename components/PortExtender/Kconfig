@@ -1,0 +1,33 @@
+menu "Virtual GPO configuration"
+    config PORTS_EXTENDER_ENABLE
+        bool "Enabled port extender"
+        default n
+        help
+            Set enabled port extender
+    if  PORTS_EXTENDER_ENABLE       
+    menu "PINs Configuration"
+        config VGPO_MOSI_PIN
+            int "VGPO MOSI Pin Number"
+            default 25
+            range 0 33
+            help
+                Pin number of VGPO MOSI.
+         
+        config VGPO_CLK_PIN
+            int "VGPO CLOCK Pin Number"
+            default 26
+            range 0 33
+            help
+                Pin number of VGPO CLOCK.
+       
+        config VGPO_LAT_PIN
+            int "VGPO LAT Pin Number"
+            default 27
+            range 0 33
+            help
+                Pin number of VGPO LATCH.
+ 
+    endmenu
+    endif
+endmenu
+

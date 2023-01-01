@@ -31,7 +31,7 @@ esp_err_t UserMQTTSendExample(int idx)
     if (buf)
     {
         memcpy(buf, resp, strlen(resp));
-        DATA_SEND_STRUCT DSS;
+        MQTT_DATA_SEND_STRUCT DSS;
         ComposeTopic(DSS.topic, idx, "USER", "UPLINK");
         DSS.raw_data_ptr = buf;
         DSS.data_length = strlen(resp);
@@ -47,29 +47,29 @@ esp_err_t UserMQTTSendExample(int idx)
     return ESP_ERR_NO_MEM;
 }
 
-void UserMQTTEventHndlr(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
+void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
     esp_mqtt_event_handle_t event = event_data;
     esp_mqtt_client_handle_t client = event->client;
-    mqtt_client_t *ctx = (mqtt_client_t*) event->user_context;
+    //mqtt_client_t *ctx = (mqtt_client_t*) event->user_context;
     int msg_id;
     char topic[CONFIG_WEBGUIAPP_MQTT_MAX_TOPIC_LENGTH];
     switch ((esp_mqtt_event_id_t) event_id)
     {
         case MQTT_EVENT_CONNECTED:
-            ComposeTopic(topic, ctx->mqtt_index, "USER", "DWLINK");
+            ComposeTopic(topic, idx, "USER", "DWLINK");
             //Subscribe to the service called "USER"
             msg_id = esp_mqtt_client_subscribe(client, (const char*) topic, 0);
             ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
 
         break;
         case MQTT_EVENT_DATA:
-            ComposeTopic(topic, ctx->mqtt_index, "USER", "DWLINK");
+            ComposeTopic(topic, idx, "USER", "DWLINK");
             if (!memcmp(topic, event->topic, event->topic_len))
             {
                 //Here data for service called "USER"
-                UserMQTTSendExample(ctx->mqtt_index);
-                ESP_LOGI(TAG, "USER data handler on client %d", ctx->mqtt_index);
+                UserMQTTSendExample(idx);
+                ESP_LOGI(TAG, "USER data handler on client %d", idx);
             }
         break;
 

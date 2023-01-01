@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="iconsfont.css">
-		<script src="main.js"></script>
-		<script src="res.js"></script>
+        <link rel="stylesheet" href="res/styles.css">
+        <link rel="stylesheet" href="res/iconsfont.css">
+		<script src="res/main.js"></script>
+		<script src="res/res.js"></script>
         <title>~name~</title>
     </head>
     <body>
@@ -38,7 +38,7 @@
 				</div>
 			  </div>
 			  
-			  <div class="mlp">
+			  <div class="mlp ~hide_mqtt1~">
 				<div class="mlpc">
 				<form name="conf2" method="post">
 				<div class="mlhdr">MQTT1</div>
@@ -58,13 +58,12 @@
 				</div>
 			  </div>
 			  
-			  <div class="mlp">
+			  <div class="mlp ~hide_mqtt2~">
 				<div class="mlpc">
 				<form name="conf3" method="post">
 				<div class="mlhdr">MQTT2</div>
 				<table class='cntr'>
 				<script>
-				if(~ifc_mq2~){
 				PrintCheckBox('Enable MQTT 2','mqen2','~mqen2~',null);
 				PrintTextInput('MQTT broker URL','mqurl2','~mqurl2~',3,31);
 				PrintInt('MQTT broker port','mqport2','~mqport2~',1000,65534);
@@ -72,7 +71,7 @@
 				PrintTextInput('Group name','mqgrp2','~mqgrp2~',3,31);
 				PrintTextInput('Device ID prefix','mqid2','~mqid2~',3,31);
 				PrintTextInput('Login','mqname2','~mqname2~',3,31);
-				PrintTextInput('Password','mqpass2','~mqpass2~',3,31);}</script>
+				PrintTextInput('Password','mqpass2','~mqpass2~',3,31);</script>
 				</table>
 				<script>PrintSaveFail('~status_fail~');
 				PrintSaveBtn('mqtt2'); PrintApplyBtn('mqtt2')</script>			

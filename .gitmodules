@@ -1,6 +1,3 @@
-[submodule "components/libespfs"]
-	path = components/libespfs
-	url = git@github.com:userbogd/libespfs.git
 [submodule "components/webguiapp"]
 	path = components/webguiapp
 	url = git@gitlab.com:userbogd/webguiapp.git

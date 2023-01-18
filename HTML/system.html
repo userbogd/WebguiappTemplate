@@ -23,11 +23,6 @@
 				<table class='cntr'><script>PrintTextInputNoReg('Имя устройства:','nam','~dname~', 3, 31 );
 				PrintTextInput('User name:','lgn','~login~', 3, 31 );
 				PrintTextInput('User password:','psn','~pass~', 5, 31 );
-				PrintCheckBox('Enable OTA update','ota','~ota~',null);</script></table>
-				<table class='cntr'><tr><td align="center">Update firmware URL:</td></tr></table>
-				<table class='cntr'><tr><td><textarea type="text"  raws="5" name='otaurl'  title="64 символа" ">~otaurl~</textarea></td></tr>
-				</table>
-				<table class='cntr'><script>
 				PrintSep();
 				PrintLabel('Device model:','~name~');
 				PrintLabel('Firmware version:','~fver~');
@@ -35,8 +30,29 @@
 				PrintLabel('Built date:','~builddate~');
 				PrintLabel('Serial number:','~serial10~');</script></table>
 				<script>PrintSaveFail('~status_fail~');</script>
-				<button type="submit" class ='btn' name='upd' value='prs'>Update manual</button>
 				<button type="submit" class ='btn' name='rst' value='prs'>Reboot</button>
+				<script>PrintSaveBtn('syst'); PrintApplyBtn('syst');</script>
+				</form>
+				</div>
+			  </div>
+			  
+			 <div class="mlp">
+				<div class="mlpc">
+				<form name="syst" method="post">
+				<div class="mlhdr">FIRMWARE UPDATE</div>				  
+				PrintCheckBox('Enable OTA auto update','ota','~ota~',null);
+				PrintInt('Auto update check period','otaint','~otaint~',1,65534);
+				</script></table>
+				<table class='cntr'><tr><td align="center">Update firmware URL:</td></tr></table>
+				<table class='cntr'><tr><td><textarea type="text"  raws="5" name='otaurl'  title="64 символа" ">~otaurl~</textarea></td></tr>
+				</table>
+				<table class='cntr'><script>
+				PrintLabel('Current firmware version:','~fver~');
+				PrintLabel('Available firmware version:','~fverav~');
+				PrintLabel('Current status:','~updstat~');
+				</script></table>
+				<button type="submit" class ='btn' name='chkfrm' value='prs'>Check manual</button>
+				<button type="submit" class ='btn' name='upd' value='prs'>Update manual</button>
 				<script>PrintSaveBtn('syst'); PrintApplyBtn('syst');</script>
 				</form>
 				</div>

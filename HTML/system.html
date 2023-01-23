@@ -40,19 +40,19 @@
 				<div class="mlpc">
 				<form name="syst" method="post">
 				<div class="mlhdr">FIRMWARE UPDATE</div>				  
+				<table class='cntr'><script>
+				PrintCheckBox('Reset config on OTA update','otarst','~otarst~',null);
 				PrintCheckBox('Enable OTA auto update','ota','~ota~',null);
 				PrintInt('Auto update check period','otaint','~otaint~',1,65534);
 				</script></table>
 				<table class='cntr'><tr><td align="center">Update firmware URL:</td></tr></table>
-				<table class='cntr'><tr><td><textarea type="text"  raws="5" name='otaurl'  title="64 символа" ">~otaurl~</textarea></td></tr>
+				<table class='cntr'><tr><td><textarea type="text" raws="5" name='otaurl'  title="64 символа" ">~otaurl~</textarea></td></tr>
+				</table><table class='cntr'>
+				<tr><td class='rl lab'>Current firmware version:</td><td><span id='fvr'>?</span></td></tr>
+				<tr><td class='rl lab'>Available firmware version:</td><td><span id='afvr'>?</span></td></tr>
+				<tr><td class='rl lab'>Current status:</td><td><span id='upst'>?</span></td></tr>
 				</table>
-				<table class='cntr'><script>
-				PrintLabel('Current firmware version:','~fver~');
-				PrintLabel('Available firmware version:','~fverav~');
-				PrintLabel('Current status:','~updstat~');
-				</script></table>
-				<button type="submit" class ='btn' name='chkfrm' value='prs'>Check manual</button>
-				<button type="submit" class ='btn' name='upd' value='prs'>Update manual</button>
+				<button type="button" class ='btn' name='upd' onclick="fwupd()">Update manual</button>
 				<script>PrintSaveBtn('syst'); PrintApplyBtn('syst');</script>
 				</form>
 				</div>
@@ -102,9 +102,11 @@
 			</section>			
         </main>
 		<script>
-		function cmd(n) 
-			{
+		function cmd(n) {
 			  PostData("cmd="+n, "system.html",false ,false, false);
+			}
+		function fwupd() {
+			  PostData("upd=prs", "system.html",false ,false, false);
 			}
 		showMenu('header-toggle','navbar');
 		</script>		
@@ -122,6 +124,11 @@
 		document.getElementById('mq2').innerHTML= dat.mqtt2st;
 		document.getElementById('mem').innerHTML= dat.freeram;
 		document.getElementById('mmem').innerHTML= dat.minram;
+		
+		document.getElementById('fvr').innerHTML= dat.fver;
+		document.getElementById('afvr').innerHTML= dat.fverav;
+		document.getElementById('upst').innerHTML= dat.updstat;
+		
 		}
 	catch(e){return;}
 	}

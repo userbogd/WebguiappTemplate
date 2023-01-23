@@ -316,6 +316,7 @@ textarea {
 	height: 4.0rem;
 	margin:auto;
 	vertical-align: top;
+	min-width: 350px; 
 }
 
 .stg td{width:auto;padding:1px;margin:0}

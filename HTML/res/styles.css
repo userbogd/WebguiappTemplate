@@ -370,6 +370,17 @@ input[type="radio"] { margin-top: -1px; vertical-align: middle;}
 	display:none;
 }
 
-
+.clerr {
+	color:#b00000;
+	font-weight:bold;
+}
+.clwarn {
+	color:#b0b000;
+	font-weight:bold;
+}
+.clok {
+	color:#00b000;
+	font-weight:bold;
+}
 
 

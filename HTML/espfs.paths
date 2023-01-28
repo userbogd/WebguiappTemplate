@@ -10,6 +10,7 @@ api/set3.json
 api/stat.json
 api/status.json
 api/tmr.json
+api/wifiscan.json
 favicon.ico
 index.html
 info.html

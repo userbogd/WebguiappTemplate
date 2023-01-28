@@ -370,6 +370,13 @@ input[type="radio"] { margin-top: -1px; vertical-align: middle;}
 	display:none;
 }
 
+.scanbar {
+	visibility: hidden;
+	  width: 300px;
+  	  height: 50px;
+  	  margin: 0 20px;
+}
+
 .clerr {
 	color:#b00000;
 	font-weight:bold;

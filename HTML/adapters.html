@@ -10,174 +10,170 @@
 <title>~name~</title>
 </head>
 <body>
-	<script>PageSurround();</script>
-	<!--========== CONTENTS ==========-->
-	<main>
-		<section>
-			<div class="ml">
-
-				<div class="mlp ~hide_eth~">
-					<div class="mlpc">
-						<form name="eth" method="post">
-							<div class="mlhdr">ETHERNET</div>
-							<table class='cntr'>
-								<tr>
-									<script>PrintCheckBox('Включить ETHERNET','ethen','~ethen~','configIPBoxes()');
-									PrintCheckBox('Включить DHCP','dhcp','~ecbdh~','configIPBoxes()');
-									PrintIPInput('IP Станции:','ipa','~eip~');
-									PrintIPInput('Маска подсети:','mas','~emsk~');
-									PrintIPInput(' Адрес шлюза:','gte','~egate~');
-									PrintIPInput('DNS1:','dns1','~edns~');
-									PrintIPInput('DNS2:','dns2','~bkedns~');
-									PrintIPInput('DNS3:','dns3','~fledns~');
-									PrintMACInput('MAC:','mac','~emacadr~');</script>
-								<tr>
-									<td></td>
-								</tr>
-							</table>
-							<br />
-							<script>PrintSaveFail('~status_fail~');
+  <script>PageSurround();</script>
+  <!--========== CONTENTS ==========-->
+  <main>
+    <section>
+      <div class="ml">
+        <div class="mlp ~hide_eth~">
+          <div class="mlpc">
+            <form name="eth" method="post">
+              <div class="mlhdr">ETHERNET</div>
+              <table class='cntr'>
+                <tr>
+                  <script>PrintCheckBox('Включить ETHERNET','ethen','~ethen~','configIPBoxes()');
+    				PrintCheckBox('Включить DHCP','dhcp','~ecbdh~','configIPBoxes()');
+    				PrintIPInput('IP Станции:','ipa','~eip~');
+    				PrintIPInput('Маска подсети:','mas','~emsk~');
+    				PrintIPInput(' Адрес шлюза:','gte','~egate~');
+    				PrintIPInput('DNS1:','dns1','~edns~');
+    				PrintIPInput('DNS2:','dns2','~bkedns~');
+    				PrintIPInput('DNS3:','dns3','~fledns~');
+    				PrintMACInput('MAC:','mac','~emacadr~');
+    				</script>
+                <tr>
+                  <td></td>
+                </tr>
+              </table>
+              <br />
+              <script>PrintSaveFail('~status_fail~');
 							PrintSaveBtn('eth'); PrintApplyBtn('eth');</script>
-						</form>
-					</div>
-				</div>
+            </form>
+          </div>
+        </div>
 
-				<div class="mlp ~hide_lora~">
-					<div class="mlpc">
-						<div class="mlhdr">LORAWAN</div>
-						<form name="gprs" method="post">
-							<table class='cntr'>
-								<table>
-									<script>
-									PrintCheckBox('Включить LoRaWAN','lren','~lren~',null);
-									PrintHexInput('ID устройства:','lrdvid','~lrdvid~',16,16);
-									PrintHexInput('ID приложения:','lrapid','~lrapid~',16,16);</script>
-								</table>
-								<table>
-									<tr>
-										<td align="center">Ключ приложения:</td>
-									</tr>
-									<tr>
-										<td align="center"><input type="text" size="40"
-											name='lrapkey' value="~lrapkey~"
-											title="64 символа A-H,a-h,0-9" pattern="^[0-9a-hA-H]{32}$" /></td>
-									</tr>
-								</table>
-								<script>PrintSaveFail('~status_fail~');
+        <div class="mlp ~hide_lora~">
+          <div class="mlpc">
+            <div class="mlhdr">LORAWAN</div>
+            <form name="gprs" method="post">
+              <table class='cntr'>
+                <table>
+                  <script>
+    				PrintCheckBox('Включить LoRaWAN','lren','~lren~',null);
+    				PrintHexInput('ID устройства:','lrdvid','~lrdvid~',16,16);
+    				PrintHexInput('ID приложения:','lrapid','~lrapid~',16,16);
+				  </script>
+                </table>
+                <table>
+                  <tr>
+                    <td align="center">Ключ приложения:</td>
+                  </tr>
+                  <tr>
+                    <td align="center"><input type="text" size="40" name='lrapkey' value="~lrapkey~"
+                      title="64 символа A-H,a-h,0-9" pattern="^[0-9a-hA-H]{32}$" /></td>
+                  </tr>
+                </table>
+                <script>PrintSaveFail('~status_fail~');
 								PrintSaveBtn('lora'); PrintApplyBtn('lora');</script>
-								</form>
-								</div>
-								</div>
+                </form>
+                </div>
+                </div>
 
-								<div class="mlp ~hide_wifi~">
-									<div class="mlpc">
-										<form name="wifi" method="post">
-											<div class="mlhdr">WiFi</div>
-											<table class='cntr'>
-												<tr>
-													<td class='rl'>Включить WiFi</td>
-													<td><input type="checkbox" name="wifien" value="1" ~wfen~/></td>
-												</tr>
-												<tr>
-													<td class='rl'>Режим WiFi:</td>
-													<td><input name="netm" type="radio" value="2"
-														onclick="configIPBoxes()"~cln~>Клиент(CLN)</input></br> <input
-														name="netm" type="radio" value="1"
-														onclick="configIPBoxes()"~apn~>Точка доступа(AP)</input></td>
-												</tr>
-												<script>PrintTextInput('Имя WiFi сети(AP):','wfiap','~ssidap~',3,31);
-												PrintTextInput('Ключ WiFi сети(AP):','wfpap','~wkeyap~',8,31);
-												PrintIPInput('IP адрес(AP):','ipaap','~ipap~');
-												PrintTextInput('Имя WiFi сети(CLN):','wfi','~ssid~',3,31);
-												PrintTextInput('Ключ WiFi сети(CLN):','wfp','~wkey~',8,31);
-												PrintCheckBox('Включить DHCP','dhcp','~cbdh~','configIPBoxes()');
-												PrintIPInput('IP адрес(CLN):','ipa','~ip~');
-												PrintIPInput('Маска подсети(CLN):','mas','~msk~');
-												PrintIPInput('Адрес шлюза(CLN):','gte','~gate~');
-												PrintIPInput('DNS1:','dns','~dns~');
-												PrintIPInput('DNS2:','dns2','~dns2~');
-												PrintIPInput('DNS3:','dns3','~dns3~');
-												PrintMACInput('MAC(CLN):','mac','~macadr~');
-												PrintMACInput('MAC(AP):','mac2','~apmacadr~');</script>
-												<tr>
-													<td></td>
-												</tr>
-											</table>
-											<br />
+                <div class="mlp ~hide_wifi~">
+                  <div class="mlpc">
+                    <form name="wifi" method="post">
+                      <div class="mlhdr">WiFi</div>
+                      <table class='cntr'>
+                        <tr>
+                          <td class='rl'>Включить WiFi</td>
+                          <td><input type="checkbox" name="wifien" value="1" ~wfen~/></td>
+                        </tr>
 
-											<script>PrintSaveFail('~status_fail~');
-				PrintSaveBtn('wifi'); PrintApplyBtn('wifi');</script>
-										</form>
-									</div>
-								</div>
+                        <tr>
+                          <td class='rl'><button type="button" class='btn' name='upd' onclick="StartScan()">Scan
+                              WiFi</button></td>
+                          <td><progress id="pbar" class="scanbar" value="0" max="100"></progress></td>
+                        </tr>
+                      </table>
+                      <p id="nets"></p>
+                      <table class='cntr'>
+                        <tr>
+                          <td class='rl'>Режим WiFi:</td>
+                          <td><input name="netm" type="radio" value="2" onclick="configIPBoxes()"~cln~>Клиент(CLN)</input></br>
+                            <input name="netm" type="radio" value="1" onclick="configIPBoxes()"~apn~>Точка
+                            доступа(AP)</input></td>
+                        </tr>
+                        <script>PrintTextInput('Имя WiFi сети(AP):','wfiap','~ssidap~',3,31);
+						PrintTextInput('Ключ WiFi сети(AP):','wfpap','~wkeyap~',8,31);
+						PrintIPInput('IP адрес(AP):','ipaap','~ipap~');
+						PrintTextInput('Имя WiFi сети(CLN):','wfi','~ssid~',3,31);
+						PrintTextInput('Ключ WiFi сети(CLN):','wfp','~wkey~',8,31);
+						PrintCheckBox('Включить DHCP','dhcp','~cbdh~','configIPBoxes()');
+						PrintIPInput('IP адрес(CLN):','ipa','~ip~');
+						PrintIPInput('Маска подсети(CLN):','mas','~msk~');
+						PrintIPInput('Адрес шлюза(CLN):','gte','~gate~');
+						PrintIPInput('DNS1:','dns','~dns~');
+						PrintIPInput('DNS2:','dns2','~dns2~');
+						PrintIPInput('DNS3:','dns3','~dns3~');
+						PrintMACInput('MAC(CLN):','mac','~macadr~');
+						PrintMACInput('MAC(AP):','mac2','~apmacadr~');
+						</script>
+                        <tr>
+                          <td></td>
+                        </tr>
+                      </table>
+                      <br />
 
-								<div class="mlp ~hide_gprs~">
-									<div class="mlpc">
-										<div class="mlhdr">GPRS</div>
-										<form name="gprs" method="post">
-											<table class='cntr'>
-												<script>
-												PrintCheckBox('Включить GSM','gsmen','~gsmen~',null);
-												PrintLabel('Модуль:','~gsmmod~');
-												PrintLabel('Оператор:','~gsmopr~');
-												PrintLabel('IMEI:','~gimei~');
-												PrintLabel('IMSI:','~gimsi~');
-												PrintLabel('IP адрес:','~gsmip~');
-												PrintLabel('Маска подсети:','~gsmmsk~');
-												PrintLabel('Адрес шлюза:','~gsmgate~');
-												PrintLabel('DNS1:','~gsmdns~');
-												PrintLabel('DNS2:','~bkgsmdns~');
-												PrintLabel('DNS3:','~flgsmdns~');
-												PrintSep();	
-												</script>
-											</table>
-											<script>PrintSaveFail('~status_fail~');
-											PrintSaveBtn('gprs'); PrintApplyBtn('gprs');</script>
-										</form>
-									</div>
-								</div>
+                      <script>PrintSaveFail('~status_fail~');
+						PrintSaveBtn('wifi'); PrintApplyBtn('wifi');</script>
+                    </form>
+                  </div>
+                </div>
 
-								<div class="mlp ~hide_wifiscan~">
-									<div class="mlpc">
-										<div class="mlhdr">WiFiSCAN</div>
-										<form name="wifiscan" method="post">
-											<table class='cntr'>
-												<tr>
-													<td><button type="button" class='btn' name='upd'
-															onclick="StartScan()">Scan WiFi</button></td>
-													<td><progress id="pbar" class="scanbar" value="0"
-															max="100"></progress></td>
-												</tr>
-											</table>
-											<table class='cntr' id="nets"></table>
-
-										</form>
-									</div>
-								</div>
-
-								</div>
-								</section>
-								</main>
-								<script>
+                <div class="mlp ~hide_gprs~">
+                  <div class="mlpc">
+                    <div class="mlhdr">GPRS</div>
+                    <form name="gprs" method="post">
+                      <table class='cntr'>
+                        <script>
+						PrintCheckBox('Включить GSM','gsmen','~gsmen~',null);
+						PrintLabel('Модуль:','~gsmmod~');
+						PrintLabel('Оператор:','~gsmopr~');
+						PrintLabel('IMEI:','~gimei~');
+						PrintLabel('IMSI:','~gimsi~');
+						PrintLabel('IP адрес:','~gsmip~');
+						PrintLabel('Маска подсети:','~gsmmsk~');
+						PrintLabel('Адрес шлюза:','~gsmgate~');
+						PrintLabel('DNS1:','~gsmdns~');
+						PrintLabel('DNS2:','~bkgsmdns~');
+						PrintLabel('DNS3:','~flgsmdns~');
+						PrintSep();	
+						</script>
+                      </table>
+                      <script>PrintSaveFail('~status_fail~');PrintSaveBtn('gprs'); PrintApplyBtn('gprs');</script>
+                    </form>
+                  </div>
+                </div>
+          </div>
+    </section>
+  </main>
+  <script>
 		var array;
 		function Connect(n)
 		{
-			alert("Connect to network "+array[n].ssid);
+			let key = prompt('Enter WiFi key for '+array[n].ssid);
+			if(key != null){
+			var payload = "wfi="+array[n].ssid+"&wfp="+key+"&wifisave=prs";
+			PostData(payload, 'adapters.html',false ,false, false);
+			var str = document.location.toString();
+			var ref = str.substring(0,str.lastIndexOf('/adapters.html'))+"/reboot.html";
+			window.location=ref;}
 		}
 		function PrintNetworks(data)
 		{
 			document.getElementById("nets").innerHTML = data;
 			array = JSON.parse(data);
 			var i=0;
-			var out = "<tr><td>CHANNEL</td><td>SSID</td><td>RSSI</td></tr>";
+			var out = "<table class='cntr'><tr><td>SSID</td><td>RSSI</td><td>CH</td></tr>";
 			for (i=0; i<array.length; ++i)
 				{
 				if(array[i].ssid != "")
 					{
-					out += "<tr><td>"+array[i].ch+"</td><td>"+array[i].ssid+"</td><td>"+array[i].rssi+" dBm</td>";
+					out += "<tr><td>"+array[i].ssid+"</td><td style=\"color:#0099ff;\">"+array[i].rssi+"dBm</td><td>"+array[i].ch+"</td>";
 					out += "<td><button type=\"button\" class ='btn' onclick=\"Connect("+i+")\">Connect</button></tr>";
 					}
 				}
+			out +="</table>";
 			document.getElementById("nets").innerHTML = out;
 		}
 		async function StartScan(){

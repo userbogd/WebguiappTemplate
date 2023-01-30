@@ -2229,6 +2229,126 @@
 			<location>C:/Users/bogd/esp-idf-v4.4.3/components/cmock/CMock/src/cmock.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/address.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/address.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/async.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/async.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/block.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/block.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_asn1.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_asn1.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_cache.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_cache.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_debug.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_debug.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_event.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_event.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_hashkey.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_hashkey.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_io.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_io.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_mbedtls.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_mbedtls.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_notls.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_notls.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_prng.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_prng.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_session.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_session.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_tcp.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_tcp.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/coap_time.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/coap_time.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/encode.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/encode.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/mem.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/mem.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/net.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/net.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/option.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/option.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/pdu.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/pdu.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/resource.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/resource.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/str.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/str.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/subscribe.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/subscribe.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/coap/libcoap/src/uri.c</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/coap/libcoap/src/uri.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_http_server/src/util/ctrl_sock.c</name>
 			<type>1</type>
 			<location>C:/Users/bogd/esp-idf-v4.4.3/components/esp_http_server/src/util/ctrl_sock.c</location>
@@ -3547,6 +3667,11 @@
 			<name>build/ide/esp_idf_components/wpa_supplicant/src/wps/wps_validate.c</name>
 			<type>1</type>
 			<location>C:/Users/bogd/esp-idf-v4.4.3/components/wpa_supplicant/src/wps/wps_validate.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/asio/asio/asio/src/asio.cpp</name>
+			<type>1</type>
+			<location>C:/Users/bogd/esp-idf-v4.4.3/components/asio/asio/asio/src/asio.cpp</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_system/port/arch/xtensa/debug_helpers.c</name>

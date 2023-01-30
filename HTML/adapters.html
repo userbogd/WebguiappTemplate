@@ -151,7 +151,7 @@
 		var array;
 		function Connect(n)
 		{
-			let key = prompt('Enter WiFi key for '+array[n].ssid);
+			let key = prompt("Enter key for \""+array[n].ssid+"\" network:");
 			if(key != null){
 			var payload = "wfi="+array[n].ssid+"&wfp="+key+"&wifisave=prs";
 			PostData(payload, 'adapters.html',false ,false, false);
@@ -169,7 +169,8 @@
 				{
 				if(array[i].ssid != "")
 					{
-					out += "<tr><td>"+array[i].ssid+"</td><td style=\"color:#0099ff;\">"+array[i].rssi+"dBm</td><td>"+array[i].ch+"</td>";
+					var trimssid = ((array[i].ssid).length > 16)?((array[i].ssid).substring(0,13)+"..."):(array[i].ssid);
+					out += "<tr><td>"+trimssid+"</td><td style=\"color:#0099ff;\">"+array[i].rssi+"dBm</td><td>"+array[i].ch+"</td>";
 					out += "<td><button type=\"button\" class ='btn' onclick=\"Connect("+i+")\">Connect</button></tr>";
 					}
 				}

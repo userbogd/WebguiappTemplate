@@ -1,13 +1,13 @@
 :root {
   /*========== Colors ==========*/
   --first-color: #FFFFFF;
-  --first-color-light: #5499C7;
-  --title-color: #21618C;
+  --first-color-light: #00ccee;
+  --title-color: #006699;
   --header-color: #EEEEEE;
   --text-color: #404040;
-  --text-color-light: #21618C;
+  --text-color-light: #006699;
   --body-color: #FFFFFF;
-  --container-color: #5499C7;
+  --container-color: #00ccee;
 
   /*========== Font and typography ==========*/
   --body-font: 'Consolas', monospace;

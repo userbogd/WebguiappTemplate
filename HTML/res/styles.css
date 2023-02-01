@@ -320,7 +320,7 @@ textarea {
 }
 
 .stg td{width:auto;padding:1px;margin:0}
-.stg input, {height:25px}
+.stg input {height:25px}
 input[type="radio"] { margin-top: -1px; vertical-align: middle;}
 .stg table{margin: 5px auto}
 .dot {height: 30px;

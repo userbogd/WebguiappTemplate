@@ -41,8 +41,8 @@
 				<form name="syst" method="post">
 				<div class="mlhdr">FIRMWARE UPDATE</div>				  
 				<table class='cntr'><script>
-				PrintCheckBox('Reset config on OTA update','otarst','~otarst~',null);
-				PrintCheckBox('Enable OTA auto update','ota','~ota~',null);
+				PrintSwitch('Reset config on OTA update','otarst','~otarst~',null);
+				PrintSwitch('Enable OTA auto update','ota','~ota~',null);
 				PrintInt('Auto update check period','otaint','~otaint~',1,65534);
 				</script></table>
 				<table class='cntr'><tr><td align="center">Update firmware URL:</td></tr></table>
@@ -78,26 +78,6 @@
 				</form>
 				</div>
 			  </div>
-			  
-			  <div class="mlp">
-				<div class="mlpc">
-				<div class="mlhdr">DEBUG</div>
-				<div style='margin:auto;text-align:center'>
-				</br>
-				<button type="button" class ='btn' name='cmd1' onclick="cmd(1)">F1</button>
-				<button type="button" class ='btn' name='cmd2' onclick="cmd(2)">F2</button></br></br>
-				<button type="button" class ='btn' name='cmd3' onclick="cmd(3)">F3</button>
-				<button type="button" class ='btn' name='cmd4' onclick="cmd(4)">F4</button></br></br>
-				<button type="button" class ='btn' name='cmd5' onclick="cmd(5)">F5</button>
-				<button type="button" class ='btn' name='cmd6' onclick="cmd(6)">F6</button></br></br>
-				<button type="button" class ='btn' name='cmd7' onclick="cmd(7)">F7</button>
-				<button type="button" class ='btn' name='cmd8' onclick="cmd(8)">F8</button></br></br>
-				<button type="button" class ='btn' name='cmd9' onclick="cmd(9)">F9</button>
-				<button type="button" class ='btn' name='cmd10' onclick="cmd(10)">F10</button></br></br>
-				</div>
-				</div>
-			  </div>
-			  
 			</div>
 			</section>			
         </main>

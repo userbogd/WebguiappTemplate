@@ -21,8 +21,8 @@
               <div class="mlhdr">ETHERNET</div>
               <table class='cntr'>
                 <tr>
-                  <script>PrintCheckBox('Включить ETHERNET','ethen','~ethen~','configIPBoxes()');
-    				PrintCheckBox('Включить DHCP','dhcp','~ecbdh~','configIPBoxes()');
+                  <script>PrintSwitch('Включить ETHERNET','ethen','~ethen~','configIPBoxes()');
+                   PrintSwitch('Включить DHCP','dhcp','~ecbdh~','configIPBoxes()');
     				PrintIPInput('IP Станции:','ipa','~eip~');
     				PrintIPInput('Маска подсети:','mas','~emsk~');
     				PrintIPInput(' Адрес шлюза:','gte','~egate~');
@@ -49,7 +49,7 @@
               <table class='cntr'>
                 <table>
                   <script>
-    				PrintCheckBox('Включить LoRaWAN','lren','~lren~',null);
+                    PrintSwitch('Включить LoRaWAN','lren','~lren~',null);
     				PrintHexInput('ID устройства:','lrdvid','~lrdvid~',16,16);
     				PrintHexInput('ID приложения:','lrapid','~lrapid~',16,16);
 				  </script>
@@ -74,10 +74,9 @@
                     <form name="wifi" method="post">
                       <div class="mlhdr">WiFi</div>
                       <table class='cntr'>
-                        <tr>
-                          <td class='rl'>Включить WiFi</td>
-                          <td><input type="checkbox" name="wifien" value="1" ~wfen~/></td>
-                        </tr>
+                        <script>
+                        PrintSwitch('Включить WiFi','wifien','~wfen~',null);
+                        </script>
                         <tr>
                           <td class='rl'><button type="button" class='btn' name='upd' onclick="StartScan()">Scan
                               WiFi</button></td>
@@ -98,7 +97,7 @@
 						PrintIPInput('IP адрес(AP):','ipaap','~ipap~');
 						PrintTextInput('Имя WiFi сети(CLN):','wfi','~ssid~',3,31);
 						PrintTextInput('Ключ WiFi сети(CLN):','wfp','~wkey~',8,31);
-						PrintCheckBox('Включить DHCP','dhcp','~cbdh~','configIPBoxes()');
+						PrintSwitch('Включить DHCP','dhcp','~cbdh~','configIPBoxes()');
 						PrintIPInput('IP адрес(CLN):','ipa','~ip~');
 						PrintIPInput('Маска подсети(CLN):','mas','~msk~');
 						PrintIPInput('Адрес шлюза(CLN):','gte','~gate~');
@@ -126,7 +125,7 @@
                     <form name="gprs" method="post">
                       <table class='cntr'>
                         <script>
-						PrintCheckBox('Включить GSM','gsmen','~gsmen~',null);
+						PrintSwitch('Включить GSM','gsmen','~gsmen~',null);
 						PrintLabel('Модуль:','~gsmmod~');
 						PrintLabel('Оператор:','~gsmopr~');
 						PrintLabel('IMEI:','~gimei~');

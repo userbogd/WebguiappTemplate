@@ -22,8 +22,9 @@
 				<div class="mlhdr">SNTP</div>				  
 									
 				<table class='cntr'>
-				<tr><td class='rl'>Включить SNTP клиент</td><td><input type="checkbox" name="sntpen" value="1" ~sntpen~></td></tr>
-				<tr><td class='rl'>Адрес SNTP сервера:</td><td><input type="text" required size="20" name='tsr' value="~tmsrv~" title="3-32 символов A-Z,a-z,0-9,." pattern="^[0-9a-zA-Z\.]{3,32}$"/></td></tr><tr><td></td></tr><tr><td></td></tr>
+				<script>PrintSwitch('Включить SNTP клиент','sntpen','~sntpen~',null);
+				PrintTextInput('Адрес SNTP сервера:','tsr','~tmsrv~',3,31);
+				</script>
 				</table>
 				<table class='cntr'> 
 				<tr><td width=90% align='center'>
@@ -43,7 +44,7 @@
 				<form name="conf2" method="post">
 				<div class="mlhdr">MQTT1</div>
 				<table class='cntr'>
-				<script>PrintCheckBox('Enable MQTT 1','mqen1','~mqen1~',null);
+				<script>PrintSwitch('Enable MQTT 1','mqen1','~mqen1~',null);
 				PrintTextInput('MQTT broker URL','mqurl1','~mqurl1~',3,31);
 				PrintInt('MQTT broker port','mqport1','~mqport1~',1000,65534);
 				PrintTextInput('Global system name','mqsys1','~mqsys1~',3,31);
@@ -64,7 +65,7 @@
 				<div class="mlhdr">MQTT2</div>
 				<table class='cntr'>
 				<script>
-				PrintCheckBox('Enable MQTT 2','mqen2','~mqen2~',null);
+				PrintSwitch('Enable MQTT 2','mqen2','~mqen2~',null);
 				PrintTextInput('MQTT broker URL','mqurl2','~mqurl2~',3,31);
 				PrintInt('MQTT broker port','mqport2','~mqport2~',1000,65534);
 				PrintTextInput('Global system name','mqsys2','~mqsys2~',3,31);

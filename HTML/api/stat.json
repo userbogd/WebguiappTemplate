@@ -1,4 +1,9 @@
-{
+{"time":"~time~",
+"uptime":"~uptime~",
+"wlev":"~wlev~",
+"vlsys":"~vlsys~",
+"vlin":"~vlin~",
+"vlbat":"~vlbat~",
 "ethstat":"~ethstat~",
 "wfstat":"~wfstat~",
 "gsmstat":"~gsmstat~",

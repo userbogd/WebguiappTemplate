@@ -8,6 +8,10 @@
 		<script src="res/main.js"></script>
 		<script src="res/res.js"></script>
         <title>~name~</title>
+        <script>
+        function sendtest(n)
+        {PostData("mqtttest"+n+"=prs", "services.html", false , false, false);}
+        </script>
     </head>
     <body>
 		<script>PageSurround();</script>
@@ -54,7 +58,8 @@
 				PrintTextInput('Password','mqpass1','~mqpass1~',3,31);
 				</script></table>
 				<script>PrintSaveFail('~status_fail~');
-				PrintSaveBtn('mqtt1'); PrintApplyBtn('mqtt1')</script>			
+				PrintSaveBtn('mqtt1'); PrintApplyBtn('mqtt1')</script>
+				<button type="button" class ='btn' id='testbt1' onclick="sendtest(1)">Send MQTT test</button>			
 				</form>
 				</div>
 			  </div>
@@ -72,10 +77,12 @@
 				PrintTextInput('Group name','mqgrp2','~mqgrp2~',3,31);
 				PrintTextInput('Device ID prefix','mqid2','~mqid2~',3,31);
 				PrintTextInput('Login','mqname2','~mqname2~',3,31);
-				PrintTextInput('Password','mqpass2','~mqpass2~',3,31);</script>
+				PrintTextInput('Password','mqpass2','~mqpass2~',3,31);
+				</script>
 				</table>
 				<script>PrintSaveFail('~status_fail~');
-				PrintSaveBtn('mqtt2'); PrintApplyBtn('mqtt2')</script>			
+				PrintSaveBtn('mqtt2'); PrintApplyBtn('mqtt2')</script>
+				<button type="button" class ='btn' id='testbt2' onclick="sendtest(2)">Send MQTT test</button>			
 				</form>
 				</div>
 			  </div>

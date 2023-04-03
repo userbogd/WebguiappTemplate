@@ -46,7 +46,8 @@
 				PrintInt('Auto update check period','otaint','~otaint~',1,65534);
 				</script></table>
 				<table class='cntr'><tr><td align="center">Update firmware URL:</td></tr></table>
-				<table class='cntr'><tr><td><textarea type="text" raws="5" name='otaurl'  title="128 символа" ">~otaurl~</textarea></td></tr>
+				<table class='cntr'><tr><td><textarea type="text" raws="5" name='otaurl'  title="128 символов" ">~otaurl~</textarea></td></tr>
+				
 				</table><table class='cntr'>
 				<tr><td class='rl lab'>Current firmware version:</td><td><span id='fvr'>?</span></td></tr>
 				<tr><td class='rl lab'>Available firmware version:</td><td><span id='afvr'>?</span></td></tr>
@@ -62,6 +63,12 @@
 				<div class="mlpc">
 				<form name="stat" method="post">
 				<div class="mlhdr">STAT</div>
+				<div class='cntr' style='text-align:center;margin-top:20px'>
+				<span id='localtime'>?</span><br/>
+				Uptime:<span id='uptime'>?</span><br/><br/>
+				Signal WiFi:<span id='wlev' style="color:#0099ff;font-weight:bold">?</span><br/>
+				<br/>
+				</div>
 				<table class='cntr'>
 				<tr><td class='rl lab'>Ethernet:</td><td><span id='eth'>?</span></td></tr>
 				<tr><td class='rl lab'>WiFi:</td><td><span id='wfi'>?</span></td></tr>
@@ -92,10 +99,22 @@
 		</script>		
     </body>
     <script>
+    function secondsToHms(d) {
+  	  d = Number(d);
+  	  var dd = Math.floor(d/86400);
+  	  var h = Math.floor(d%86400/3600);
+  	  var m = Math.floor(d%3600/60);
+  	  var s = Math.floor(d%3600%60);
+  	  return (' '+dd+'d '+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s); }
 	function updateStatus(data) {
 	var dat = JSON.parse(data);
 	try
 		{
+		theDate = new Date(dat.time * 1000);
+		sec = dat.uptime;
+		document.getElementById('localtime').innerHTML=(theDate.toString()).slice(0,34);
+		document.getElementById('uptime').innerHTML= secondsToHms(sec);
+		document.getElementById('wlev').innerHTML= dat.wlev;
 		document.getElementById('eth').innerHTML= dat.ethstat;
 		document.getElementById('wfi').innerHTML= dat.wfstat;
 		document.getElementById('gpr').innerHTML= dat.gsmstat;

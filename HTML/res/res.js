@@ -2,7 +2,7 @@ var hedmen = `
         <header class="header">
             <div class="header__container">
                 <img src="res/logo.png" alt="LOGO" class="header__img"/>
-                <a href="index.html" class="header__logo">This device brand name</a>
+                <a href="index.html" class="header__logo">~name~ ~serial~</a>
                 <div class="header__toggle">
                     <i class='icon-menu' id="header-toggle"></i>
                 </div>
@@ -20,20 +20,6 @@ var hedmen = `
 							<h3 class="nav__subtitle">APPLICATION</h3>
                             <div class="nav__dropdown">
                                 <a href="#" class="nav__link">
-                                    <i class='icon-chart-bar nav__icon'></i>
-                                    <span class="nav__name">CONTROL</span>
-                                    <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
-                                </a>
-
-                                <div class="nav__dropdown-collapse">
-                                    <div class="nav__dropdown-content">
-                                        <a href="#" class="nav__dropdown-item">AppControl1</a>
-                                        <a href="#" class="nav__dropdown-item">AppControl2</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="nav__dropdown">
-                                <a href="#" class="nav__link">
                                     <i class='icon-wrench nav__icon'></i>
                                     <span class="nav__name">SETTINGS</span>
                                     <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
@@ -41,8 +27,8 @@ var hedmen = `
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-                                        <a href="#" class="nav__dropdown-item">AppSettings1</a>
-                                        <a href="#" class="nav__dropdown-item">AppSettings2</a>
+                                        <a href="#" class="nav__dropdown-item">Application settings</a>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -86,11 +72,13 @@ function PageSurround()
 function PrintIPInput(title,name,value){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value='"+value+"' title='IP адрес xxx.xxx.xxx.xxx' pattern='^\\d{1,3}\.\\d{1,3}\.\\d{1,3}\.\\d{1,3}$' /></td></tr>");}
 function PrintMACInput(title,name,value){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value='"+value+"' title='MAC адрес xx-xx-xx-xx-xx-xx' pattern='^([0-9a-fA-F]{2}([-]|$)){6}$|([0-9a-fA-F]{4}([.]|$)){3}$' /></td></tr>");}
 function PrintTextInput(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов'  pattern='^*{"+min+","+max+"}$' /></td></tr>");}
+function PrintTextInputID(title,id,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' id='"+id+"' value="+value+" title='"+min+"-"+max+" символов'  pattern='^*{"+min+","+max+"}$' /></td></tr>");}
 function PrintHexInput(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов A-Fa-f0-9'  pattern='^[0-9a-fA-F]{"+min+","+max+"}$' /></td></tr>");}
 function PrintTextInputNoReg(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='text' required size='20' name='"+name+"' value="+value+" title='"+min+"-"+max+" символов'/></td></tr>");}
 function PrintLabel(title,value){document.write("<tr><td class='rl lab'>"+title+"</td><td align='left' class='lab'>"+value+"</td></tr>");}
 function PrintSpanLabel(title,idx){document.write("<tr><td class='rl'>"+title+"</td><td align='left'><span id='"+idx+"'>?</span></td></tr>");}
 function PrintCheckBox(title,name,checked,action){document.write("<tr><td class='rl'>"+title+"</td><td><input type='checkbox' name='"+name+"' value='1' onclick="+action+" "+checked+" /></td></tr>");}
+function PrintSwitch(title,name,checked,action){document.write("<tr><td class='rl'>"+title+"</td><td><label  class='switch'><input type='checkbox' name='"+name+"' value='1' onclick="+action+" "+checked+" ><span class='slider round'></span></label></td></tr>");}
 function PrintInt(title,name,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='number' required min='"+min+"' max='"+max+"' name='"+name+"' value ='"+value+"'/></td></tr>");}
 function PrintIntId(title,id,value,min,max){document.write("<tr><td class='rl'>"+title+"</td><td><input type='number' required min='"+min+"' max='"+max+"' id='"+id+"' value ='"+value+"'/></td></tr>");}
 function PrintSep(){document.write("<tr><td height='20px'></td></tr>");}

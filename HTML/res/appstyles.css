@@ -1,17 +1,14 @@
 :root {
   /*========== Colors ==========*/
-  --first-color: #152128;
-  --first-color-light: #152128;
-  --title-color: #9FA3A6;
-  --header-color: #185273;
-  --text-color: #9FA3A6;
-  --text-color-light: #9FA3A6;
-  --body-color: #0E1A21;
-  --container-color: #0E1A21;
-  --navy-color: #185273;
-
+  --bgr-color: #1D2327;
+  --panel-bgr-color: #2c3338;
+  --menu-bgr-color: #3c434a;
+  --header-bgr-color: #646970;
+  --accent-color: #dba617;
+  --text-color:#F0F0F1;
+  
   /*========== Font and typography ==========*/
-  --body-font: 'Consolas', monospace;
+  --body-font: 'Consolas','Roboto', monospace;
   --large-font-size: 1.2rem;
   --normal-font-size: 0.9rem;
   --small-font-size: .9rem;
@@ -117,7 +114,7 @@ input:checked + span{background-color: var(--navy-color);}
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--text-color);
+  background-color: #666;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -129,17 +126,17 @@ input:checked + span{background-color: var(--navy-color);}
   width: 18px;
   left: 3px;
   bottom: 3px;
-  background-color: #CCC;
+  background-color: var(--text-color);
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: var(--navy-color);
+  background-color: var(--accent-color);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px var(--navy-color);
+  box-shadow: 0 0 1px var(--accent-color);
 }
 
 input:checked + .slider:before {

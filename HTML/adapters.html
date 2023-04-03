@@ -92,7 +92,9 @@
                               <option value="apsta"~wfmode(3)~>Точка+Клиент (AP+STA)</option>
                           </select></td>
                         </tr>
-                        <script>PrintTextInput('Имя WiFi сети(AP):','wfiap','~ssidap~',3,31);
+                        <script>
+                        PrintInt('Max power, dBm','wifipwr','~wifipwr~',2,21);
+                        PrintTextInput('Имя WiFi сети(AP):','wfiap','~ssidap~',3,31);
 						PrintTextInput('Ключ WiFi сети(AP):','wfpap','~wkeyap~',8,31);
 						PrintIPInput('IP адрес(AP):','ipaap','~ipap~');
 						PrintTextInput('Имя WiFi сети(CLN):','wfi','~ssid~',3,31);

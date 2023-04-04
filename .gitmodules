@@ -1,6 +1,3 @@
-[submodule "components/webguiapp"]
-	path = components/webguiapp
-	url = git@gitlab.com:userbogd/webguiapp.git
 [submodule "components/esp_modem"]
 	path = components/esp_modem
 	url = https://github.com/userbogd/esp_modem.git

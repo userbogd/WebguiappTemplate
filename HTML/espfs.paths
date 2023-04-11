@@ -11,6 +11,7 @@ api/stat.json
 api/status.json
 api/tmr.json
 api/wifiscan.json
+application.html
 favicon.ico
 index.html
 info.html

@@ -18,6 +18,22 @@ var hedmen = `
                     <div class="nav__list">
 						<div class="nav__items">
 							<h3 class="nav__subtitle">APPLICATION</h3>
+                            
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class='icon-chart-bar nav__icon'></i>
+                                    <span class="nav__name">UTILITIES</span>
+                                    <i class='icon-down-open nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="application.html" class="nav__dropdown-item">Utilities</a>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="nav__dropdown">
                                 <a href="#" class="nav__link">
                                     <i class='icon-wrench nav__icon'></i>

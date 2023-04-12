@@ -25,7 +25,7 @@ function set_cron_string(tnum, s, m, h, d, mm, w) {
 	}
 }
 function getSecondSelect(n) {
-	var s = document.getElementById("seconds").value;
+	var s = document.getElementsByName("selectSeconds" + n + "[]")[0].value;
 	set_cron_string(n, s, null, null, null, null, null);
 }
 function getMinutesSelect(n) {
@@ -50,8 +50,7 @@ function closecron(n) {
 function setcron(n) {
 	var target = document.getElementById("cronext" + n);
 	var content = "";
-	content += ("<div><label for=\"seconds\">Seconds</label></div>");
-	content += ("<div><select multiple size=\"10\" class=\"crselect\" name=\"selectSeconds" + n + "[]\" id=\"seconds\" onchange=\"getSecondSelect("+n+")\">");
+	content += ("<select multiple size=\"10\" class=\"crselect\" name=\"selectSeconds" + n + "[]\" id=\"seconds\" onchange=\"getSecondSelect("+n+")\">");
 	content += ("<option value=\"*\">Every Second</option>");
 	content += ("<option value=\"*/2\">Even Second</option>");
 	content += ("<option value=\"1-59/2\">Odd Second</option>");
@@ -59,10 +58,9 @@ function setcron(n) {
 	content += ("<option value=\"*/15\">Every 15 Second</option>");
 	content += ("<option value=\"*/30\">Every 30 Second</option>");
 	for (s = 0; s < 60; s++) { content += ("<option value=\"" + s + "\">" + s + "</option>"); }
-	content += ("</select></div>");
+	content += ("</select>");
 
-	content += ("<div><label for=\"minutes\">Minutes</label></div>");
-	content += ("<div><select multiple size=\"10\" class=\"crselect\" name=\"selectMinutes" + n + "[]\" id=\"minutes\" onchange=\"getMinutesSelect("+n+")\">");
+	content += ("<select multiple size=\"10\" class=\"crselect\" name=\"selectMinutes" + n + "[]\" id=\"minutes\" onchange=\"getMinutesSelect("+n+")\">");
 	content += ("<option value=\"*\">Every Minute</option>");
 	content += ("<option value=\"*/2\">Even Minutes</option>");
 	content += ("<option value=\"1-59/2\">Odd Minute</option>");
@@ -70,16 +68,16 @@ function setcron(n) {
 	content += ("<option value=\"*/15\">Every 15 Minutes</option>");
 	content += ("<option value=\"*/30\">Every 30 Minutes</option>");	
 	for (s = 0; s < 60; s++) { content += ("<option value=\"" + s + "\">" + s + "</option>"); }
-	content += ("</select></div>");
+	content += ("</select>");
 	
 	content += ("<select multiple size=\"10\" class=\"crselect\" name=\"selectHours" + n + "[]\" id=\"hours\" onchange=\"getHoursSelect("+n+")\">");
 	content += ("<option value=\"*\">Every Hour</option>");
 	content += ("<option value=\"*/2\">Even Hours</option>");
-	content += ("<option value=\"1-59/2\">Odd Hours</option>");
-	content += ("<option value=\"*/5\">Every 5 Hours</option>");
-	content += ("<option value=\"*/15\">Every 15 Hours</option>");
-	content += ("<option value=\"*/30\">Every 30 Hours</option>");	
-	for (s = 0; s < 60; s++) { content += ("<option value=\"" + s + "\">" + s + "</option>"); }
+	content += ("<option value=\"1-23/2\">Odd Hours</option>");
+	content += ("<option value=\"*/2\">Every 2 Hours</option>");
+	content += ("<option value=\"*/3\">Every 3 Hours</option>");
+	content += ("<option value=\"*/4\">Every 4 Hours</option>");	
+	for (s = 0; s < 24; s++) { content += ("<option value=\"" + s + "\">" + s + "</option>"); }
 	content += ("</select>");
 	
 	

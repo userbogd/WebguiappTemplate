@@ -175,6 +175,10 @@ function setcron(n) {
 	
 	
 	content += ("<div><button class=\"btn\" type=\"button\" onclick=\"closecron(" + n + ")\">Ready</button></div>");
+	var mainbut = document.getElementById("setcronbut"+n);
+	mainbut.innerHTML = "Close editor";
+	mainbut.onclick = function (){ 	var target = document.getElementById("cronext"+n);
+	target.innerHTML = ""; mainbut.innerHTML = "Open editor"; mainbut.onclick = function(){setcron(n)};}
 	target.innerHTML = content;
 }
 function drawtimers(tarr) {
@@ -189,7 +193,7 @@ function drawtimers(tarr) {
 		content += ("<div class=\"nowrap\">");
 		//content +=("<label for=\"cron"+i+"\">Cron string:</label>");
 		content += ("<input  type=\"text\" id=\"cron" + i + "\" value=\"" + tarr[i - 1].cron + "\"></input>");
-		content += ("<button class=\"tmbtn btn\" type=\"button\" onclick=\"setcron(" + i + ")\">Set cron</button></div></div>")
+		content += ("<button class=\"tmbtn btn\" type=\"button\" id=\"setcronbut"+i+"\" onclick=\"setcron(" + i + ")\">Open editor</button></div></div>")
 
 		content += ("<div id=\"cronext" + i + "\"></div>");
 

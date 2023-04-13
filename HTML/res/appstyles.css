@@ -22,8 +22,8 @@
 .pwrbox td {font: .9rem consolas, monospace; width:30%; padding:0;margin:0;}
 
 .container{margin: 10px;
-			display: flex;
-			flex-wrap:wrap;}
+display: flex;
+flex-wrap:wrap;}
 
 div label input {margin-right: 100px;}
 
@@ -188,6 +188,9 @@ width:100%;
 .crselect
 {
 height:120px;
-overflow: hidden; 
+margin-top: 0; 
 }
-
+.selhed
+{
+	margin: 15px 5px 2px 5px;
+}

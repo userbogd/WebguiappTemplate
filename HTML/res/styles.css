@@ -299,7 +299,7 @@ img {
 input, select, .btn, .lab, textarea {
 	font:.85rem consolas,monospace;
 	padding-left:3px;
-	background-color:var(--first-color);
+	background-color:var(--panel-bgr-color);
 	color:var(--text-color);
 	border:1px solid rgba(255, 255, 255, 0.4);
 	border-radius: 5px;
@@ -312,6 +312,13 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	background-color: var(--panel-bgr-color);
 }
 
 .btn{min-width:100px; color:var(--text-color);}

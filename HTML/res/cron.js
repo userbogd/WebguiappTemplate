@@ -1,8 +1,8 @@
 objects_test = ["scene_1", "scene_2", "scene_3", "scene_4", "scene_5", "scene_6", "scene_7", "scene_8", "scene_9", "scene_10", "scene_11", "scene_12", "scene_13", "scene_14", "scene_15", "scene_16"];
 actions_test = ["start", "stop"];
-timarr_test = [{ 'num': 1, 'obj': 2, 'act': 0, 'start': 1000000000, 'cron': '*/2 * * * * *' },
-{ 'num': 2, 'obj': 12, 'act': 1, 'start': 1622222222, 'cron': '6 0 12 * * *' },
-{ 'num': 3, 'obj': 8, 'act': 0, 'start': 1675757575, 'cron': '* * * * * *' }];
+timarr_test = [{ 'num': 1, 'obj': 2, 'act': 0, 'cron': '*/2 * * * * *' },
+{ 'num': 2, 'obj': 12, 'act': 1, 'cron': '6 0 12 * * *' },
+{ 'num': 3, 'obj': 8, 'act': 0, 'cron': '* * * * * *' }];
 function savetm(n) {
 
 }
@@ -89,7 +89,6 @@ function handleSelect(tnum, type)
 	cinp.value = c[0] + " " + c[1] + " " + c[2] + " " + c[3] + " " + c[4] + " " + c[5];
 }
 function deltm(n) {
-	alert("Delete timer " + n);
 	timarr_test.splice(n - 1, 1);
 	drawtimers(timarr_test);
 }
@@ -101,7 +100,8 @@ function closecron(n) {
 function setcron(n) {
 	var target = document.getElementById("cronext" + n);
 	var content = "";
-	content += ("<select multiple class=\"crselect\" name=\"selectSeconds" + n + "[]\" id=\"seconds\" onchange=\"handleSelect("+n+", 1)\">");
+	content +=("<div><div><label class=\"selhed\" for=\"seconds\">Seconds:</label></div>");
+	content += ("<div><select multiple class=\"crselect\" name=\"selectSeconds" + n + "[]\" id=\"seconds\" onchange=\"handleSelect("+n+", 1)\">");
 	content += ("<option value=\"*\">Every Sec</option>");
 	content += ("<option value=\"*/2\">Even Sec</option>");
 	content += ("<option value=\"1-59/2\">Odd Sec</option>");
@@ -109,9 +109,10 @@ function setcron(n) {
 	content += ("<option value=\"*/15\">Every 15 Sec</option>");
 	content += ("<option value=\"*/30\">Every 30 Sec</option>");
 	for (s = 0; s < 60; s++) { content += ("<option value=\"" + s + "\">" + s + "</option>"); }
-	content += ("</select>");
+	content += ("</select></div></div>");
 
-	content += ("<select multiple  class=\"crselect\" name=\"selectMinutes" + n + "[]\" id=\"minutes\" onchange=\"handleSelect("+n+", 2)\">");
+	content +=("<div><div><label class=\"selhed\" for=\"seconds\">Minutes:</label></div>");
+	content += ("<div><select multiple  class=\"crselect\" name=\"selectMinutes" + n + "[]\" id=\"minutes\" onchange=\"handleSelect("+n+", 2)\">");
 	content += ("<option value=\"*\">Every Min</option>");
 	content += ("<option value=\"*/2\">Even Min</option>");
 	content += ("<option value=\"1-59/2\">Odd Min</option>");
@@ -119,18 +120,20 @@ function setcron(n) {
 	content += ("<option value=\"*/15\">Every 15 Min</option>");
 	content += ("<option value=\"*/30\">Every 30 Min</option>");	
 	for (s = 0; s < 60; s++) { content += ("<option value=\"" + s + "\">" + s + "</option>"); }
-	content += ("</select>");
+	content += ("</select></div></div>");
 	
-	content += ("<select multiple  class=\"crselect\" name=\"selectHours" + n + "[]\" id=\"hours\" onchange=\"handleSelect("+n+", 3)\">");
+	content +=("<div><div><label class=\"selhed\" for=\"hours\">Hours:</label></div>");
+	content += ("<div><select multiple  class=\"crselect\" name=\"selectHours" + n + "[]\" id=\"hours\" onchange=\"handleSelect("+n+", 3)\">");
 	content += ("<option value=\"*\">Every Hour</option>");
 	content += ("<option value=\"*/2\">Even Hours</option>");
 	content += ("<option value=\"1-23/2\">Odd Hours</option>");
 	content += ("<option value=\"*/6\">Every 6 Hours</option>");
 	content += ("<option value=\"*/12\">Every 12 Hours</option>");
 	for (s = 0; s < 24; s++) { content += ("<option value=\"" + s + "\">" + s + "</option>"); }
-	content += ("</select>");
+	content += ("</select></div></div>");
 	
-	content += ("<select multiple  class=\"crselect\" name=\"selectDays" + n + "[]\" id=\"days\" onchange=\"handleSelect("+n+", 4)\">");
+	content +=("<div><div><label class=\"selhed\" for=\"days\">Days:</label></div>");
+	content += ("<div><select multiple  class=\"crselect\" name=\"selectDays" + n + "[]\" id=\"days\" onchange=\"handleSelect("+n+", 4)\">");
 	content += ("<option value=\"*\">Every Day</option>");
 	content += ("<option value=\"*/2\">Even Days</option>");
 	content += ("<option value=\"1-31/2\">Odd Days</option>");
@@ -138,9 +141,10 @@ function setcron(n) {
 	content += ("<option value=\"*/10\">Every 10 Days</option>");
 	content += ("<option value=\"*/15\">Every 15 Days</option>");	
 	for (s = 0; s < 32; s++) { content += ("<option value=\"" + s + "\">" + s + "</option>"); }
-	content += ("</select>");
+	content += ("</select></div></div>");
 	
-	content += ("<select multiple class=\"crselect\" name=\"selectMonths" + n + "[]\" id=\"months\" onchange=\"handleSelect("+n+", 5)\">");
+	content +=("<div><div><label class=\"selhed\" for=\"months\">Months:</label></div>");
+	content += ("<div><select multiple class=\"crselect\" name=\"selectMonths" + n + "[]\" id=\"months\" onchange=\"handleSelect("+n+", 5)\">");
 	content += ("<option value=\"*\">Every Month</option>");
 	content += ("<option value=\"*/2\">Even Month</option>");
 	content += ("<option value=\"1-11/2\">Odd Month</option>");
@@ -158,9 +162,10 @@ function setcron(n) {
 	content += ("<option value=\"10\">Oct</option>");
 	content += ("<option value=\"11\">Nov</option>");
 	content += ("<option value=\"12\">Dec</option>");
-	content += ("</select>");
+	content += ("</select></div></div>");
 	
-	content += ("<select multiple class=\"crselect\" name=\"selectWeekday" + n + "[]\" id=\"weekdays\" onchange=\"handleSelect("+n+", 6)\">");
+	content +=("<div><div><label class=\"selhed\" for=\"weekdays\">Weekdays:</label></div>");
+	content += ("<div><select multiple class=\"crselect\" name=\"selectWeekday" + n + "[]\" id=\"weekdays\" onchange=\"handleSelect("+n+", 6)\">");
 	content += ("<option value=\"*\">Every Weekday</option>");
 	content += ("<option value=\"1-5\">Monday-Friday</option>");
 	content += ("<option value=\"0,6\">Weekend Days</option>");
@@ -171,10 +176,7 @@ function setcron(n) {
 	content += ("<option value=\"4\">Thu</option>");
 	content += ("<option value=\"5\">Fri</option>");
 	content += ("<option value=\"6\">Sat</option>");
-	content += ("</select>");
-	
-	
-	content += ("<div><button class=\"btn\" type=\"button\" onclick=\"closecron(" + n + ")\">Ready</button></div>");
+	content += ("</select></div></div>");
 	var mainbut = document.getElementById("setcronbut"+n);
 	mainbut.innerHTML = "Close editor";
 	mainbut.onclick = function (){ 	var target = document.getElementById("cronext"+n);
@@ -191,27 +193,28 @@ function drawtimers(tarr) {
 		content += ("<div class=\"timerrec\">");
 
 		content += ("<div class=\"nowrap\">");
-		//content +=("<label for=\"cron"+i+"\">Cron string:</label>");
+		content +=("<label for=\"cron"+i+"\">Cron:</label>");
 		content += ("<input  type=\"text\" id=\"cron" + i + "\" value=\"" + tarr[i - 1].cron + "\"></input>");
 		content += ("<button class=\"tmbtn btn\" type=\"button\" id=\"setcronbut"+i+"\" onclick=\"setcron(" + i + ")\">Open editor</button></div></div>")
 
-		content += ("<div id=\"cronext" + i + "\"></div>");
+		/*Extended editor content*/
+		content += ("<div class=\"container\" id=\"cronext" + i + "\"></div>");
 
-		content += ("<input class=\"tmpick\" type=\"​datetime-local\" value=\"" + UnixToStr(tarr[i - 1].start, 10, 1) + "\"></input>");
-		content += ("<select id=\"action\">");
-		for (k = 0; k < actions_test.length; k++) {
-			var selected = (tarr[i - 1].act == k) ? "selected" : "";
-			content += ("<option value=\"" + (k + 1) + "\" " + selected + ">" + actions_test[k] + "</option>");
-		}
-		content += ("</select>");
-
-		content += ("<select id=\"object\">");
+		content +=("<div><label for=\"object"+i+"\">Object:</label>");
+		content += ("<select id=\"object"+i+"\">");
 		for (k = 0; k < objects_test.length; k++) {
 			var selected = (tarr[i - 1].obj == k) ? "selected" : "";
 			content += ("<option value=\"" + (k + 1) + "\" " + selected + ">" + objects_test[k] + "</option>");
 		}
 		content += ("</select>");
 
+		content +=("<label for=\"action"+i+"\">Action:</label>");
+		content += ("<select id=\"action"+i+"\">");
+		for (k = 0; k < actions_test.length; k++) {
+			var selected = (tarr[i - 1].act == k) ? "selected" : "";
+			content += ("<option value=\"" + (k + 1) + "\" " + selected + ">" + actions_test[k] + "</option>");
+		}
+		content += ("</select></div>");
 
 		content += ("<button class=\"btn\" type=\"button\" onclick=\"savetm(" + i + ")\">Save</button>");
 		content += ("<button class=\"btn\" type=\"button\" onclick=\"deltm(" + i + ")\">Delete</button>");

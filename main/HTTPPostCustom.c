@@ -26,11 +26,13 @@ const char pg_40[] = "index40.html";
 const char pg_42[] = "index42.html";
 const char pg_43[] = "index43.html";
 const char pg_44[] = "index44.html";
+const char url_application[] = "application.html";
 
 static HTTP_IO_RESULT HTTPPostIndex40(httpd_req_t *req, char *PostData);
 static HTTP_IO_RESULT HTTPPostIndex42(httpd_req_t *req, char *PostData);
 static HTTP_IO_RESULT HTTPPostIndex43(httpd_req_t *req, char *PostData);
 static HTTP_IO_RESULT HTTPPostIndex44(httpd_req_t *req, char *PostData);
+static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData);
 
 HTTP_IO_RESULT AfterPostHandlerCustom(httpd_req_t *req, const char *filename, char *PostData)
 {
@@ -44,8 +46,20 @@ HTTP_IO_RESULT AfterPostHandlerCustom(httpd_req_t *req, const char *filename, ch
         return HTTPPostIndex43(req, PostData);
     if (!memcmp(filename, pg_44, sizeof(pg_44)))
         return HTTPPostIndex44(req, PostData);
+    if (!memcmp(filename, url_application, sizeof(url_application)))
+        return HTTPPostApplication(req, PostData);
+
+    return HTTP_IO_DONE;
+}
 
 
+static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData)
+{
+    char tmp[512];
+    if (httpd_query_key_value(PostData, "tmrec", tmp, sizeof(tmp)) == ESP_OK)
+       {
+        ESP_LOGI("HTTP_POST","%s", tmp);
+       }
     return HTTP_IO_DONE;
 }
 

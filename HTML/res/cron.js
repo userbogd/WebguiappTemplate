@@ -1,11 +1,36 @@
 objects_test = ["scene_1", "scene_2", "scene_3", "scene_4", "scene_5", "scene_6", "scene_7", "scene_8", "scene_9", "scene_10", "scene_11", "scene_12", "scene_13", "scene_14", "scene_15", "scene_16"];
 actions_test = ["start", "stop"];
-timarr_test = [{ 'num': 1, 'obj': 2, 'act': 0, 'cron': '*/2 * * * * *' },
-{ 'num': 2, 'obj': 12, 'act': 1, 'cron': '6 0 12 * * *' },
-{ 'num': 3, 'obj': 8, 'act': 0, 'cron': '* * * * * *' }];
-function savetm(n) {
+timarr_test = [
+{ "num": 1, "enab":1, "name":"Timer1 name", "obj": 2, "act": 0, "cron": "*/2 * * * * *" },
+{ "num": 2, "enab":0, "name":"Timer2 name", "obj": 12, "act": 1, "cron": "6 0 12 * * *" },
+{ "num": 3, "enab":1, "name":"Timer3 name", "obj": 8, "act": 0, "cron": "* * * * * *" }
+];
 
+function PostData(data,page,conf,alrt,reld) {
+if(conf){if (!confirm(conf)) return;}
+var xhr = new XMLHttpRequest();
+xhr.open('POST',page, true);
+xhr.timeout = 5000;
+xhr.send(data);
+xhr.onreadystatechange = function() { 
+if (xhr.readyState != 4) return;
+if (Number(xhr.status) >= 400) {alert(xhr.status+': '+xhr.statusText);} 
+else {if(reld)location.reload();
+if(alrt) alert(alrt);
+}}}
+
+function savetm(n) {
+var payload = "tmrec={\"num\":"+n+",";
+payload += "\"enab\":"+((document.getElementById("encb"+n).checked)?1:0)+",";
+payload += "\"name\":\""+document.getElementById("tname"+n).value+"\",";
+payload += "\"obj\":"+document.getElementById("object"+n).value+",";
+payload += "\"act\":"+document.getElementById("action"+n).value+",";
+payload += "\"cron\":\""+document.getElementById("cron"+n).value+"\"";
+payload += "}";
+console.log(payload);
+PostData(payload, "application.html", false, false, false);
 }
+
 function extractSelectArr(select)
 {
   var result = [];
@@ -89,19 +114,15 @@ function handleSelect(tnum, type)
 	cinp.value = c[0] + " " + c[1] + " " + c[2] + " " + c[3] + " " + c[4] + " " + c[5];
 }
 function deltm(n) {
+	if(confirm("Confirm delete timer "+n+"?") == true){
 	timarr_test.splice(n - 1, 1);
-	drawtimers(timarr_test);
-}
-function closecron(n) {
-	var target = document.getElementById("cronext"+n);
-	var content = "";
-	target.innerHTML = content;
+	drawtimers(timarr_test);}
 }
 function setcron(n) {
 	var target = document.getElementById("cronext" + n);
 	var content = "";
 	content +=("<div><div><label class=\"selhed\" for=\"seconds\">Seconds:</label></div>");
-	content += ("<div><select multiple class=\"crselect\" name=\"selectSeconds" + n + "[]\" id=\"seconds\" onchange=\"handleSelect("+n+", 1)\">");
+	content += ("<div><select multiple size=\"7\" class=\"crselect\" name=\"selectSeconds" + n + "[]\" id=\"seconds\" onchange=\"handleSelect("+n+", 1)\">");
 	content += ("<option value=\"*\">Every Sec</option>");
 	content += ("<option value=\"*/2\">Even Sec</option>");
 	content += ("<option value=\"1-59/2\">Odd Sec</option>");
@@ -112,7 +133,7 @@ function setcron(n) {
 	content += ("</select></div></div>");
 
 	content +=("<div><div><label class=\"selhed\" for=\"seconds\">Minutes:</label></div>");
-	content += ("<div><select multiple  class=\"crselect\" name=\"selectMinutes" + n + "[]\" id=\"minutes\" onchange=\"handleSelect("+n+", 2)\">");
+	content += ("<div><select multiple size=\"7\" class=\"crselect\" name=\"selectMinutes" + n + "[]\" id=\"minutes\" onchange=\"handleSelect("+n+", 2)\">");
 	content += ("<option value=\"*\">Every Min</option>");
 	content += ("<option value=\"*/2\">Even Min</option>");
 	content += ("<option value=\"1-59/2\">Odd Min</option>");
@@ -123,7 +144,7 @@ function setcron(n) {
 	content += ("</select></div></div>");
 	
 	content +=("<div><div><label class=\"selhed\" for=\"hours\">Hours:</label></div>");
-	content += ("<div><select multiple  class=\"crselect\" name=\"selectHours" + n + "[]\" id=\"hours\" onchange=\"handleSelect("+n+", 3)\">");
+	content += ("<div><select multiple size=\"7\" class=\"crselect\" name=\"selectHours" + n + "[]\" id=\"hours\" onchange=\"handleSelect("+n+", 3)\">");
 	content += ("<option value=\"*\">Every Hour</option>");
 	content += ("<option value=\"*/2\">Even Hours</option>");
 	content += ("<option value=\"1-23/2\">Odd Hours</option>");
@@ -133,7 +154,7 @@ function setcron(n) {
 	content += ("</select></div></div>");
 	
 	content +=("<div><div><label class=\"selhed\" for=\"days\">Days:</label></div>");
-	content += ("<div><select multiple  class=\"crselect\" name=\"selectDays" + n + "[]\" id=\"days\" onchange=\"handleSelect("+n+", 4)\">");
+	content += ("<div><select multiple size=\"7\" class=\"crselect\" name=\"selectDays" + n + "[]\" id=\"days\" onchange=\"handleSelect("+n+", 4)\">");
 	content += ("<option value=\"*\">Every Day</option>");
 	content += ("<option value=\"*/2\">Even Days</option>");
 	content += ("<option value=\"1-31/2\">Odd Days</option>");
@@ -144,7 +165,7 @@ function setcron(n) {
 	content += ("</select></div></div>");
 	
 	content +=("<div><div><label class=\"selhed\" for=\"months\">Months:</label></div>");
-	content += ("<div><select multiple class=\"crselect\" name=\"selectMonths" + n + "[]\" id=\"months\" onchange=\"handleSelect("+n+", 5)\">");
+	content += ("<div><select multiple size=\"7\" class=\"crselect\" name=\"selectMonths" + n + "[]\" id=\"months\" onchange=\"handleSelect("+n+", 5)\">");
 	content += ("<option value=\"*\">Every Month</option>");
 	content += ("<option value=\"*/2\">Even Month</option>");
 	content += ("<option value=\"1-11/2\">Odd Month</option>");
@@ -165,7 +186,7 @@ function setcron(n) {
 	content += ("</select></div></div>");
 	
 	content +=("<div><div><label class=\"selhed\" for=\"weekdays\">Weekdays:</label></div>");
-	content += ("<div><select multiple class=\"crselect\" name=\"selectWeekday" + n + "[]\" id=\"weekdays\" onchange=\"handleSelect("+n+", 6)\">");
+	content += ("<div><select multiple size=\"7\" class=\"crselect\" name=\"selectWeekday" + n + "[]\" id=\"weekdays\" onchange=\"handleSelect("+n+", 6)\">");
 	content += ("<option value=\"*\">Every Weekday</option>");
 	content += ("<option value=\"1-5\">Monday-Friday</option>");
 	content += ("<option value=\"0,6\">Weekend Days</option>");
@@ -193,41 +214,50 @@ function drawtimers(tarr) {
 		content += ("<div class=\"timerrec\">");
 
 		content += ("<div class=\"nowrap\">");
+		content +=("<label for=\"encb"+i+"\">Enabled:  </label>");
+		var enb = (tarr[i - 1].enab == 1) ? "checked" : "";
+		content += ("<label  class=\"switch\"><input type=\"checkbox\" id=\"encb"+i+"\" value=\"1\" "+enb+"><span class=\"slider round\"></span></label></div>");
+
+		content += ("<div class=\"nowrap\">");
+		content +=("<label for=\"tname"+i+"\">Timer name:</label>");
+		content += ("<input  type=\"text\" id=\"tname" + i + "\" value=\"" + tarr[i - 1].name + "\"></input></div>");
+
+		content += ("<div class=\"nowrap\">");
+		content +=("<div><label for=\"object"+i+"\">Object:</label>");
+		content += ("<select class=\"\" id=\"object"+i+"\">");
+		for (k = 0; k < objects_test.length; k++) {
+			var selected = (tarr[i - 1].obj == k) ? "selected" : "";
+			content += ("<option value=\"" + (k + 1) + "\" " + selected + ">" + objects_test[k] + "</option>");}
+		content += ("</select></div></div>");
+
+		content += ("<div class=\"nowrap\">");
+		content +=("<div><label for=\"action"+i+"\">Action:</label>");
+		content += ("<select class=\"\" id=\"action"+i+"\">");
+		for (k = 0; k < actions_test.length; k++) {
+			var selected = (tarr[i - 1].act == k) ? "selected" : "";
+			content += ("<option value=\"" + (k + 1) + "\" " + selected + ">" + actions_test[k] + "</option>");}
+		content += ("</select></div></div>");
+
+		content += ("<div class=\"nowrap\">");
 		content +=("<label for=\"cron"+i+"\">Cron:</label>");
-		content += ("<input  type=\"text\" id=\"cron" + i + "\" value=\"" + tarr[i - 1].cron + "\"></input>");
-		content += ("<button class=\"tmbtn btn\" type=\"button\" id=\"setcronbut"+i+"\" onclick=\"setcron(" + i + ")\">Open editor</button></div></div>")
+		content += ("<input  type=\"text\" id=\"cron" + i + "\" value=\"" + tarr[i - 1].cron + "\"></input></div>");
+		content += ("<div><button class=\"tmbtn btn\" type=\"button\" id=\"setcronbut"+i+"\" onclick=\"setcron(" + i + ")\">Open editor</button></div>")
+		content += ("</div>");
 
 		/*Extended editor content*/
 		content += ("<div class=\"container\" id=\"cronext" + i + "\"></div>");
 
-		content +=("<div><label for=\"object"+i+"\">Object:</label>");
-		content += ("<select id=\"object"+i+"\">");
-		for (k = 0; k < objects_test.length; k++) {
-			var selected = (tarr[i - 1].obj == k) ? "selected" : "";
-			content += ("<option value=\"" + (k + 1) + "\" " + selected + ">" + objects_test[k] + "</option>");
-		}
-		content += ("</select>");
-
-		content +=("<label for=\"action"+i+"\">Action:</label>");
-		content += ("<select id=\"action"+i+"\">");
-		for (k = 0; k < actions_test.length; k++) {
-			var selected = (tarr[i - 1].act == k) ? "selected" : "";
-			content += ("<option value=\"" + (k + 1) + "\" " + selected + ">" + actions_test[k] + "</option>");
-		}
-		content += ("</select></div>");
-
 		content += ("<button class=\"btn\" type=\"button\" onclick=\"savetm(" + i + ")\">Save</button>");
 		content += ("<button class=\"btn\" type=\"button\" onclick=\"deltm(" + i + ")\">Delete</button>");
-
 		content += ("</div>");
-		target.innerHTML = content;
 	}
+	target.innerHTML = content;
 }
 function applytm() {
 
 }
 function addtm() {
 	var num = timarr_test.length + 1;
-	timarr_test.push({ 'num': num, 'start': 1500000000, 'cron': '* * * * * *' });
+	timarr_test.push({ 'num': num, 'enab':1, 'name':'Timer'+num+' name', 'obj': 0, 'act': 0, 'cron': '* * * * * *' });	
 	drawtimers(timarr_test);
 }

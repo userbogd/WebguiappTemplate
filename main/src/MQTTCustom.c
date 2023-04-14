@@ -52,6 +52,7 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
     esp_mqtt_event_handle_t event = event_data;
     esp_mqtt_client_handle_t client = event->client;
     //mqtt_client_t *ctx = (mqtt_client_t*) event->user_context;
+    ESP_LOGI(TAG, "%s", (char*)(((mqtt_client_t*)(handler_args))->user_arg));
     int msg_id;
     char topic[CONFIG_WEBGUIAPP_MQTT_MAX_TOPIC_LENGTH];
     switch ((esp_mqtt_event_id_t) event_id)

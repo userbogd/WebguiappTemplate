@@ -4,6 +4,7 @@
 #include "webguiapp.h"
 #include "cron.h"
 #include "jobs.h"
+#include "AppConfiguration.h"
 
 int HTTPPrintCustom(httpd_req_t *req, char *buf, char *var, int arg);
 HTTP_IO_RESULT AfterPostHandlerCustom(httpd_req_t *req, const char *filename, char *PostData);
@@ -17,6 +18,12 @@ void app_main(void)
     regAfterPostHandlerCustom(&AfterPostHandlerCustom);
     regUserEventHandler(&UserMQTTEventHndlr, (void*)my_context_data);
     WebGuiAppInit();
+    if (GetUserAppNeedReset())
+    {
+        SetUserAppNeedReset(false);
+        ESP_ERROR_CHECK(InitAppConfig());
+    }
+    ESP_ERROR_CHECK(InitAppConfig());
 
     void test_cron_job_sample_callback(cron_job *job)
     {

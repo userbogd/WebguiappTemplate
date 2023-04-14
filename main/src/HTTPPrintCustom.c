@@ -21,6 +21,29 @@
  *	\copyright Apache License, Version 2.0
  */
 #include "webguiapp.h"
+#include "jWrite.h"
+#include "AppConfiguration.h"
+
+static void HTTPPrint_crontmr(char *VarData, void *arg)
+{
+   int idx = *((int*)(arg));
+   if(idx < CRON_TIMERS_NUMBER)
+   {
+    char data[256];
+    cron_timer_t T;
+    memcpy(&T, &GetAppConf()->Timers[idx], sizeof(cron_timer_t));
+    jwOpen(data, sizeof(data), JW_OBJECT, JW_COMPACT);
+    jwObj_int("num", (unsigned int) T.num);
+    jwObj_int("enab", (T.enab)?1:0);
+    jwObj_string("name", T.name);
+    jwObj_int("obj", (unsigned int) T.obj);
+    jwObj_int("act", (unsigned int) T.act);
+    jwObj_string("cron", T.cron);
+    jwEnd();
+    jwClose();
+    snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", data);
+   }
+}
 
 //Default string if not found handler
 static void HTTPPrint_DEF(char *VarData, void *arg)
@@ -35,6 +58,7 @@ static void HTTPPrint_status_fail(char *VarData, void *arg)
 
 dyn_var_handler_t HANDLERS_ARRAY_CUST[] = {
 
+        { "crontmr", sizeof("crontmr") - 1, &HTTPPrint_crontmr },
         /*ERROR report*/
         { "status_fail", sizeof("status_fail") - 1, &HTTPPrint_status_fail },
 

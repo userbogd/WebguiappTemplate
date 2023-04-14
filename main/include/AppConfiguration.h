@@ -39,9 +39,26 @@
  * the default values will be loaded.
  */
 
+#define CRON_TIMERS_NUMBER (16)
+#define TIMER_NAME_LENGTH (16)
+#define TIMER_CRONSTRING_LENGTH (32)
+
+typedef struct
+{
+  int num;
+  bool enab;
+  char name[TIMER_NAME_LENGTH];
+  int obj;
+  int act;
+  char cron[TIMER_CRONSTRING_LENGTH];
+} cron_timer_t;
+
 typedef struct appconf
 {
 int test;
+
+cron_timer_t Timers[CRON_TIMERS_NUMBER];
+
 } APP_CONFIG;
 
 void UserInitIO(void);

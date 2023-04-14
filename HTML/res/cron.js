@@ -1,5 +1,24 @@
-objects_test = ["scene_1", "scene_2", "scene_3", "scene_4", "scene_5", "scene_6", "scene_7", "scene_8", "scene_9", "scene_10", "scene_11", "scene_12", "scene_13", "scene_14", "scene_15", "scene_16"];
-actions_test = ["start", "stop"];
+objects_test = ["object_1", "object_2", "object_3", "object_4", "object_5", "object_6", "object_7", "object_8", "object_9", "object_10", "object_11", "object_12", "object_13", "object_14", "object_15", "object_16"];
+actions_test = ["action_1", "action_2", "action_3", "action_4"];
+timarr = [
+~crontmr(0)~,
+~crontmr(1)~,
+~crontmr(2)~,
+~crontmr(3)~,
+~crontmr(4)~,
+~crontmr(5)~,
+~crontmr(6)~,
+~crontmr(7)~,
+~crontmr(8)~,
+~crontmr(9)~,
+~crontmr(10)~,
+~crontmr(11)~,
+~crontmr(12)~,
+~crontmr(13)~,
+~crontmr(14)~,
+~crontmr(15)~
+];
+
 timarr_test = [
 { "num": 1, "enab":1, "name":"Timer1 name", "obj": 2, "act": 0, "cron": "*/2 * * * * *" },
 { "num": 2, "enab":0, "name":"Timer2 name", "obj": 12, "act": 1, "cron": "6 0 12 * * *" },
@@ -28,7 +47,7 @@ payload += "\"act\":"+document.getElementById("action"+n).value+",";
 payload += "\"cron\":\""+document.getElementById("cron"+n).value+"\"";
 payload += "}";
 console.log(payload);
-PostData(payload, "application.html", false, false, false);
+PostData(payload, "application.html", false, false, true);
 }
 
 function extractSelectArr(select)

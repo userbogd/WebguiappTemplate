@@ -1,4 +1,4 @@
- /*! Copyright 2022 Bogdan Pilyugin
+/*! Copyright 2022 Bogdan Pilyugin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@
  *	\copyright Apache License, Version 2.0
  */
 #include "webguiapp.h"
+#include "jRead.h"
+#include "AppConfiguration.h"
 
 const char pg_40[] = "index40.html";
 const char pg_42[] = "index42.html";
@@ -37,7 +39,6 @@ static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData);
 HTTP_IO_RESULT AfterPostHandlerCustom(httpd_req_t *req, const char *filename, char *PostData)
 {
 
-
     if (!memcmp(filename, pg_40, sizeof(pg_40)))
         return HTTPPostIndex40(req, PostData);
     if (!memcmp(filename, pg_42, sizeof(pg_42)))
@@ -52,14 +53,27 @@ HTTP_IO_RESULT AfterPostHandlerCustom(httpd_req_t *req, const char *filename, ch
     return HTTP_IO_DONE;
 }
 
-
 static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData)
 {
     char tmp[512];
     if (httpd_query_key_value(PostData, "tmrec", tmp, sizeof(tmp)) == ESP_OK)
-       {
-        ESP_LOGI("HTTP_POST","%s", tmp);
-       }
+    {
+        ESP_LOGI("HTTP_POST", "%s", tmp);
+        struct jReadElement result;
+        cron_timer_t T = {0};
+        jRead(tmp, "", &result);
+        if (result.dataType == JREAD_OBJECT)
+        {
+            T.num = jRead_int(tmp, "{'num'", NULL);
+            T.enab = jRead_int(tmp, "{'enab'", NULL);
+            jRead_string(tmp, "{'name'", T.name, sizeof(T.name), NULL);
+            T.obj = jRead_int(tmp, "{'obj'", NULL);
+            T.act = jRead_int(tmp, "{'act'", NULL);
+            jRead_string(tmp, "{'cron'", T.cron, sizeof(T.cron), NULL);
+            memcpy(&GetAppConf()->Timers[T.num-1], &T, sizeof(cron_timer_t));
+            WriteNVSAppConfig(GetAppConf());
+        }
+    }
     return HTTP_IO_DONE;
 }
 
@@ -70,11 +84,11 @@ static HTTP_IO_RESULT HTTPPostIndex40(httpd_req_t *req, char *PostData)
     {
         if (!strcmp(tmp, (const char*) "1"))
         {
-           // SetCTRL_BAT(ON);
+            // SetCTRL_BAT(ON);
         }
         else if (!strcmp(tmp, (const char*) "2"))
         {
-           // SetCTRL_BAT(OFF);
+            // SetCTRL_BAT(OFF);
         }
         else if (!strcmp(tmp, (const char*) "3"))
         {
@@ -114,7 +128,7 @@ static HTTP_IO_RESULT HTTPPostIndex40(httpd_req_t *req, char *PostData)
         }
         else if (!strcmp(tmp, (const char*) "12"))
         {
-           // SendTestEvent();
+            // SendTestEvent();
         }
 
     }
@@ -135,5 +149,4 @@ static HTTP_IO_RESULT HTTPPostIndex44(httpd_req_t *req, char *PostData)
 {
     return HTTP_IO_DONE;
 }
-
 

@@ -246,7 +246,7 @@ function drawtimers(tarr) {
 		content += ("<select class=\"\" id=\"object"+i+"\">");
 		for (k = 0; k < objects_test.length; k++) {
 			var selected = (tarr[i - 1].obj == k) ? "selected" : "";
-			content += ("<option value=\"" + (k + 1) + "\" " + selected + ">" + objects_test[k] + "</option>");}
+			content += ("<option value=\"" + (k) + "\" " + selected + ">" + objects_test[k] + "</option>");}
 		content += ("</select></div></div>");
 
 		content += ("<div class=\"nowrap\">");
@@ -254,7 +254,7 @@ function drawtimers(tarr) {
 		content += ("<select class=\"\" id=\"action"+i+"\">");
 		for (k = 0; k < actions_test.length; k++) {
 			var selected = (tarr[i - 1].act == k) ? "selected" : "";
-			content += ("<option value=\"" + (k + 1) + "\" " + selected + ">" + actions_test[k] + "</option>");}
+			content += ("<option value=\"" + (k) + "\" " + selected + ">" + actions_test[k] + "</option>");}
 		content += ("</select></div></div>");
 
 		content += ("<div class=\"nowrap\">");

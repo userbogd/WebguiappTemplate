@@ -9,6 +9,26 @@
 <script src="res/res.js"></script>
 <script src="res/cron.js"></script>
 <title>~name~</title>
+<script type="text/javascript">
+timarr = [
+	~crontmr(0)~,
+	~crontmr(1)~,
+	~crontmr(2)~,
+	~crontmr(3)~,
+	~crontmr(4)~,
+	~crontmr(5)~,
+	~crontmr(6)~,
+	~crontmr(7)~,
+	~crontmr(8)~,
+	~crontmr(9)~,
+	~crontmr(10)~,
+	~crontmr(11)~,
+	~crontmr(12)~,
+	~crontmr(13)~,
+	~crontmr(14)~,
+	~crontmr(15)~
+	];
+</script>
 </head>
 <body>
   <script>PageSurround();</script>
@@ -19,11 +39,11 @@
       	<div class="mlp">
           <div class="mlpc">
             <form name="tmr" method="post">
-              <div class="mlhdr">TIMER</div>
-              <button type="button" class ='btn' id='bt2' onclick="addtm()">Add new timer</button>
+              <div class="mlhdr">TIMERS</div>
               <div class="container">
               <div id="timer"></div>
 			  </div>
+			  <button type="button" class ='btn' id='bt2' onclick="addtm()">Add timer</button>
             </form>
          </div>
         </div>

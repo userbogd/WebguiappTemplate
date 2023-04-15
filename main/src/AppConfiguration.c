@@ -116,11 +116,12 @@ void ResetAppConfig(APP_CONFIG *Conf)
     for (int i = 0; i < CRON_TIMERS_NUMBER; i++ )
     {
         GetAppConf()->Timers[i].num = i+1;
-        GetAppConf()->Timers[i].enab = false;
+        GetAppConf()->Timers[i].enab = true;
         GetAppConf()->Timers[i].obj = 0;
         GetAppConf()->Timers[i].act = 0;
         strcpy(GetAppConf()->Timers[i].name, "Timer Name");
         strcpy(GetAppConf()->Timers[i].cron, "* * * * * *");
+        GetAppConf()->Timers[i].del = true;
     }
 }
 

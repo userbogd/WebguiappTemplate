@@ -51,6 +51,7 @@ typedef struct
   int obj;
   int act;
   char cron[TIMER_CRONSTRING_LENGTH];
+  bool del;
 } cron_timer_t;
 
 typedef struct appconf

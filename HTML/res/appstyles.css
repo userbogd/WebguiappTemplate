@@ -176,6 +176,7 @@ float:right;
 }
 .tmlab{
 float:left;	
+color: var(--accent-color); 
 }
 
 .nowrap

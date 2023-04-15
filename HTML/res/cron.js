@@ -1,29 +1,5 @@
-objects_test = ["object_1", "object_2", "object_3", "object_4", "object_5", "object_6", "object_7", "object_8", "object_9", "object_10", "object_11", "object_12", "object_13", "object_14", "object_15", "object_16"];
-actions_test = ["action_1", "action_2", "action_3", "action_4"];
-timarr = [
-~crontmr(0)~,
-~crontmr(1)~,
-~crontmr(2)~,
-~crontmr(3)~,
-~crontmr(4)~,
-~crontmr(5)~,
-~crontmr(6)~,
-~crontmr(7)~,
-~crontmr(8)~,
-~crontmr(9)~,
-~crontmr(10)~,
-~crontmr(11)~,
-~crontmr(12)~,
-~crontmr(13)~,
-~crontmr(14)~,
-~crontmr(15)~
-];
-
-timarr_test = [
-{ "num": 1, "enab":1, "name":"Timer1 name", "obj": 2, "act": 0, "cron": "*/2 * * * * *" },
-{ "num": 2, "enab":0, "name":"Timer2 name", "obj": 12, "act": 1, "cron": "6 0 12 * * *" },
-{ "num": 3, "enab":1, "name":"Timer3 name", "obj": 8, "act": 0, "cron": "* * * * * *" }
-];
+objects_dscr = ["object_1", "object_2", "object_3", "object_4", "object_5", "object_6", "object_7", "object_8", "object_9", "object_10", "object_11", "object_12", "object_13", "object_14", "object_15", "object_16"];
+actions_dscr = ["action_1", "action_2", "action_3", "action_4"];
 
 function PostData(data,page,conf,alrt,reld) {
 if(conf){if (!confirm(conf)) return;}
@@ -49,9 +25,12 @@ payload += "}";
 console.log(payload);
 PostData(payload, "application.html", false, false, true);
 }
-
-function extractSelectArr(select)
-{
+function deltm(n) {
+	if(confirm("Confirm delete timer "+n+"?") == true){
+	PostData("deltimer="+n, "application.html", false, false, true);}}
+function addtm() {
+	PostData("addtimer=any", "application.html", false, false, true);}
+function extractSelectArr(select){
   var result = [];
   var options = select && select.options;
   var opt;
@@ -94,8 +73,7 @@ function extractSelectArr(select)
 	}
   return grouped;
 }
-function handleSelect(tnum, type)
-{
+function handleSelect(tnum, type){
 	var cinp = document.getElementById("cron" + tnum);
 	var c = (cinp.value).split(" ");
 	if(c.length != 6)
@@ -132,11 +110,7 @@ function handleSelect(tnum, type)
 	}
 	cinp.value = c[0] + " " + c[1] + " " + c[2] + " " + c[3] + " " + c[4] + " " + c[5];
 }
-function deltm(n) {
-	if(confirm("Confirm delete timer "+n+"?") == true){
-	timarr_test.splice(n - 1, 1);
-	drawtimers(timarr_test);}
-}
+
 function setcron(n) {
 	var target = document.getElementById("cronext" + n);
 	var content = "";
@@ -228,6 +202,7 @@ function drawtimers(tarr) {
 	var target = document.getElementById("timer");
 	var content = "";
 	for (i = 1; i <= num; i++) {
+		if(tarr[i-1].del == 1) continue;
 		content += ("<div class=\"timer\">");
 		content += ("<label class=\"tmlab\">Timer " + i + "</label>");
 		content += ("<div class=\"timerrec\">");
@@ -244,17 +219,17 @@ function drawtimers(tarr) {
 		content += ("<div class=\"nowrap\">");
 		content +=("<div><label for=\"object"+i+"\">Object:</label>");
 		content += ("<select class=\"\" id=\"object"+i+"\">");
-		for (k = 0; k < objects_test.length; k++) {
+		for (k = 0; k < objects_dscr.length; k++) {
 			var selected = (tarr[i - 1].obj == k) ? "selected" : "";
-			content += ("<option value=\"" + (k) + "\" " + selected + ">" + objects_test[k] + "</option>");}
+			content += ("<option value=\"" + (k) + "\" " + selected + ">" + objects_dscr[k] + "</option>");}
 		content += ("</select></div></div>");
 
 		content += ("<div class=\"nowrap\">");
 		content +=("<div><label for=\"action"+i+"\">Action:</label>");
 		content += ("<select class=\"\" id=\"action"+i+"\">");
-		for (k = 0; k < actions_test.length; k++) {
+		for (k = 0; k < actions_dscr.length; k++) {
 			var selected = (tarr[i - 1].act == k) ? "selected" : "";
-			content += ("<option value=\"" + (k) + "\" " + selected + ">" + actions_test[k] + "</option>");}
+			content += ("<option value=\"" + (k) + "\" " + selected + ">" + actions_dscr[k] + "</option>");}
 		content += ("</select></div></div>");
 
 		content += ("<div class=\"nowrap\">");
@@ -272,11 +247,4 @@ function drawtimers(tarr) {
 	}
 	target.innerHTML = content;
 }
-function applytm() {
 
-}
-function addtm() {
-	var num = timarr_test.length + 1;
-	timarr_test.push({ 'num': num, 'enab':1, 'name':'Timer'+num+' name', 'obj': 0, 'act': 0, 'cron': '* * * * * *' });	
-	drawtimers(timarr_test);
-}

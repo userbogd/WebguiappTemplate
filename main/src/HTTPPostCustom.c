@@ -70,10 +70,34 @@ static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData)
             T.obj = jRead_int(tmp, "{'obj'", NULL);
             T.act = jRead_int(tmp, "{'act'", NULL);
             jRead_string(tmp, "{'cron'", T.cron, sizeof(T.cron), NULL);
+            T.del = jRead_int(tmp, "{'del'", NULL);
             memcpy(&GetAppConf()->Timers[T.num-1], &T, sizeof(cron_timer_t));
             WriteNVSAppConfig(GetAppConf());
         }
     }
+    if (httpd_query_key_value(PostData, "deltimer", tmp, sizeof(tmp)) == ESP_OK)
+    {
+        int num = (atoi(tmp) - 1);
+        if(num >= 0 && num <16)
+        {
+            GetAppConf()->Timers[num].del = true;
+        }
+        return HTTP_IO_DONE;
+    }
+    if (httpd_query_key_value(PostData, "addtimer", tmp, sizeof(tmp)) == ESP_OK)
+    {
+        for(int i = 0; i< CRON_TIMERS_NUMBER; i++)
+        {
+            if(GetAppConf()->Timers[i].del == 1)
+            {
+                GetAppConf()->Timers[i].del = 0;
+
+                return HTTP_IO_DONE;
+            }
+        }
+    }
+
+
     return HTTP_IO_DONE;
 }
 

@@ -39,6 +39,7 @@ static void HTTPPrint_crontmr(char *VarData, void *arg)
     jwObj_int("obj", (unsigned int) T.obj);
     jwObj_int("act", (unsigned int) T.act);
     jwObj_string("cron", T.cron);
+    jwObj_int("del", (T.del)?1:0);
     jwEnd();
     jwClose();
     snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", data);

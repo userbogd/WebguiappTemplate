@@ -6,6 +6,7 @@ set(srcs main.c
     	 src/HTTPPostCustom.c        
   		 src/MQTTCustom.c
 		 src/AppConfiguration.c
+		 src/CronTimers.c
 		 )
 set(include "include")
 

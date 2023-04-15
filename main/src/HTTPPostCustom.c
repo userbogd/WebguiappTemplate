@@ -23,6 +23,7 @@
 #include "webguiapp.h"
 #include "jRead.h"
 #include "AppConfiguration.h"
+#include "CronTimers.h"
 
 const char pg_40[] = "index40.html";
 const char pg_42[] = "index42.html";
@@ -73,14 +74,17 @@ static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData)
             T.del = jRead_int(tmp, "{'del'", NULL);
             memcpy(&GetAppConf()->Timers[T.num-1], &T, sizeof(cron_timer_t));
             WriteNVSAppConfig(GetAppConf());
+            ReloadCronSheduler();
         }
     }
     if (httpd_query_key_value(PostData, "deltimer", tmp, sizeof(tmp)) == ESP_OK)
     {
         int num = (atoi(tmp) - 1);
-        if(num >= 0 && num <16)
+        if(num >= 0 && num < 16)
         {
             GetAppConf()->Timers[num].del = true;
+            WriteNVSAppConfig(GetAppConf());
+            ReloadCronSheduler();
         }
         return HTTP_IO_DONE;
     }
@@ -88,10 +92,11 @@ static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData)
     {
         for(int i = 0; i< CRON_TIMERS_NUMBER; i++)
         {
-            if(GetAppConf()->Timers[i].del == 1)
+            if(GetAppConf()->Timers[i].del == true)
             {
-                GetAppConf()->Timers[i].del = 0;
-
+                GetAppConf()->Timers[i].del = false;
+                WriteNVSAppConfig(GetAppConf());
+                ReloadCronSheduler();
                 return HTTP_IO_DONE;
             }
         }

@@ -23,7 +23,9 @@
 #include "AppConfiguration.h"
 #include "esp_log.h"
 
-static cron_job *jobs[CRON_TIMERS_NUMBER];
+#define TAG "CRON_TIMER"
+
+static cron_job *JobsList[CRON_TIMERS_NUMBER];
 
 void custom_cron_job_callback(cron_job *job)
 {
@@ -31,7 +33,7 @@ void custom_cron_job_callback(cron_job *job)
     int obj = ((cron_timer_t*) job->data)->obj;
     char *name = ((cron_timer_t*) job->data)->name;
     //here call all timers jobs depends on object and action
-    ESP_LOGI("CRON_TIMER", "Executed timer '%s' action %d under object %d", name, act, obj);
+    ESP_LOGI(TAG, "Executed timer '%s' action %d under object %d", name, act, obj);
     return;
 }
 
@@ -43,33 +45,23 @@ esp_err_t InitCronSheduler()
 
 esp_err_t ReloadCronSheduler()
 {
-    static bool isStarted = false;
-    esp_err_t res = ESP_OK;
-    bool isJobsPresents = false;
+    //remove all jobs
+    ESP_LOGI(TAG,"Cron stop call result %d",cron_stop());
+    cron_job_clear_all();
+    //check if we have jobs to run
     for (int i = 0; i < CRON_TIMERS_NUMBER; i++)
     {
-        if (jobs[i] != NULL)
-        {
-            cron_job_destroy(jobs[i]);
-            jobs[i] = NULL;
-        }
         if (!GetAppConf()->Timers[i].del && GetAppConf()->Timers[i].enab)
         {
-
-            jobs[i] = cron_job_create(GetAppConf()->Timers[i].cron, custom_cron_job_callback,
-                                      (void*) &GetAppConf()->Timers[i]);
-            isJobsPresents = true;
+            JobsList[i] = cron_job_create(GetAppConf()->Timers[i].cron, custom_cron_job_callback,
+                                          (void*) &GetAppConf()->Timers[i]);
         }
-
     }
+    int jobs_num = cron_job_node_count();
+    ESP_LOGI(TAG, "In config presents %d jobs", jobs_num);
 
-
-    if (isJobsPresents && !isStarted)
-    {
-        cron_start();
-        isStarted = true;
-    }
-
-    return res;
+    if (jobs_num > 0)
+        ESP_LOGI(TAG,"Cron start call result %d",cron_start());
+    return ESP_OK;
 }
 

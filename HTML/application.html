@@ -28,6 +28,7 @@ timarr = [
 	~crontmr(14)~,
 	~crontmr(15)~
 	];
+function showcronerr(err) {if(err != "") alert(err);}	
 </script>
 </head>
 <body>
@@ -51,8 +52,9 @@ timarr = [
     </section>
   </main>
   <script>
-  drawtimers(timarr);	
+  drawtimers(timarr);	  
   showMenu('header-toggle','navbar');
+  showcronerr("~cronerr~");
 </script>
 </body>
 </html>

@@ -24,9 +24,10 @@
 #include "esp_err.h"
 #include "cron.h"
 #include "jobs.h"
-
+#include "ccronexpr.h"
 
 esp_err_t InitCronSheduler();
 esp_err_t ReloadCronSheduler();
+char* GetCronError();
 
 #endif /* MAIN_INCLUDE_CRONTIMERS_H_ */

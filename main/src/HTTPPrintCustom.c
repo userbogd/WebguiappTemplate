@@ -23,6 +23,7 @@
 #include "webguiapp.h"
 #include "jWrite.h"
 #include "AppConfiguration.h"
+#include "CronTimers.h"
 
 static void HTTPPrint_crontmr(char *VarData, void *arg)
 {
@@ -46,6 +47,11 @@ static void HTTPPrint_crontmr(char *VarData, void *arg)
    }
 }
 
+static void HTTPPrint_cronerr(char *VarData, void *arg)
+{
+    snprintf(VarData, MAX_DYNVAR_LENGTH, GetCronError());
+}
+
 //Default string if not found handler
 static void HTTPPrint_DEF(char *VarData, void *arg)
 {
@@ -60,6 +66,7 @@ static void HTTPPrint_status_fail(char *VarData, void *arg)
 dyn_var_handler_t HANDLERS_ARRAY_CUST[] = {
 
         { "crontmr", sizeof("crontmr") - 1, &HTTPPrint_crontmr },
+        { "cronerr", sizeof("cronerr") - 1, &HTTPPrint_cronerr },
         /*ERROR report*/
         { "status_fail", sizeof("status_fail") - 1, &HTTPPrint_status_fail },
 

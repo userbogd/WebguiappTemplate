@@ -42,6 +42,7 @@
 #define CRON_TIMERS_NUMBER (16)
 #define TIMER_NAME_LENGTH (16)
 #define TIMER_CRONSTRING_LENGTH (32)
+#define CRON_EXPRESS_MAX_LENGTH (128)
 
 typedef struct
 {

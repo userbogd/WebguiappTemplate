@@ -26,6 +26,12 @@
 #define TAG "CRON_TIMER"
 
 static cron_job *JobsList[CRON_TIMERS_NUMBER];
+static char cron_express_error[CRON_EXPRESS_MAX_LENGTH];
+
+char* GetCronError()
+{
+    return cron_express_error;
+}
 
 void custom_cron_job_callback(cron_job *job)
 {
@@ -43,20 +49,39 @@ esp_err_t InitCronSheduler()
     return res;
 }
 
+
+const char* check_expr(const char* expr) {
+    const char* err = NULL;
+    cron_expr test;
+    memset(&test, 0, sizeof(test));
+    cron_parse_expr(expr, &test, &err);
+    return err;
+}
+
 esp_err_t ReloadCronSheduler()
 {
     //remove all jobs
     ESP_LOGI(TAG,"Cron stop call result %d",cron_stop());
     cron_job_clear_all();
     //check if we have jobs to run
+    bool isExpressError = false;
     for (int i = 0; i < CRON_TIMERS_NUMBER; i++)
     {
-        if (!GetAppConf()->Timers[i].del && GetAppConf()->Timers[i].enab)
+        const char* err = check_expr(GetAppConf()->Timers[i].cron);
+        if(err)
+        {
+            snprintf (cron_express_error, CRON_EXPRESS_MAX_LENGTH-1, "In timer %d expression error:%s", i+1, err);
+            ESP_LOGE(TAG, "%s", cron_express_error);
+            isExpressError = true;
+            continue;
+        }
+        else if (!GetAppConf()->Timers[i].del && GetAppConf()->Timers[i].enab)
         {
             JobsList[i] = cron_job_create(GetAppConf()->Timers[i].cron, custom_cron_job_callback,
                                           (void*) &GetAppConf()->Timers[i]);
         }
     }
+    if(!isExpressError) cron_express_error[0] = 0x00; //clear last cron expression parse
     int jobs_num = cron_job_node_count();
     ESP_LOGI(TAG, "In config presents %d jobs", jobs_num);
 

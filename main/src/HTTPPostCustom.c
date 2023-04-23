@@ -101,7 +101,10 @@ static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData)
             }
         }
     }
-
+    if (httpd_query_key_value(PostData, "tmrdbg", tmp, sizeof(tmp)) == ESP_OK)
+    {
+        DebugTimer();
+    }
 
     return HTTP_IO_DONE;
 }

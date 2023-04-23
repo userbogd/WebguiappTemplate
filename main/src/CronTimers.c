@@ -39,7 +39,9 @@ void custom_cron_job_callback(cron_job *job)
     int obj = ((cron_timer_t*) job->data)->obj;
     char *name = ((cron_timer_t*) job->data)->name;
     //here call all timers jobs depends on object and action
-    ESP_LOGI(TAG, "Executed timer '%s' action %d under object %d", name, act, obj);
+    time_t now;
+    time(&now);
+    ESP_LOGI(TAG, "Executed timer '%s' action %d under object %d at time %d", name, act, obj, (unsigned int)now);
     return;
 }
 
@@ -49,28 +51,51 @@ esp_err_t InitCronSheduler()
     return res;
 }
 
-
-const char* check_expr(const char* expr) {
-    const char* err = NULL;
+const char* check_expr(const char *expr)
+{
+    const char *err = NULL;
     cron_expr test;
     memset(&test, 0, sizeof(test));
     cron_parse_expr(expr, &test, &err);
     return err;
 }
 
+void TimeObtainHandler(struct timeval *tm)
+{
+    ESP_LOGW(TAG, "Current time received with value %d", (unsigned int )tm->tv_sec);
+    ReloadCronSheduler();
+}
+
+
+void DebugTimer()
+{
+    time_t now;
+    time(&now);
+    ESP_LOGW(TAG, "Timestamp %d", (unsigned int)now);
+    for (int i = 0; i < CRON_TIMERS_NUMBER; i++)
+    {
+        if(GetAppConf()->Timers[i].del) continue;
+        ESP_LOGW(TAG, "Cron expression:%s", GetAppConf()->Timers[i].cron);
+        cron_expr cron_exp = {0};
+        cron_parse_expr(GetAppConf()->Timers[i].cron, &cron_exp, NULL);
+        ESP_LOGW(TAG, "Timer %d prev: %u", i, (uint32_t)cron_prev(&cron_exp, now));
+        ESP_LOGW(TAG, "Timer %d next: %u", i, (uint32_t)cron_next(&cron_exp, now));
+    }
+}
+
 esp_err_t ReloadCronSheduler()
 {
     //remove all jobs
-    ESP_LOGI(TAG,"Cron stop call result %d",cron_stop());
+    ESP_LOGI(TAG, "Cron stop call result %d", cron_stop());
     cron_job_clear_all();
     //check if we have jobs to run
     bool isExpressError = false;
     for (int i = 0; i < CRON_TIMERS_NUMBER; i++)
     {
-        const char* err = check_expr(GetAppConf()->Timers[i].cron);
-        if(err)
+        const char *err = check_expr(GetAppConf()->Timers[i].cron);
+        if (err)
         {
-            snprintf (cron_express_error, CRON_EXPRESS_MAX_LENGTH-1, "In timer %d expression error:%s", i+1, err);
+            snprintf(cron_express_error, CRON_EXPRESS_MAX_LENGTH - 1, "In timer %d expression error:%s", i + 1, err);
             ESP_LOGE(TAG, "%s", cron_express_error);
             isExpressError = true;
             continue;
@@ -81,12 +106,13 @@ esp_err_t ReloadCronSheduler()
                                           (void*) &GetAppConf()->Timers[i]);
         }
     }
-    if(!isExpressError) cron_express_error[0] = 0x00; //clear last cron expression parse
+    if (!isExpressError)
+        cron_express_error[0] = 0x00; //clear last cron expression parse
     int jobs_num = cron_job_node_count();
     ESP_LOGI(TAG, "In config presents %d jobs", jobs_num);
 
     if (jobs_num > 0)
-        ESP_LOGI(TAG,"Cron start call result %d",cron_start());
+        ESP_LOGI(TAG, "Cron start call result %d", cron_start());
     return ESP_OK;
 }
 

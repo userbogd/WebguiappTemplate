@@ -29,6 +29,7 @@ timarr = [
 	~crontmr(15)~
 	];
 function showcronerr(err) {if(err != "") alert(err);}	
+function dbgtmr(){PostData("tmrdbg=1", "application.html", false, false, false);}
 </script>
 </head>
 <body>
@@ -45,6 +46,7 @@ function showcronerr(err) {if(err != "") alert(err);}
               <div id="timer"></div>
 			  </div>
 			  <button type="button" class ='btn' id='bt2' onclick="addtm()">Add timer</button>
+			  <button type="button" class ='btn' id='bt2' onclick="dbgtmr()">Debug</button>
             </form>
          </div>
         </div>

@@ -29,5 +29,6 @@
 esp_err_t InitCronSheduler();
 esp_err_t ReloadCronSheduler();
 char* GetCronError();
+void DebugTimer();
 
 #endif /* MAIN_INCLUDE_CRONTIMERS_H_ */

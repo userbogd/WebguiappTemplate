@@ -78,8 +78,8 @@ void DebugTimer()
         ESP_LOGW(TAG, "Cron expression:%s", GetAppConf()->Timers[i].cron);
         cron_expr cron_exp = {0};
         cron_parse_expr(GetAppConf()->Timers[i].cron, &cron_exp, NULL);
-        ESP_LOGW(TAG, "Timer %d prev: %u", i, (uint32_t)cron_prev(&cron_exp, now));
-        ESP_LOGW(TAG, "Timer %d next: %u", i, (uint32_t)cron_next(&cron_exp, now));
+        ESP_LOGW(TAG, "Timer %d prev: %u", i, (unsigned int)cron_prev(&cron_exp, now));
+        ESP_LOGW(TAG, "Timer %d next: %u", i, (unsigned int)cron_next(&cron_exp, now));
     }
 }
 

@@ -1,4 +1,6 @@
-objects_dscr = ["object_1", "object_2", "object_3", "object_4", "object_5", "object_6", "object_7", "object_8", "object_9", "object_10", "object_11", "object_12", "object_13", "object_14", "object_15", "object_16"];
+objects_dscr = ["object_1", "object_2", "object_3", "object_4", "object_5", "object_6",
+ "object_7", "object_8", "object_9", "object_10", "object_11", "object_12", "object_13", 
+ "object_14", "object_15", "object_16"];
 actions_dscr = ["action_1", "action_2", "action_3", "action_4"];
 
 function PostData(data,page,conf,alrt,reld) {

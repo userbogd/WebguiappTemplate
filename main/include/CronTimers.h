@@ -31,4 +31,11 @@ esp_err_t ReloadCronSheduler();
 char* GetCronError();
 void DebugTimer();
 
+/**
+ * \brief Handle all actions under all objects
+ * \param obj  Index of the object
+ * \param act  Index of the action
+ */
+void custom_cron_execute(int obj, int act);
+
 #endif /* MAIN_INCLUDE_CRONTIMERS_H_ */

@@ -44,15 +44,20 @@
 #define TIMER_CRONSTRING_LENGTH (32)
 #define CRON_EXPRESS_MAX_LENGTH (128)
 
+/**
+ * Cron scheduler configuration structure
+ */
 typedef struct
 {
-  int num;
-  bool enab;
-  char name[TIMER_NAME_LENGTH];
-  int obj;
-  int act;
-  char cron[TIMER_CRONSTRING_LENGTH];
-  bool del;
+  int num;      /*!< Index of sheduler */
+  bool del;     /*!< Flag of non valid record, free for future overwrite */
+  bool enab;    /*!< Enable scheduler */
+  bool prev;    /*!< Enable to execute nearest in the past sheduled action */
+  char name[TIMER_NAME_LENGTH];  /*!< Human readable name of scheduler */
+  int obj;      /*!< Index of object scheduler affected on */
+  int act;      /*!< Index of action with the object*/
+  char cron[TIMER_CRONSTRING_LENGTH];   /*!< Cron expression */
+
 } cron_timer_t;
 
 typedef struct appconf

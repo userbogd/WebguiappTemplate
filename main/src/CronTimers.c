@@ -56,7 +56,7 @@ void custom_cron_job_callback(cron_job *job)
     //here call all timers jobs depends on object and action
     time_t now;
     time(&now);
-    ESP_LOGI(TAG, "Executed timer '%s' action %d under object %d at time %d", name, act, obj, (unsigned int )now);
+    ESP_LOGI(TAG, "Execute scheduler '%s' action %d under object %d at time %d", name, act, obj, (unsigned int )now);
     custom_cron_execute(obj, act);
     return;
 }
@@ -108,7 +108,7 @@ static void ExecuteLastAction()
 
         if(act != -1)
         {
-            ESP_LOGW(TAG, "Needed execute lost action %d with object %d", act, obj);
+            ESP_LOGW(TAG, "Execute last action %d with object %d", act, obj);
             custom_cron_execute(obj, act);
         }
 

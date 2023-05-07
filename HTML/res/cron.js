@@ -19,6 +19,7 @@ if(alrt) alert(alrt);
 function savetm(n) {
 var payload = "tmrec={\"num\":"+n+",";
 payload += "\"enab\":"+((document.getElementById("encb"+n).checked)?1:0)+",";
+payload += "\"prev\":"+((document.getElementById("prev"+n).checked)?1:0)+",";
 payload += "\"name\":\""+document.getElementById("tname"+n).value+"\",";
 payload += "\"obj\":"+document.getElementById("object"+n).value+",";
 payload += "\"act\":"+document.getElementById("action"+n).value+",";
@@ -217,7 +218,7 @@ function drawtimers(tarr) {
 		content += ("<div class=\"nowrap\">");
 		content +=("<label for=\"encb"+i+"\">Last scheduled:  </label>");
 		enb = (tarr[i - 1].prev == 1) ? "checked" : "";
-		content += ("<label  class=\"switch\"><input type=\"checkbox\" id=\"encb"+i+"\" value=\"1\" "+enb+"><span class=\"slider round\"></span></label></div>");
+		content += ("<label  class=\"switch\"><input type=\"checkbox\" id=\"prev"+i+"\" value=\"1\" "+enb+"><span class=\"slider round\"></span></label></div>");
 
 
 		content += ("<div class=\"nowrap\">");

@@ -125,6 +125,7 @@ void TimeObtainHandler(struct timeval *tm)
 
 void DebugTimer()
 {
+    /*
     time_t now;
     time(&now);
     ESP_LOGW(TAG, "Timestamp %d", (unsigned int )now);
@@ -138,6 +139,8 @@ void DebugTimer()
         ESP_LOGW(TAG, "Timer %d prev: %u", i, (unsigned int )cron_prev(&cron_exp, now));
         ESP_LOGW(TAG, "Timer %d next: %u", i, (unsigned int )cron_next(&cron_exp, now));
     }
+    */
+    ExecuteLastAction();
 }
 
 esp_err_t ReloadCronSheduler()

@@ -66,12 +66,14 @@ static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData)
         if (result.dataType == JREAD_OBJECT)
         {
             T.num = jRead_int(tmp, "{'num'", NULL);
+            T.del = jRead_int(tmp, "{'del'", NULL);
             T.enab = jRead_int(tmp, "{'enab'", NULL);
+            T.prev = jRead_int(tmp, "{'prev'", NULL);
             jRead_string(tmp, "{'name'", T.name, sizeof(T.name), NULL);
             T.obj = jRead_int(tmp, "{'obj'", NULL);
             T.act = jRead_int(tmp, "{'act'", NULL);
             jRead_string(tmp, "{'cron'", T.cron, sizeof(T.cron), NULL);
-            T.del = jRead_int(tmp, "{'del'", NULL);
+
             memcpy(&GetAppConf()->Timers[T.num-1], &T, sizeof(cron_timer_t));
             WriteNVSAppConfig(GetAppConf());
             ReloadCronSheduler();

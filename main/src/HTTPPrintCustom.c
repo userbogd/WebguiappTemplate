@@ -35,12 +35,13 @@ static void HTTPPrint_crontmr(char *VarData, void *arg)
     memcpy(&T, &GetAppConf()->Timers[idx], sizeof(cron_timer_t));
     jwOpen(data, sizeof(data), JW_OBJECT, JW_COMPACT);
     jwObj_int("num", (unsigned int) T.num);
+    jwObj_int("del", (T.del)?1:0);
     jwObj_int("enab", (T.enab)?1:0);
+    jwObj_int("prev", (T.prev)?1:0);
     jwObj_string("name", T.name);
     jwObj_int("obj", (unsigned int) T.obj);
     jwObj_int("act", (unsigned int) T.act);
     jwObj_string("cron", T.cron);
-    jwObj_int("del", (T.del)?1:0);
     jwEnd();
     jwClose();
     snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", data);

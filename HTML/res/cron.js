@@ -215,6 +215,12 @@ function drawtimers(tarr) {
 		content += ("<label  class=\"switch\"><input type=\"checkbox\" id=\"encb"+i+"\" value=\"1\" "+enb+"><span class=\"slider round\"></span></label></div>");
 
 		content += ("<div class=\"nowrap\">");
+		content +=("<label for=\"encb"+i+"\">Last scheduled:  </label>");
+		enb = (tarr[i - 1].prev == 1) ? "checked" : "";
+		content += ("<label  class=\"switch\"><input type=\"checkbox\" id=\"encb"+i+"\" value=\"1\" "+enb+"><span class=\"slider round\"></span></label></div>");
+
+
+		content += ("<div class=\"nowrap\">");
 		content +=("<label for=\"tname"+i+"\">Timer name:</label>");
 		content += ("<input  type=\"text\" id=\"tname" + i + "\" value=\"" + tarr[i - 1].name + "\"></input></div>");
 

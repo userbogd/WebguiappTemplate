@@ -92,6 +92,7 @@ static void ExecuteLastAction()
         {
             if (GetAppConf()->Timers[shdl].enab &&
                     !GetAppConf()->Timers[shdl].del &&
+                    GetAppConf()->Timers[shdl].prev &&
                     GetAppConf()->Timers[shdl].obj == obj)
             {
                 cron_expr cron_exp = { 0 };

@@ -22,6 +22,7 @@
 #include "CronTimers.h"
 #include "AppConfiguration.h"
 #include "esp_log.h"
+#include "webguiapp.h"
 
 #define TAG "CRON_TIMER"
 
@@ -57,6 +58,7 @@ void custom_cron_job_callback(cron_job *job)
     time_t now;
     time(&now);
     ESP_LOGI(TAG, "Execute scheduler '%s' action %d under object %d at time %d", name, act, obj, (unsigned int )now);
+    LogFile("cron.log", "executed sheduler");
     custom_cron_execute(obj, act);
     return;
 }
@@ -121,6 +123,7 @@ void TimeObtainHandler(struct timeval *tm)
     ESP_LOGW(TAG, "Current time received with value %d", (unsigned int )tm->tv_sec);
     ReloadCronSheduler();
     ExecuteLastAction();
+    LogFile("cron.log", "Cron service started");
 }
 
 void DebugTimer()

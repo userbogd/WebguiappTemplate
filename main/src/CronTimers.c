@@ -58,7 +58,7 @@ void custom_cron_job_callback(cron_job *job)
     time_t now;
     time(&now);
     ESP_LOGI(TAG, "Execute scheduler '%s' action %d under object %d at time %d", name, act, obj, (unsigned int )now);
-    LogFile("cron.log", "executed sheduler");
+    LogFile("cron.log", "Executed sheduler with action %u under object %u", act, obj);
     custom_cron_execute(obj, act);
     return;
 }
@@ -111,6 +111,7 @@ static void ExecuteLastAction()
         if(act != -1)
         {
             ESP_LOGW(TAG, "Execute last action %d with object %d", act, obj);
+            LogFile("cron.log", "Execute last action %d under object %d", act, obj);
             custom_cron_execute(obj, act);
         }
 

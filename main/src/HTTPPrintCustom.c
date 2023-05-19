@@ -30,7 +30,7 @@ static void HTTPPrint_crontmr(char *VarData, void *arg)
    int idx = *((int*)(arg));
    if(idx < CRON_TIMERS_NUMBER)
    {
-    char data[256];
+    char data[MAX_DYNVAR_LENGTH];
     cron_timer_t T;
     memcpy(&T, &GetAppConf()->Timers[idx], sizeof(cron_timer_t));
     jwOpen(data, sizeof(data), JW_OBJECT, JW_COMPACT);
@@ -52,6 +52,26 @@ static void HTTPPrint_cronerr(char *VarData, void *arg)
 {
     snprintf(VarData, MAX_DYNVAR_LENGTH, GetCronError());
 }
+static void HTTPPrint_cronobjs(char *VarData, void *arg)
+{
+    char data[MAX_DYNVAR_LENGTH];
+    int idx = *((int*)(arg));
+      if(idx < CRON_OBJECTS_NUMBER)
+      {
+          jwOpen(data, sizeof(data), JW_OBJECT, JW_COMPACT);
+          jwObj_string("name", GetAppConf()->CronObjects[idx].objname);
+          jwObj_raw("acts", GetCronActAvail(idx));
+          jwEnd();
+          jwClose();
+          snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", data);
+      }
+}
+static void HTTPPrint_cronacts(char *VarData, void *arg)
+{
+    int idx = *((int*) (arg));
+    snprintf(VarData, MAX_DYNVAR_LENGTH, "\"%s\"", GetCronActionName(idx));
+}
+
 
 //Default string if not found handler
 static void HTTPPrint_DEF(char *VarData, void *arg)
@@ -68,6 +88,9 @@ dyn_var_handler_t HANDLERS_ARRAY_CUST[] = {
 
         { "crontmr", sizeof("crontmr") - 1, &HTTPPrint_crontmr },
         { "cronerr", sizeof("cronerr") - 1, &HTTPPrint_cronerr },
+        { "cronobjs", sizeof("cronobjs") - 1, &HTTPPrint_cronobjs },
+        { "cronacts", sizeof("cronacts") - 1, &HTTPPrint_cronacts },
+
         /*ERROR report*/
         { "status_fail", sizeof("status_fail") - 1, &HTTPPrint_status_fail },
 

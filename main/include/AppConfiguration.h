@@ -27,6 +27,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "esp_netif.h"
+#include "CronTimers.h"
 
 /// Application-dependent structure used to contain address information
 
@@ -38,34 +39,11 @@
  * saved one. If find difference (due to eeprom memory distortions),\n
  * the default values will be loaded.
  */
-
-#define CRON_TIMERS_NUMBER (16)
-#define TIMER_NAME_LENGTH (16)
-#define TIMER_CRONSTRING_LENGTH (32)
-#define CRON_EXPRESS_MAX_LENGTH (128)
-
-/**
- * Cron scheduler configuration structure
- */
-typedef struct
-{
-  int num;      /*!< Index of sheduler */
-  bool del;     /*!< Flag of non valid record, free for future overwrite */
-  bool enab;    /*!< Enable scheduler */
-  bool prev;    /*!< Enable to execute nearest in the past sheduled action */
-  char name[TIMER_NAME_LENGTH];  /*!< Human readable name of scheduler */
-  int obj;      /*!< Index of object scheduler affected on */
-  int act;      /*!< Index of action with the object*/
-  char cron[TIMER_CRONSTRING_LENGTH];   /*!< Cron expression */
-
-} cron_timer_t;
-
 typedef struct appconf
 {
 int test;
-
 cron_timer_t Timers[CRON_TIMERS_NUMBER];
-
+cron_obj_t CronObjects[CRON_OBJECTS_NUMBER];
 } APP_CONFIG;
 
 void UserInitIO(void);

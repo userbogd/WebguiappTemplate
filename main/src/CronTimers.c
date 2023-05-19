@@ -26,8 +26,57 @@
 
 #define TAG "CRON_TIMER"
 
-const char *cron_objects[] = { "RELAY1", "RELAY2", "RELAY3", "RELAY4", "RELAY5", "SYSTEM" };
-const char *cron_actions[] = { "ON", "OFF", "REBOOT" };
+
+const char *cron_actions[] = { "ON", "OFF", "TOGGLE", "REBOOT" };
+const char *cron_objects[] = {
+        "RELAY1",
+        "RELAY2",
+        "RELAY3",
+        "RELAY4",
+        "RELAY5",
+        "RELAY6",
+        "RELAY7",
+        "RELAY8",
+        "SYSTEM" };
+const char *cron_act_avail[] = {
+        "[0,1,2]",
+        "[0,1,2]",
+        "[0,1,2]",
+        "[0,1,2]",
+        "[0,1,2]",
+        "[0,1,2]",
+        "[0,1,2]",
+        "[0,1,2]",
+        "[3]"  };
+
+char* GetCronObjectNameDef(int idx)
+{
+    if(idx < 0 || idx >= sizeof(cron_objects)/sizeof(char*))
+        return "";
+    return (char*)cron_objects[idx];
+}
+
+char* GetCronObjectName(int idx)
+{
+    if(idx < 0 || idx >= sizeof(cron_objects)/sizeof(char*))
+        return "";
+    return GetAppConf()->CronObjects[idx].objname;
+}
+
+char* GetCronActionName(int idx)
+{
+    if(idx < 0 || idx >= sizeof(cron_actions)/sizeof(char*))
+        return "";
+    return (char*)cron_actions[idx];
+}
+
+char* GetCronActAvail(int idx)
+{
+    if(idx < 0 || idx >= sizeof(cron_act_avail)/sizeof(char*))
+        return "[]";
+    return (char*)cron_act_avail[idx];
+}
+
 
 static cron_job *JobsList[CRON_TIMERS_NUMBER];
 static char cron_express_error[CRON_EXPRESS_MAX_LENGTH];
@@ -114,9 +163,7 @@ static void ExecuteLastAction()
             LogFile("cron.log", "Execute last action %d under object %d", act, obj);
             custom_cron_execute(obj, act);
         }
-
     }
-
 }
 
 void TimeObtainHandler(struct timeval *tm)
@@ -129,21 +176,6 @@ void TimeObtainHandler(struct timeval *tm)
 
 void DebugTimer()
 {
-    /*
-    time_t now;
-    time(&now);
-    ESP_LOGW(TAG, "Timestamp %d", (unsigned int )now);
-    for (int i = 0; i < CRON_TIMERS_NUMBER; i++)
-    {
-        if (GetAppConf()->Timers[i].del)
-            continue;
-        ESP_LOGW(TAG, "Cron expression:%s", GetAppConf()->Timers[i].cron);
-        cron_expr cron_exp = { 0 };
-        cron_parse_expr(GetAppConf()->Timers[i].cron, &cron_exp, NULL);
-        ESP_LOGW(TAG, "Timer %d prev: %u", i, (unsigned int )cron_prev(&cron_exp, now));
-        ESP_LOGW(TAG, "Timer %d next: %u", i, (unsigned int )cron_next(&cron_exp, now));
-    }
-    */
     ExecuteLastAction();
 }
 

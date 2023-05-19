@@ -125,6 +125,12 @@ void ResetAppConfig(APP_CONFIG *Conf)
         strcpy(GetAppConf()->Timers[i].cron, "* * * * * *");
 
     }
+    for (int i = 0; i < CRON_OBJECTS_NUMBER; i++ )
+    {
+        strcpy(GetAppConf()->CronObjects[i].objname, GetCronObjectNameDef(i));
+        GetAppConf()->CronObjects[i].idx = i;
+    }
+
 }
 
 esp_err_t ReadNVSAppConfig(APP_CONFIG *AppConf)

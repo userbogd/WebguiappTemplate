@@ -1,4 +1,4 @@
- /* Copyright 2023 Bogdan Pilyugin
+/* Copyright 2023 Bogdan Pilyugin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,45 @@
 #include "jobs.h"
 #include "ccronexpr.h"
 
+#define CRON_TIMERS_NUMBER (16)
+#define TIMER_NAME_LENGTH (16)
+#define TIMER_CRONSTRING_LENGTH (32)
+#define CRON_EXPRESS_MAX_LENGTH (128)
+
+#define CRON_OBJECTS_NUMBER (16)
+#define CRON_OBJECT_NAME_LENGTH (16)
+
+typedef struct
+{
+    int idx;
+    char objname[CRON_OBJECT_NAME_LENGTH];
+} cron_obj_t;
+
+/**
+ * Cron scheduler configuration structure
+ */
+typedef struct
+{
+    int num; /*!< Index of sheduler */
+    bool del; /*!< Flag of non valid record, free for future overwrite */
+    bool enab; /*!< Enable scheduler */
+    bool prev; /*!< Enable to execute nearest in the past sheduled action */
+    char name[TIMER_NAME_LENGTH]; /*!< Human readable name of scheduler */
+    int obj; /*!< Index of object scheduler affected on */
+    int act; /*!< Index of action with the object*/
+    char cron[TIMER_CRONSTRING_LENGTH]; /*!< Cron expression */
+
+} cron_timer_t;
+
 esp_err_t InitCronSheduler();
 esp_err_t ReloadCronSheduler();
 char* GetCronError();
 void DebugTimer();
+
+char* GetCronObjectNameDef(int idx);
+char* GetCronObjectName(int idx);
+char* GetCronActionName(int idx);
+char* GetCronActAvail(int idx);
 
 /**
  * \brief Handle all actions under all objects

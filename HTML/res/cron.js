@@ -2,6 +2,13 @@ objects_dscr = ["object_1", "object_2", "object_3", "object_4", "object_5", "obj
  "object_7", "object_8", "object_9", "object_10", "object_11", "object_12", "object_13", 
  "object_14", "object_15", "object_16"];
 actions_dscr = ["action_1", "action_2", "action_3", "action_4"];
+var cron_objs;
+var cron_acts;
+function loadcrondata(arr1, arr2)
+{
+cron_objs = arr1;
+cron_acts = arr2;
+}
 
 function PostData(data,page,conf,alrt,reld) {
 if(conf){if (!confirm(conf)) return;}
@@ -200,6 +207,13 @@ function setcron(n) {
 	target.innerHTML = ""; mainbut.innerHTML = "Open editor"; mainbut.onclick = function(){setcron(n)};}
 	target.innerHTML = content;
 }
+function actupdate(num){
+    		alert("Changed object on timer "+num);
+    //var tim = tarr[num-1];
+    var actselect = document.getElementById("action" + num);
+    actselect.innerHTML = "";			
+	}
+
 function drawtimers(tarr) {
 	var num = tarr.length;
 	var target = document.getElementById("timer");
@@ -227,20 +241,26 @@ function drawtimers(tarr) {
 
 		content += ("<div class=\"nowrap\">");
 		content +=("<div><label for=\"object"+i+"\">Object:</label>");
-		content += ("<select class=\"\" id=\"object"+i+"\">");
-		for (k = 0; k < objects_dscr.length; k++) {
+		content += ("<select class=\"\" id=\"object"+i+"\" onchange=\"actupdate("+i+")\">");
+		for (k = 0; k < cron_objs.length; k++) {
 			var selected = (tarr[i - 1].obj == k) ? "selected" : "";
-			content += ("<option value=\"" + (k) + "\" " + selected + ">" + objects_dscr[k] + "</option>");}
+			var nam = cron_objs[k].name;
+			if(nam.length > 0)
+				content += ("<option value=\"" + (k) + "\" " + selected + ">" + nam + "</option>");}
 		content += ("</select></div></div>");
 
 		content += ("<div class=\"nowrap\">");
 		content +=("<div><label for=\"action"+i+"\">Action:</label>");
 		content += ("<select class=\"\" id=\"action"+i+"\">");
-		for (k = 0; k < actions_dscr.length; k++) {
+		for (k = 0; k < cron_acts.length; k++) {
 			var selected = (tarr[i - 1].act == k) ? "selected" : "";
-			content += ("<option value=\"" + (k) + "\" " + selected + ">" + actions_dscr[k] + "</option>");}
+			if(cron_objs[k].acts.includes(k))
+				content += ("<option value=\"" + (k) + "\" " + selected + ">" + actions_dscr[k] + "</option>");}
 		content += ("</select></div></div>");
 
+		
+		
+		
 		content += ("<div class=\"nowrap\">");
 		content +=("<label for=\"cron"+i+"\">Cron:</label>");
 		content += ("<input  type=\"text\" id=\"cron" + i + "\" value=\"" + tarr[i - 1].cron + "\"></input></div>");

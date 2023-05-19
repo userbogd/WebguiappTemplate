@@ -1,13 +1,11 @@
-objects_dscr = ["object_1", "object_2", "object_3", "object_4", "object_5", "object_6",
- "object_7", "object_8", "object_9", "object_10", "object_11", "object_12", "object_13", 
- "object_14", "object_15", "object_16"];
-actions_dscr = ["action_1", "action_2", "action_3", "action_4"];
+var tarr;
 var cron_objs;
 var cron_acts;
-function loadcrondata(arr1, arr2)
+function loadcrondata(arr1, arr2, arr3)
 {
-cron_objs = arr1;
-cron_acts = arr2;
+tarr = arr1;
+cron_objs = arr2;
+cron_acts = arr3;
 }
 
 function PostData(data,page,conf,alrt,reld) {
@@ -207,14 +205,17 @@ function setcron(n) {
 	target.innerHTML = ""; mainbut.innerHTML = "Open editor"; mainbut.onclick = function(){setcron(n)};}
 	target.innerHTML = content;
 }
-function actupdate(num){
-    		alert("Changed object on timer "+num);
-    //var tim = tarr[num-1];
-    var actselect = document.getElementById("action" + num);
-    actselect.innerHTML = "";			
-	}
-
-function drawtimers(tarr) {
+function actupdate(i){
+		var content = "";
+		newobj = document.getElementById("object" + i).value;
+		for (k = 0; k < cron_acts.length; k++) {
+			var selected = (tarr[i - 1].act == k) ? "selected" : "";
+			if(cron_objs[newobj].acts.includes(k))
+				content += ("<option value=\"" + (k) + "\" " + selected + ">" + cron_acts[k] + "</option>");}
+		document.getElementById("action" + i).innerHTML = content;
+		}
+		
+function drawtimers() {
 	var num = tarr.length;
 	var target = document.getElementById("timer");
 	var content = "";
@@ -254,8 +255,8 @@ function drawtimers(tarr) {
 		content += ("<select class=\"\" id=\"action"+i+"\">");
 		for (k = 0; k < cron_acts.length; k++) {
 			var selected = (tarr[i - 1].act == k) ? "selected" : "";
-			if(cron_objs[k].acts.includes(k))
-				content += ("<option value=\"" + (k) + "\" " + selected + ">" + actions_dscr[k] + "</option>");}
+			if(cron_objs[tarr[i - 1].obj].acts.includes(k))
+				content += ("<option value=\"" + (k) + "\" " + selected + ">" + cron_acts[k] + "</option>");}
 		content += ("</select></div></div>");
 
 		

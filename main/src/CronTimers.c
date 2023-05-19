@@ -27,7 +27,7 @@
 #define TAG "CRON_TIMER"
 
 
-const char *cron_actions[] = { "ON", "OFF", "TOGGLE", "REBOOT" };
+const char *cron_actions[] = { "ON", "REBOOT", "TOGGLE", "OFF","HALT" };
 const char *cron_objects[] = {
         "RELAY1",
         "RELAY2",
@@ -39,15 +39,15 @@ const char *cron_objects[] = {
         "RELAY8",
         "SYSTEM" };
 const char *cron_act_avail[] = {
-        "[0,1,2]",
-        "[0,1,2]",
-        "[0,1,2]",
-        "[0,1,2]",
-        "[0,1,2]",
-        "[0,1,2]",
-        "[0,1,2]",
-        "[0,1,2]",
-        "[3]"  };
+        "[0,2,3]",
+        "[0,2,3]",
+        "[0,2,3]",
+        "[0,2,3]",
+        "[0,2,3]",
+        "[0,2,3]",
+        "[0,2,3]",
+        "[0,2,3]",
+        "[1,4]"  };
 
 char* GetCronObjectNameDef(int idx)
 {

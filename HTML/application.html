@@ -37,8 +37,8 @@ function dbgtmr(){PostData("tmrdbg=1", "application.html", false, false, false);
     </section>
   </main>
   <script>
-  loadcrondata(cron_objs, cron_acts);
-  drawtimers(timarr);	  
+  loadcrondata(timarr, cron_objs, cron_acts);
+  drawtimers();	  
   showMenu('header-toggle','navbar');
   showcronerr("~cronerr~");
 </script>

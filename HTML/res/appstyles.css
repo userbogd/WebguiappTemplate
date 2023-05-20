@@ -3,8 +3,6 @@
   --bgr-color: #1D2327;
   --panel-bgr-color: #2c3338;
   --menu-bgr-color: #3c434a;
- /* --header-bgr-color: #646970;
-  --header-bgr-color: #dba617;*/
   --accent-color: #dba617;
   --text-color:#F0F0F1;
   
@@ -23,7 +21,7 @@
 
 input, select, .btn, .lab, textarea {
 	font:.85rem consolas,monospace;
-	padding-left:3px;
+	padding: 5px;
 	background-color:var(--panel-bgr-color);
 	color:var(--text-color);
 	border:1px solid rgba(255, 255, 255, 0.4);
@@ -44,7 +42,7 @@ select {
     -moz-appearance: none;
     appearance: none;
 	background-color: var(--panel-bgr-color);
-	width: 150px;
+	min-width: 100px;
 }
 
 .btn{min-width:100px; color:var(--text-color);}

@@ -27,7 +27,7 @@
 #define TAG "CRON_TIMER"
 
 
-const char *cron_actions[] = { "ON", "REBOOT", "TOGGLE", "OFF","HALT" };
+const char *cron_actions[] = { "ON", "REBOOT", "TOGGLE", "OFF","VERYLONG_OPERATION" };
 const char *cron_objects[] = {
         "RELAY1",
         "RELAY2",

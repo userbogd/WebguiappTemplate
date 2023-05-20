@@ -19,6 +19,62 @@
   --font-medium: 500;
   --font-semi-bold: 600;
 }
+.rl{text-align:right;}
+
+input, select, .btn, .lab, textarea {
+	font:.85rem consolas,monospace;
+	padding-left:3px;
+	background-color:var(--panel-bgr-color);
+	color:var(--text-color);
+	border:1px solid rgba(255, 255, 255, 0.4);
+	border-radius: 5px;
+	height:2.0rem;
+	margin: 15px 3px;
+	vertical-align: middle;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	background-color: var(--panel-bgr-color);
+	width: 150px;
+}
+
+.btn{min-width:100px; color:var(--text-color);}
+.btn:active{background-color:  var(--accent-color); border:none;}
+.btn:hover {border:1px solid rgba(255, 255, 255, 0.6);}
+
+.lab {border: none;}
+
+textarea {
+	height: 4.0rem;
+	margin:auto;
+	vertical-align: top;
+	min-width: 300px; 
+}
+
+.stg td{width:auto;padding:1px;margin:0}
+.stg input {height:25px}
+input[type="radio"] { margin-top: -1px; vertical-align: middle;}
+.stg table{margin: 5px auto}
+.dot {height: 30px;
+	  width: 30px;
+	  background-color: #d0d0d0;
+	  border-radius: 40%;
+	  display: inline-block;
+	  margin: 7px 20px}
+
+.cntr {
+   margin:auto;
+   font: .85rem consolas, monospace;}
+
 .pwrbox{width:80%; height:auto; padding:5px; margin:10px auto; box-sizing:border-box;}
 .pwrbox td {font: .9rem consolas, monospace; width:30%; padding:0;margin:0;}
 

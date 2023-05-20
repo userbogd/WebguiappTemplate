@@ -26,17 +26,17 @@
 				<div class="mlhdr">SNTP</div>				  
 									
 				<table class='cntr'>
-				<script>PrintSwitch('Включить SNTP клиент','sntpen','~sntpen~',null);
-				PrintTextInput('Адрес1 SNTP сервера:','tsr','~tmsrv~',3,31);
-				PrintTextInput('Адрес2 SNTP сервера:','tsr2','~tmsrv2~',3,31);
-				PrintTextInput('Адрес3 SNTP сервера:','tsr3','~tmsrv3~',3,31);
+				<script>PrintSwitch('SNTP client enable','sntpen','~sntpen~',null);
+				PrintTextInput('SNTP server 1:','tsr','~tmsrv~',3,31);
+				PrintTextInput('SNTP server 2:','tsr2','~tmsrv2~',3,31);
+				PrintTextInput('SNTP server 3:','tsr3','~tmsrv3~',3,31);
 				</script>
 				</table>
 				<table class='cntr'> 
 				<tr><td width=90% align='center'>
-				 Установить текущее время вручную:<br/>
+				 Set time manually:<br/>
 				<input type='datetime-local' id="curdt">
-				<button id='sendt' type='button' class ='btn sbtn'>Передать</button><br/><br/><br/>	    	
+				<button id='sendt' type='button' class ='btn sbtn'>Send time</button><br/><br/><br/>	    	
 				</td></tr>
 				</table>
 				<script>PrintSaveFail('~status_fail~');

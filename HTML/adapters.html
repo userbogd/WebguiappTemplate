@@ -21,11 +21,11 @@
               <div class="mlhdr">ETHERNET</div>
               <table class='cntr'>
                 <tr>
-                  <script>PrintSwitch('Включить ETHERNET','ethen','~ethen~','configIPBoxes()');
-                   PrintSwitch('Включить DHCP','dhcp','~ecbdh~','configIPBoxes()');
-    				PrintIPInput('IP Станции:','ipa','~eip~');
-    				PrintIPInput('Маска подсети:','mas','~emsk~');
-    				PrintIPInput(' Адрес шлюза:','gte','~egate~');
+                  <script>PrintSwitch('ETHERNET enabled','ethen','~ethen~','configIPBoxes()');
+                   PrintSwitch('DHCP enabled','dhcp','~ecbdh~','configIPBoxes()');
+    				PrintIPInput('IP address:','ipa','~eip~');
+    				PrintIPInput('Subnet mask:','mas','~emsk~');
+    				PrintIPInput('Gateway address:','gte','~egate~');
     				PrintIPInput('DNS1:','dns1','~edns~');
     				PrintIPInput('DNS2:','dns2','~bkedns~');
     				PrintIPInput('DNS3:','dns3','~fledns~');
@@ -49,18 +49,18 @@
               <table class='cntr'>
                 <table>
                   <script>
-                    PrintSwitch('Включить LoRaWAN','lren','~lren~',null);
-    				PrintHexInput('ID устройства:','lrdvid','~lrdvid~',16,16);
-    				PrintHexInput('ID приложения:','lrapid','~lrapid~',16,16);
+                    PrintSwitch('LoRaWAN enabled','lren','~lren~',null);
+    				PrintHexInput('Device ID:','lrdvid','~lrdvid~',16,16);
+    				PrintHexInput('Application ID:','lrapid','~lrapid~',16,16);
 				  </script>
                 </table>
                 <table>
                   <tr>
-                    <td align="center">Ключ приложения:</td>
+                    <td align="center">Application key:</td>
                   </tr>
                   <tr>
                     <td align="center"><input type="text" size="40" name='lrapkey' value="~lrapkey~"
-                      title="64 символа A-H,a-h,0-9" pattern="^[0-9a-hA-H]{32}$" /></td>
+                      title="64 symbols A-H,a-h,0-9" pattern="^[0-9a-hA-H]{32}$" /></td>
                   </tr>
                 </table>
                 <script>PrintSaveFail('~status_fail~');
@@ -75,7 +75,7 @@
                       <div class="mlhdr">WiFi</div>
                       <table class='cntr'>
                         <script>
-                        PrintSwitch('Включить WiFi','wifien','~wfen~',null);
+                        PrintSwitch('WiFi enable','wifien','~wfen~',null);
                         </script>
                         <tr>
                           <td class='rl'><button type="button" class='btn' name='upd' onclick="StartScan()">Scan
@@ -85,24 +85,24 @@
                       </table>
                       <p id="nets"></p>
                       <table class='cntr'>
-                        <tr><td class='rl'>Режим WiFi:</td>
+                        <tr><td class='rl'>WiFi mode:</td>
                           <td><select name="wfmode">
-                              <option value="sta"~wfmode(1)~>Клиент (STA)</option>
-                              <option value="ap"~wfmode(2)~>Точка доступа (AP)</option>
-                              <option value="apsta"~wfmode(3)~>Точка+Клиент (AP+STA)</option>
+                              <option value="sta"~wfmode(1)~>Station (STA)</option>
+                              <option value="ap"~wfmode(2)~>Access point (AP)</option>
+                              <option value="apsta"~wfmode(3)~>Mixed(AP+STA)</option>
                           </select></td>
                         </tr>
                         <script>
                         PrintInt('Max power, dBm','wifipwr','~wifipwr~',2,21);
-                        PrintTextInput('Имя WiFi сети(AP):','wfiap','~ssidap~',3,31);
-						PrintTextInput('Ключ WiFi сети(AP):','wfpap','~wkeyap~',8,31);
-						PrintIPInput('IP адрес(AP):','ipaap','~ipap~');
-						PrintTextInput('Имя WiFi сети(CLN):','wfi','~ssid~',3,31);
-						PrintTextInput('Ключ WiFi сети(CLN):','wfp','~wkey~',8,31);
-						PrintSwitch('Включить DHCP','dhcp','~cbdh~','configIPBoxes()');
-						PrintIPInput('IP адрес(CLN):','ipa','~ip~');
-						PrintIPInput('Маска подсети(CLN):','mas','~msk~');
-						PrintIPInput('Адрес шлюза(CLN):','gte','~gate~');
+                        PrintTextInput('WiFi network name(AP):','wfiap','~ssidap~',3,31);
+						PrintTextInput('WiFi network key(AP):','wfpap','~wkeyap~',8,31);
+						PrintIPInput('IP address(AP):','ipaap','~ipap~');
+						PrintTextInput('WiFi network name(CLN):','wfi','~ssid~',3,31);
+						PrintTextInput('WiFi network key(CLN):','wfp','~wkey~',8,31);
+						PrintSwitch('DHCP enabled','dhcp','~cbdh~','configIPBoxes()');
+						PrintIPInput('IP address(CLN):','ipa','~ip~');
+						PrintIPInput('Subnet mask(CLN):','mas','~msk~');
+						PrintIPInput('Gateway address(CLN):','gte','~gate~');
 						PrintIPInput('DNS1:','dns','~dns~');
 						PrintIPInput('DNS2:','dns2','~dns2~');
 						PrintIPInput('DNS3:','dns3','~dns3~');
@@ -127,14 +127,14 @@
                     <form name="gprs" method="post">
                       <table class='cntr'>
                         <script>
-						PrintSwitch('Включить GSM','gsmen','~gsmen~',null);
-						PrintLabel('Модуль:','~gsmmod~');
-						PrintLabel('Оператор:','~gsmopr~');
+						PrintSwitch('GSM enable','gsmen','~gsmen~',null);
+						PrintLabel('Module type:','~gsmmod~');
+						PrintLabel('Provider name:','~gsmopr~');
 						PrintLabel('IMEI:','~gimei~');
 						PrintLabel('IMSI:','~gimsi~');
-						PrintLabel('IP адрес:','~gsmip~');
-						PrintLabel('Маска подсети:','~gsmmsk~');
-						PrintLabel('Адрес шлюза:','~gsmgate~');
+						PrintLabel('IP address:','~gsmip~');
+						PrintLabel('Subnet mask:','~gsmmsk~');
+						PrintLabel('Gateway address:','~gsmgate~');
 						PrintLabel('DNS1:','~gsmdns~');
 						PrintLabel('DNS2:','~bkgsmdns~');
 						PrintLabel('DNS3:','~flgsmdns~');

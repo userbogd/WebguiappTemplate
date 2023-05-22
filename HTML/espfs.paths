@@ -21,6 +21,7 @@ res/appstyles.css
 res/ca_cert.pem
 res/cron.js
 res/crondata.js
+res/dynamic.css
 res/iconsfont.css
 res/iconsfont.woff2
 res/logo.png

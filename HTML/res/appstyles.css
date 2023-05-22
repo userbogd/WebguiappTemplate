@@ -1,9 +1,9 @@
-:root {
+:root {  
   /*========== Colors ==========*/
   --bgr-color: #1D2327;
   --panel-bgr-color: #2c3338;
   --menu-bgr-color: #3c434a;
-  --accent-color: #dba617;
+  --accent-color: ~actclr~;
   --text-color:#F0F0F1;
   
   /*========== Font and typography ==========*/

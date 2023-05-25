@@ -4,7 +4,9 @@
   --panel-bgr-color: #2c3338;
   --menu-bgr-color: #3c434a;
   --accent-color: ~actclr~;
+  --neutral-grey: #606060;
   --text-color:#F0F0F1;
+  --border-color: #ffffff66;
   
   /*========== Font and typography ==========*/
   --body-font: 'Consolas','Roboto', monospace;
@@ -24,7 +26,7 @@ input, select, .btn, .lab, textarea {
 	padding: 5px;
 	background-color:var(--panel-bgr-color);
 	color:var(--text-color);
-	border:1px solid rgba(255, 255, 255, 0.4);
+	border:1px solid var(--border-color);
 	border-radius: 5px;
 	height:2.0rem;
 	margin: 15px 3px;
@@ -47,7 +49,7 @@ select {
 
 .btn{min-width:100px; color:var(--text-color);}
 .btn:active{background-color:  var(--accent-color); border:none;}
-.btn:hover {border:1px solid rgba(255, 255, 255, 0.6);}
+.btn:hover {border:1px solid var(--border-color);}
 
 .lab {border: none;}
 
@@ -86,7 +88,7 @@ div label input {margin-right: 100px;}
   margin: 4px;
   background-color: var(--first-color);
   border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--border-color);
   overflow: hidden;
   float: left;
 }
@@ -99,7 +101,7 @@ div label input {margin-right: 100px;}
     color: var(--text-color);
     text-shadow: 0 0  6px rgba(0, 0, 0, 0.8);
 }
-input:checked + span{background-color: var(--navy-color);}
+input:checked + span{background-color: var(--accent-color);}
 
 .channel{	width:100%;
 			display: flex;
@@ -118,7 +120,7 @@ input:checked + span{background-color: var(--navy-color);}
   width: 80%;
   height: 5px;
   border: none; 
-  background: var(--navy-color);
+  background: var(--accent-color);
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -169,7 +171,7 @@ input:checked + span{background-color: var(--navy-color);}
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #666;
+  background-color: var(--neutral-grey);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -215,7 +217,7 @@ input:checked + .slider:before {
 width:100%;
 margin: 10px 0 0 0;
 padding: 10px;
-border: 1px solid rgba(255, 255, 255, 0.4); 
+border: 1px solid var(--border-color); 
 border-radius: 10px;
 }
 

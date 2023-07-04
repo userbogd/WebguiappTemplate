@@ -43,8 +43,7 @@ var hedmen = `
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-                                        <a href="#" class="nav__dropdown-item">Application settings</a>
-                                       
+                                        <a href="vendsettings.html" class="nav__dropdown-item">Controller settings</a>
                                     </div>
                                 </div>
                             </div>

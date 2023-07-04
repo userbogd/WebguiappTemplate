@@ -11,6 +11,20 @@ else {if(reld)location.reload();
 if(alrt) alert(alrt);
 }}}
 
+function PostJSONData(data,page,conf,alrt,reld) {
+if(conf){if (!confirm(conf)) return;}
+var xhr = new XMLHttpRequest();
+xhr.open('POST',page, true);
+xhr.setRequestHeader('Content-type', 'application/json');
+xhr.timeout = 5000;
+xhr.send(data);
+xhr.onreadystatechange = function() { 
+if (xhr.readyState != 4) return;
+if (Number(xhr.status) >= 200) {alert(xhr.status+': '+xhr.statusText+'\n'+xhr.responseText);} 
+else {if(reld)location.reload();
+if(alrt) alert(alrt);
+}}}
+
 function GetDataFile(file, callback) {
 var xhr = new XMLHttpRequest();
 xhr.overrideMimeType("application/json");
@@ -127,6 +141,10 @@ location.reload();
 }  
 } 
 }
+
+
+
+
 /*==================== SHOW NAVBAR ====================*/
 const showMenu = (headerToggle, navbarId) =>{
     const toggleBtn = document.getElementById(headerToggle),

@@ -82,6 +82,7 @@
 				<tr><td class='rl lab'>Free RAM:</td><td><span id='mem'>?</span></td></tr>
 				<tr><td class='rl lab'>Minimal free RAM :</td><td><span id='mmem'>?</span></td></tr>
 				</table>
+				<button type="button" class ='btn' name='rtos' onclick="getrtos()">RTOS stat</button>
 				</form>
 				</div>
 			  </div>
@@ -112,6 +113,9 @@
 		function fwupd() {
 			  PostData("upd=prs", "system.html",false ,false, false);
 			}
+		function getrtos(){
+			PostJSONData("rtos=prs", "system.html",false ,false, false);
+		}
 		showMenu('header-toggle','navbar');
 		</script>		
     </body>

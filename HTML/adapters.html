@@ -10,7 +10,9 @@
 <title>~name~</title>
 </head>
 <body>
-  <script>PageSurround();</script>
+  <script>
+  PageSurround();
+  </script>
   <!--========== CONTENTS ==========-->
   <main>
     <section>
@@ -22,14 +24,14 @@
               <table class='cntr'>
                 <tr>
                   <script>PrintSwitch('ETHERNET enabled','ethen','~ethen~','configIPBoxes()');
-                   PrintSwitch('DHCP enabled','dhcp','~ecbdh~','configIPBoxes()');
-    				PrintIPInput('IP address:','ipa','~eip~');
-    				PrintIPInput('Subnet mask:','mas','~emsk~');
-    				PrintIPInput('Gateway address:','gte','~egate~');
-    				PrintIPInput('DNS1:','dns1','~edns~');
-    				PrintIPInput('DNS2:','dns2','~bkedns~');
-    				PrintIPInput('DNS3:','dns3','~fledns~');
-    				PrintMACInput('MAC:','mac','~emacadr~');
+                   PrintSwitch('DHCP enabled','edhcp','~ecbdh~','configIPBoxes()');
+    				PrintIPInput('IP address:','eipa','~eip~');
+    				PrintIPInput('Subnet mask:','emas','~emsk~');
+    				PrintIPInput('Gateway address:','egte','~egate~');
+    				PrintIPInput('DNS1:','edns1','~edns~');
+    				PrintIPInput('DNS2:','edns2','~bkedns~');
+    				PrintIPInput('DNS3:','edns3','~fledns~');
+    				PrintMACInput('MAC:','emac','~emacadr~');
     				</script>
                 <tr>
                   <td></td>
@@ -37,7 +39,7 @@
               </table>
               <br />
               <script>PrintSaveFail('~status_fail~');
-							PrintSaveBtn('eth'); PrintApplyBtn('eth');</script>
+							PrintSaveBtn('eth');</script>
             </form>
         </div>
       </div>
@@ -116,7 +118,9 @@
                       <br />
 
                       <script>PrintSaveFail('~status_fail~');
-						PrintSaveBtn('wifi'); PrintApplyBtn('wifi');</script>
+						PrintSaveBtn('wifi'); </script>
+						<button type="button" class ='btn' name='startwifi' onclick="StartWiFi()">Start WiFi AP</button>
+						<button type="button" class ='btn' name='stopwifi' onclick="StopWiFi()">Stop WiFi AP</button>
                     </form>
                 </div>
                 </div>
@@ -192,6 +196,8 @@
 			console.log('stop wifi scan');
 			GetDataFile("/api/wifiscan.json", function(data){PrintNetworks(data);});
 		}
+		  function StartWiFi(){PostData('wifistart=prs', 'adapters.html',false ,false, false);}
+		  function StopWiFi(){PostData('wifistop=prs', 'adapters.html',false ,false, false);}  
 		showMenu('header-toggle','navbar');
 		</script>
 </body>

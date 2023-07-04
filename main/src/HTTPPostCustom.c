@@ -21,7 +21,6 @@
  *	\copyright Apache License, Version 2.0
  */
 #include "webguiapp.h"
-#include "jRead.h"
 #include "AppConfiguration.h"
 #include "Application.h"
 #include "CronTimers.h"
@@ -31,7 +30,7 @@ const char pg_42[] = "index42.html";
 const char pg_43[] = "index43.html";
 const char pg_44[] = "index44.html";
 const char url_application[] = "application.html";
-const char url_userapi[] = "userapi";
+const char url_api[] = "api";
 
 static HTTP_IO_RESULT HTTPPostIndex40(httpd_req_t *req, char *PostData);
 static HTTP_IO_RESULT HTTPPostIndex42(httpd_req_t *req, char *PostData);
@@ -41,7 +40,7 @@ static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData);
 
 HTTP_IO_RESULT AfterPostHandlerCustom(httpd_req_t *req, const char *filename, char *PostData)
 {
-    if (!memcmp(filename, url_userapi, sizeof(url_userapi)))
+    if (!memcmp(filename, url_api, sizeof(url_api)))
         return HTTPPostCustomAPI(req, PostData);
     if (!memcmp(filename, pg_40, sizeof(pg_40)))
         return HTTPPostIndex40(req, PostData);

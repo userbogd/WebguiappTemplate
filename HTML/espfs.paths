@@ -10,6 +10,7 @@ api/set3.json
 api/stat.json
 api/status.json
 api/tmr.json
+api/users.json
 api/wifiscan.json
 application.html
 favicon.ico
@@ -28,5 +29,6 @@ res/logo.png
 res/main.js
 res/res.js
 res/styles.css
+res/vue.global.prod_3_3_4.js
 services.html
 system.html

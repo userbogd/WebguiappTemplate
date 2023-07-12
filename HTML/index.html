@@ -24,10 +24,7 @@
 				<div class='cntr' style='text-align:center;margin-top:20px'>
 				<span id="name" ><div class='hdr1'>This device brand name</div></span><br/><br/>
 				<div id="app">
-				{{ TimeToISO(status_json.time)}}<br/>
-				Uptime: {{ToHms(status_json.uptime)}}<br/><br/>
-				Signal WiFi:<span style="color:#0099ff;font-weight:bold">{{status_json.wlev}}</span><br/>
-				<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+				<informer></informer>
 				</div>
 				</div>
 				</div>
@@ -42,44 +39,49 @@
 		</script>
 
 		<script>
-		const app = Vue.createApp({
+		const app = Vue.createApp({});
+		app.component('informer', {
 			data(){
 		        return { 
 		        	status: true,
 		        	status_json: {},
 		        	interval: null}
 		        },
-		        methods: {
-		              async getData() {
-		              const res = await fetch("./api/status.json");
-		              this.status_json = await res.json();
-		              },
-		              
-		              TimeToISO(t) {
-		            	  theDate = new Date(t * 1000);
-		            	  return (theDate.toString()).slice(0,34);
-		              },
-		              
-		              ToHms(d) {
-		            	  d = Number(d);
-		            	  dd = Math.floor(d/86400);
-		            	  h = Math.floor(d%86400/3600);
-		            	  m = Math.floor(d%3600/60);
-		            	  s = Math.floor(d%3600%60);
-		            	  return (' '+dd+'d '+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s);}
-		        },
-		        mounted() {
-		            this.getData()
-		        },
-		        created(){
-		            this.interval = setInterval(() =>{
-		              this.getData()},1000)
-		        },
-		          destroyed(){
-		            clearInterval(this.interval)
-		        }
-		    
-		}).mount('#app');
+	        methods: {
+	              async getData() {
+	              const res = await fetch("./api/status.json");
+	              this.status_json = await res.json();
+	              },
+	              
+	              TimeToISO(t) {
+	            	  theDate = new Date(t * 1000);
+	            	  return (theDate.toString()).slice(0,34);
+	              },
+	              
+	              ToHms(d) {
+	            	  d = Number(d);
+	            	  dd = Math.floor(d/86400);
+	            	  h = Math.floor(d%86400/3600);
+	            	  m = Math.floor(d%3600/60);
+	            	  s = Math.floor(d%3600%60);
+	            	  return (' '+dd+'d '+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s);}
+	        },
+	        mounted() {
+	            this.getData()
+	        },
+	        created(){
+	            this.interval = setInterval(() => {this.getData()},1000)
+	        },
+	          destroyed(){
+	            clearInterval(this.interval)
+	        },
+	        template:`{{TimeToISO(status_json.time)}}<br/>
+				Uptime:{{ToHms(status_json.uptime)}}<br/><br/>
+				Signal WiFi:<span style="color:#0099ff;font-weight:bold">{{status_json.wlev}}</span><br/>
+				<br/><br/><br/><br/>`
+		});
+		app.mount('#app');
+		
 		</script>	
     </body>
 </html>

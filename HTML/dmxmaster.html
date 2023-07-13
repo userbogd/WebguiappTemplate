@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="res/styles.css">
+        <link rel="stylesheet" href="res/iconsfont.css">
+		<script src="res/main.js"></script>
+		<script src="res/res.js"></script>
+		<script src="res/vue.global.prod_3_3_4.js"></script>
+        <title>~name~</title>
+        <style>
+		.svldetails{
+		    min-height: 70px;
+		    min-width: 70px;
+		    margin: 5px;
+  			background-color: var(--first-color);
+  			border-radius: 5px;
+  			border: 1px solid var(--border-color);
+  			overflow: hidden;
+  			float: left;
+		}
+		
+		.selection {
+			background-color: #ff0000;
+		}
+		</style>
+    </head>
+    <body>
+		<script>PageSurround();</script>
+       
+        <!--========== CONTENTS ==========-->
+        <main>
+            <section>
+			<div class="ml">
+			  
+			  <div class="mlp">
+				<div class="mlpc">				
+				<div class="mlhdr"></div>				  			
+				<div class='cntr' style='text-align:center;margin-top:20px'>
+				
+				<div id="app">
+				<devlist :slvdevices="slvdevices"></devlist>
+				</div>
+				
+				</div>
+				</div>
+			  </div>
+			  
+			</div>
+		</section>
+		
+		</main>
+		<script>
+		showMenu('header-toggle','navbar');
+		</script>
+
+		<script>
+		const app = Vue.createApp({
+			data(){
+	        return { 
+	          slvdevices: [],
+	          selectforadd: "RGB",
+	          addrforadd:1}
+	    	},
+	    	methods:{
+
+	    	}
+		});
+
+		app.component('svldetails', {
+		    props: ["slvdev"],
+		    template: `<div class="svldetails" :class="{ selection: slvdev.sel}" v-on:click="slvdev.sel =!slvdev.sel">
+							<p>{{slvdev.type}}</p>
+		                    <p>{{slvdev.addr}}</p>
+		                </div>`
+		});
+		app.component('devlist', {
+		    props: ["slvdevices"],
+	    	methods:
+	    	{
+	    		AddDevice(){
+	    			this.slvdevices.push({type: this.selectforadd, addr: this.addrforadd, sel: false});
+	    		},
+	    		DelDevice(){
+	    			for(i=0; i<this.slvdevices.length; i++)
+	    				{
+	    				if(this.slvdevices[i].sel == true)
+	    					this.slvdevices.splice(i,1);
+	    				}
+	    		},
+	    		postData() {
+	    			fetch("\dmxmaster.html", {
+	    			    method: 'post',
+	    			    headers: {
+	    			        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+	    			    },
+	    			    body: JSON.stringify(this.slvdevices)
+	    			    });
+	    	
+	    			
+	    			
+	    		}
+	    	},
+		    template: `<div>
+		    		<button class="btn" v-on:click="AddDevice">Добавить устройство</button>
+		    		<select v-model="selectforadd">
+		    	    <option>RGBW</option>
+		    	    <option>RGB</option>
+		    	    <option>D</option>
+		    	  	</select>
+		    	  	<input v-model="addrforadd" placeholder="1" />
+		    	  	
+		    	  	<div class="container">
+		    		<svldetails v-for="slvdev in slvdevices" :key="slvdev.id" :slvdev="slvdev"></svldetails>
+		            </div>
+		            <button class="btn" v-on:click="DelDevice">Удалить устройства</button>
+		            <button class="btn" v-on:click="postData">Отправить</button>
+					</div>`
+		});
+		app.mount('#app');
+		</script>	
+    </body>
+</html>

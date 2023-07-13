@@ -57,7 +57,6 @@
 	            	  theDate = new Date(t * 1000);
 	            	  return (theDate.toString()).slice(0,34);
 	              },
-	              
 	              ToHms(d) {
 	            	  d = Number(d);
 	            	  dd = Math.floor(d/86400);
@@ -65,12 +64,18 @@
 	            	  m = Math.floor(d%3600/60);
 	            	  s = Math.floor(d%3600%60);
 	            	  return (' '+dd+'d '+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s);}
+	              
 	        },
+	        
+	        computed:{
+	        	
+	        },
+	        
 	        mounted() {
 	            this.getData()
 	        },
 	        created(){
-	            this.interval = setInterval(() => {this.getData()},1000)
+	            this.interval = setInterval(() => this.getData(),1000)
 	        },
 	          destroyed(){
 	            clearInterval(this.interval)

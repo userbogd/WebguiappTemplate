@@ -13,6 +13,7 @@ api/tmr.json
 api/users.json
 api/wifiscan.json
 application.html
+dmxmaster.html
 favicon.ico
 index.html
 info.html

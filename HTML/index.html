@@ -36,9 +36,17 @@
 		</main>
 		<script>
 		showMenu('header-toggle','navbar');
-		</script>
-
-		<script>
+		
+		function uptimeconvert(t)
+		{
+      	  d = Number(t);
+      	  dd = Math.floor(d/86400);
+      	  h = Math.floor(d%86400/3600);
+      	  m = Math.floor(d%3600/60);
+      	  s = Math.floor(d%3600%60);
+      	  return (' '+dd+'d '+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s);
+		}
+		
 		const app = Vue.createApp({});
 		app.component('informer', {
 			data(){
@@ -54,22 +62,34 @@
 	              },
 	              
 	              TimeToISO(t) {
-	            	  theDate = new Date(t * 1000);
-	            	  return (theDate.toString()).slice(0,34);
+	            	  d = Number(t);
+	              	  dd = Math.floor(d/86400);
+	              	  h = Math.floor(d%86400/3600);
+	              	  m = Math.floor(d%3600/60);
+	              	  s = Math.floor(d%3600%60);
+	              	  return (' '+dd+'d '+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s);  
+
 	              },
-	              ToHms(d) {
-	            	  d = Number(d);
-	            	  dd = Math.floor(d/86400);
-	            	  h = Math.floor(d%86400/3600);
-	            	  m = Math.floor(d%3600/60);
-	            	  s = Math.floor(d%3600%60);
-	            	  return (' '+dd+'d '+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s);}
+	              ToHms(d) {}
 	              
 	        },
-	        
 	        computed:{
-	        	
+	            uptime: function(){
+	            	  d = Number(this.status_json.uptime);
+	              	  dd = Math.floor(d/86400);
+	              	  h = Math.floor(d%86400/3600);
+	              	  m = Math.floor(d%3600/60);
+	              	  s = Math.floor(d%3600%60);
+	              	  return (' '+dd+'d '+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s);
+	            },
+	           
+	            
+	            isotime: function(){
+	            	  theDate = new Date(this.status_json.time * 1000);
+	            	  return (theDate.toString()).slice(0,34);
+	            }
 	        },
+
 	        
 	        mounted() {
 	            this.getData()
@@ -80,8 +100,9 @@
 	          destroyed(){
 	            clearInterval(this.interval)
 	        },
-	        template:`{{TimeToISO(status_json.time)}}<br/>
-				Uptime:{{ToHms(status_json.uptime)}}<br/><br/>
+	        template:`{{isotime}}<br/>
+				Uptime:{{uptime}}<br/>
+				<br/>
 				Signal WiFi:<span style="color:#0099ff;font-weight:bold">{{status_json.wlev}}</span><br/>
 				<br/><br/><br/><br/>`
 		});

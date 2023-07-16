@@ -22,7 +22,7 @@
 		}
 		
 		.selection {
-			background-color: #ff0000;
+			border: 3px solid var(--accent-color);;
 		}
 		</style>
     </head>
@@ -40,7 +40,7 @@
 				<div class='cntr' style='text-align:center;margin-top:20px'>
 				
 				<div id="app">
-				<devlist :slvdevices="slvdevices"></devlist>
+				<devlist v-bind:slvdevices="slvdevices"></devlist>
 				</div>
 				
 				</div>
@@ -58,34 +58,48 @@
 		<script>
 		const app = Vue.createApp({
 			data(){
-	        return { 
-	          slvdevices: [],
-	          selectforadd: "RGB",
-	          addrforadd:1}
-	    	},
-	    	methods:{
-
+	        return {  
+	          slvdevices: []
+	          }
 	    	}
 		});
 
 		app.component('svldetails', {
 		    props: ["slvdev"],
-		    template: `<div class="svldetails" :class="{ selection: slvdev.sel}" v-on:click="slvdev.sel =!slvdev.sel">
+		    methods:{
+		    	SelDev(){
+		    		this.slvdev.sel =!this.slvdev.sel;
+		    	}
+		    },
+		    template: `<div class="svldetails" :class="{ selection: slvdev.sel}" v-on:click="SelDev">
 							<p>{{slvdev.type}}</p>
 		                    <p>{{slvdev.addr}}</p>
 		                </div>`
 		});
 		app.component('devlist', {
-		    props: ["slvdevices"],
+		    data() {return{
+		        devtypes:[
+	                {type:'RGBW', chls:4},
+	                {type:'RGB', chls:3},
+	                {type:'D', chls:1},
+	                {type:'DIMMER', chls:8}
+	            ],
+	          selectedtype:'RGB',
+	          addrforadd:1
+		    }},
+			props: ["slvdevices"],
 	    	methods:
 	    	{
 	    		AddDevice(){
-	    			this.slvdevices.push({type: this.selectforadd, addr: this.addrforadd, sel: false});
+	    			this.slvdevices.push({type: this.selectedtype, addr: this.addrforadd, sel: false});
+	    			for(i=0; i<this.devtypes.length; i++)
+	    				if(this.devtypes[i].type == this.selectedtype)
+	    					this.addrforadd += this.devtypes[i].chls;
 	    		},
 	    		DelDevice(){
 	    			for(i=0; i<this.slvdevices.length; i++)
 	    				{
-	    				if(this.slvdevices[i].sel == true)
+	    				while(this.slvdevices[i].sel == true)
 	    					this.slvdevices.splice(i,1);
 	    				}
 	    		},
@@ -97,25 +111,19 @@
 	    			    },
 	    			    body: JSON.stringify(this.slvdevices)
 	    			    });
-	    	
-	    			
-	    			
 	    		}
 	    	},
 		    template: `<div>
-		    		<button class="btn" v-on:click="AddDevice">Добавить устройство</button>
-		    		<select v-model="selectforadd">
-		    	    <option>RGBW</option>
-		    	    <option>RGB</option>
-		    	    <option>D</option>
-		    	  	</select>
-		    	  	<input v-model="addrforadd" placeholder="1" />
-		    	  	
+		    		<button class="btn" v-on:click="AddDevice">Add device</button>
+		    		<select v-model="selectedtype">
+		            <option v-for="dtype in devtypes" v-bind:value="dtype.type">{{dtype.type}}</option>
+		       		</select>
+		       		<input v-model="addrforadd" type="number"/>
 		    	  	<div class="container">
 		    		<svldetails v-for="slvdev in slvdevices" :key="slvdev.id" :slvdev="slvdev"></svldetails>
 		            </div>
-		            <button class="btn" v-on:click="DelDevice">Удалить устройства</button>
-		            <button class="btn" v-on:click="postData">Отправить</button>
+		            <button class="btn" v-on:click="DelDevice">Delete device</button>
+		            <button class="btn" v-on:click="postData">Save conf</button>
 					</div>`
 		});
 		app.mount('#app');

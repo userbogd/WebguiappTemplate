@@ -11,9 +11,10 @@
         <title>~name~</title>
         <style>
 		.svldetails{
-		    min-height: 70px;
-		    min-width: 70px;
-		    margin: 5px;
+		    height: 60px;
+		    width: 60px;
+		    margin: 2px;
+		    padding: 2px;
   			background-color: var(--first-color);
   			border-radius: 5px;
   			border: 1px solid var(--border-color);
@@ -24,6 +25,10 @@
 		.selection {
 			border: 3px solid var(--accent-color);;
 		}
+		.svldetails p{
+		margin: 0px;
+		vertical-align: middle;
+		}
 		</style>
     </head>
     <body>
@@ -33,20 +38,25 @@
         <main>
             <section>
 			<div class="ml">
-			  
+			  <div id="app">
 			  <div class="mlp">
 				<div class="mlpc">				
-				<div class="mlhdr"></div>				  			
+				<div class="mlhdr">DMX1</div>				  			
 				<div class='cntr' style='text-align:center;margin-top:20px'>
-				
-				<div id="app">
-				<devlist v-bind:slvdevices="slvdevices"></devlist>
-				</div>
-				
+				<devlist v-bind:slvdevices="slvdevices" v-bind:key="1"></devlist>
 				</div>
 				</div>
 			  </div>
 			  
+			  <div class="mlp">
+				<div class="mlpc">				
+				<div class="mlhdr">DMX2</div>				  			
+				<div class='cntr' style='text-align:center;margin-top:20px'>
+				<devlist v-bind:slvdevices="slvdevices2" v-bind:key="2"></devlist>
+				</div>
+				</div>
+			  </div>
+			  </div>
 			</div>
 		</section>
 		
@@ -60,6 +70,7 @@
 			data(){
 	        return {  
 	          slvdevices: [],
+	          slvdevices2: [],
 	          selecteddevs: []
 	          }
 	    	}
@@ -88,7 +99,8 @@
 	          selectedtype:'RGB',
 	          addrforadd:1
 		    }},
-			props: ["slvdevices"],
+			props: ["slvdevices", "key"],
+			
 	    	methods:
 	    	{
 	    		AddDevice(){
@@ -105,12 +117,14 @@
 	    				}
 	    		},
 	    		PostData() {
+	    			alert("key="+this.key);
 	    			fetch("\dmxmaster.html", {
 	    			    method: 'post',
 	    			    headers: {
 	    			        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
 	    			    },
 	    			    body: JSON.stringify(this.slvdevices)
+	    			    
 	    			    });
 	    		}
 	    	},

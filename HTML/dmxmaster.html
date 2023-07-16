@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="res/iconsfont.css">
 		<script src="res/main.js"></script>
 		<script src="res/res.js"></script>
-		<script src="res/vue.global.prod_3_3_4.js"></script>
+		<script src="res/vue.global.prod.js"></script>
         <title>~name~</title>
         <style>
 		.svldetails{
@@ -59,7 +59,8 @@
 		const app = Vue.createApp({
 			data(){
 	        return {  
-	          slvdevices: []
+	          slvdevices: [],
+	          selecteddevs: []
 	          }
 	    	}
 		});
@@ -103,7 +104,7 @@
 	    					this.slvdevices.splice(i,1);
 	    				}
 	    		},
-	    		postData() {
+	    		PostData() {
 	    			fetch("\dmxmaster.html", {
 	    			    method: 'post',
 	    			    headers: {
@@ -112,6 +113,13 @@
 	    			    body: JSON.stringify(this.slvdevices)
 	    			    });
 	    		}
+	    	},
+	    	computed: {
+	    	    selected: function(){
+	    	        this.selecteddevs = this.slvdevices.filter(function (n) {
+	    	        	 return this.slvdevices[n].sel;
+	    	        	})
+	    	    }
 	    	},
 		    template: `<div>
 		    		<button class="btn" v-on:click="AddDevice">Add device</button>
@@ -123,7 +131,7 @@
 		    		<svldetails v-for="slvdev in slvdevices" :key="slvdev.id" :slvdev="slvdev"></svldetails>
 		            </div>
 		            <button class="btn" v-on:click="DelDevice">Delete device</button>
-		            <button class="btn" v-on:click="postData">Save conf</button>
+		            <button class="btn" v-on:click="PostData">Save conf</button>
 					</div>`
 		});
 		app.mount('#app');

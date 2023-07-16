@@ -30,6 +30,6 @@ res/logo.png
 res/main.js
 res/res.js
 res/styles.css
-res/vue.global.prod_3_3_4.js
+res/vue.global.prod.js
 services.html
 system.html

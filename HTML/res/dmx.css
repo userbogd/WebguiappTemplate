@@ -1,0 +1,20 @@
+		.svldetails{
+		    height: 60px;
+		    width: 60px;
+		    margin: 2px;
+		    padding: 2px;
+  			background-color: var(--first-color);
+  			border-radius: 5px;
+  			border: 1px solid var(--border-color);
+  			overflow: hidden;
+  			float: left;
+		}
+		
+		.selection {
+			border: 3px solid var(--accent-color);
+		}
+		.svldetails p{
+		margin: 0px;
+		vertical-align: middle;
+		}
+		

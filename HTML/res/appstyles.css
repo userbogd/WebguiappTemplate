@@ -120,7 +120,7 @@ input:checked + span{background-color: var(--accent-color);}
 .rngval {
   -webkit-appearance: none;
   margin: auto 10px;
-  width: 80%;
+  width: 70%;
   height: 5px;
   border: none; 
   background: var(--accent-color);

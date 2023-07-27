@@ -13,8 +13,6 @@ api/tmr.json
 api/users.json
 api/wifiscan.json
 application.html
-dmxmaster.html
-dmxsettings.html
 favicon.ico
 index.html
 info.html
@@ -24,8 +22,6 @@ res/appstyles.css
 res/ca_cert.pem
 res/cron.js
 res/crondata.js
-res/dmx.css
-res/dmx.js
 res/dynamic.css
 res/iconsfont.css
 res/iconsfont.woff2

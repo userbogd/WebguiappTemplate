@@ -46,6 +46,7 @@ const spiral_error_t Errors[] = {
         { APP_ERROR_PARSE_KEY1, "APP_ERROR_PARSE_KEY1", "Key 'key1' not found or have illegal value"},
         { APP_ERROR_PARSE_KEY2, "APP_ERROR_PARSE_KEY2", "Key 'key2' not found or have illegal value"},
 
+
         { APP_ERROR_NO_MEMORY, "APP_ERROR_NO_MEMORY", "ERROR allocate memory for JSON parser" },
         { APP_ERROR_UNKNOWN, "APP_ERROR_UNKNOWN", "Unknown ERROR" }
 

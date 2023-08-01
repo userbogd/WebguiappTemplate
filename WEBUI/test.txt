@@ -1,0 +1,43 @@
+{
+    "data": {
+        "msgid": 1690805819,
+        "time": "2023-07-31T12:17:00+00:00",
+        "messtype": 3,
+        "payloadtype": 1,
+        "payload": {
+            "variables": [
+                {
+                    "name": "netname",
+                    "val": "DEVICE_HOSTNAME"
+                },
+                {
+                    "name": "otaurl",
+                    "val": "https://iotronic.cloud/firmware/firmware.bin"
+                },
+                {
+                    "name": "time",
+                    "val": 1690805820
+                },
+                {
+                    "name": "wifi-sta-ip",
+                    "val": "192.168.99.86"
+                },
+                {
+                    "name": "wifi-ap-ip",
+                    "val": "192.168.150.1"
+                },
+                {
+                    "name": "wifi-sta-mask",
+                    "val": "255.255.255.0"
+                },
+                {
+                    "name": "wifi-sta-gw",
+                    "val": "192.168.99.1"
+                }
+            ]
+        },
+        "error": "SYS_OK_DATA",
+        "error_descr": "Result successful, data attached"
+    },
+    "signature": "BBC236A7F4991E18E23BE6F6C15D712E3D204D9584A76D85F77AD9EFE3A6DCCA"
+}

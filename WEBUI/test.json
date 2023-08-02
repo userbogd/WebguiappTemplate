@@ -1,0 +1,59 @@
+{
+  "data": {
+      "msgid": 123456789,
+      "time": "2023-08-02T12:01:32+00:00",
+      "messtype": 3,
+      "payloadtype": 1,
+      "payload": {
+          "variables": [{
+              "name": "wifi-mode",
+              "val": 3
+          }, {
+              "name": "wifi-sta-ip",
+              "val": "192.168.99.86"
+          }, {
+              "name": "wifi-sta-mask",
+              "val": "255.255.255.0"
+          }, {
+              "name": "wifi-sta-gw",
+              "val": "192.168.99.1"
+          }, {
+              "name": "wifi-ap-ip",
+              "val": "192.168.150.1"
+          }, {
+              "name": "wifi-dns1",
+              "val": "8.8.8.8"
+          }, {
+              "name": "wifi-dns2",
+              "val": "8.8.4.4"
+          }, {
+              "name": "wifi-dns3",
+              "val": "1.1.1.1"
+          }, {
+              "name": "wifi-sta-ssid",
+              "val": "YourSTA"
+          }, {
+              "name": "wifi-sta-key",
+              "val": "123456789"
+          }, {
+              "name": "wifi-ap-ssid",
+              "val": "YourAP_EFCD5174"
+          }, {
+              "name": "wifi-ap-key",
+              "val": "123456789"
+          }, {
+              "name": "wifi-enab",
+              "val": 1
+          }, {
+              "name": "wifi-isdhcp",
+              "val": 1
+          }, {
+              "name": "wifi-power",
+              "val": 0
+          }]
+      },
+      "error": "SYS_OK_DATA",
+      "error_descr": "Result successful, data attached"
+  },
+  "signature": "31CB8677DDB45C12C327E6271C50FCED62770768C94764AE79C88C589558000D"
+}

@@ -33,17 +33,18 @@ static void HTTPPrint_crontmr(char *VarData, void *arg)
     char data[MAX_DYNVAR_LENGTH];
     cron_timer_t T;
     memcpy(&T, &GetAppConf()->Timers[idx], sizeof(cron_timer_t));
-    jwOpen(data, sizeof(data), JW_OBJECT, JW_COMPACT);
-    jwObj_int("num", (unsigned int) T.num);
-    jwObj_int("del", (T.del)?1:0);
-    jwObj_int("enab", (T.enab)?1:0);
-    jwObj_int("prev", (T.prev)?1:0);
-    jwObj_string("name", T.name);
-    jwObj_int("obj", (unsigned int) T.obj);
-    jwObj_int("act", (unsigned int) T.act);
-    jwObj_string("cron", T.cron);
-    jwEnd();
-    jwClose();
+    struct jWriteControl jwc;
+    jwOpen(&jwc, data, sizeof(data), JW_OBJECT, JW_COMPACT);
+    jwObj_int(&jwc, "num", (unsigned int) T.num);
+    jwObj_int(&jwc, "del", (T.del)?1:0);
+    jwObj_int(&jwc, "enab", (T.enab)?1:0);
+    jwObj_int(&jwc, "prev", (T.prev)?1:0);
+    jwObj_string(&jwc, "name", T.name);
+    jwObj_int(&jwc, "obj", (unsigned int) T.obj);
+    jwObj_int(&jwc, "act", (unsigned int) T.act);
+    jwObj_string(&jwc, "cron", T.cron);
+    jwEnd(&jwc);
+    jwClose(&jwc);
     snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", data);
    }
 }
@@ -58,11 +59,12 @@ static void HTTPPrint_cronobjs(char *VarData, void *arg)
     int idx = *((int*)(arg));
       if(idx < CRON_OBJECTS_NUMBER)
       {
-          jwOpen(data, sizeof(data), JW_OBJECT, JW_COMPACT);
-          jwObj_string("name", GetAppConf()->CronObjects[idx].objname);
-          jwObj_raw("acts", GetCronActAvail(idx));
-          jwEnd();
-          jwClose();
+          struct jWriteControl jwc;
+          jwOpen(&jwc, data, sizeof(data), JW_OBJECT, JW_COMPACT);
+          jwObj_string(&jwc, "name", GetAppConf()->CronObjects[idx].objname);
+          jwObj_raw(&jwc, "acts", GetCronActAvail(idx));
+          jwEnd(&jwc);
+          jwClose(&jwc);
           snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", data);
       }
 }

@@ -109,25 +109,26 @@ void PrepareResponsePayloadType1(data_message_t *MSG)
 {
     const char *err_br;
     const char *err_desc;
-    jwOpen(MSG->outputDataBuffer, MSG->outputDataLength, JW_OBJECT, JW_PRETTY);
-    jwObj_int("msgid", MSG->parsedData.msgID);
+    struct jWriteControl jwc;
+    jwOpen(&jwc, MSG->outputDataBuffer, MSG->outputDataLength, JW_OBJECT, JW_PRETTY);
+    jwObj_int(&jwc, "msgid", MSG->parsedData.msgID);
     char time[RFC3339_TIMESTAMP_LENGTH];
     GetRFC3339Time(time);
-    jwObj_string("time", time);
-    jwObj_int("messtype", DATA_MESSAGE_TYPE_RESPONSE);
-    jwObj_int("payloadtype", 1);
+    jwObj_string(&jwc, "time", time);
+    jwObj_int(&jwc, "messtype", DATA_MESSAGE_TYPE_RESPONSE);
+    jwObj_int(&jwc, "payloadtype", 1);
     //PAYLOAD BEGIN
-    jwObj_object("payload");
+    jwObj_object(&jwc, "payload");
 
-    jwObj_string("param1", "value1");
-    jwObj_string("param2", "value2");
+    jwObj_string(&jwc, "param1", "value1");
+    jwObj_string(&jwc, "param2", "value2");
 
-    jwEnd();
+    jwEnd(&jwc);
     GetAppErrorDetales((app_error_code) MSG->err_code, &err_br, &err_desc);
-    jwObj_string("error", (char*) err_br);
-    jwObj_string("error_descr", (char*) err_desc);
-    jwEnd();
-    jwClose();
+    jwObj_string(&jwc, "error", (char*) err_br);
+    jwObj_string(&jwc, "error_descr", (char*) err_desc);
+    jwEnd(&jwc);
+    jwClose(&jwc);
 }
 
 
@@ -268,19 +269,20 @@ esp_err_t AppServiceDataHandler(data_message_t *MSG)
     MSG->err_code = (int) AppDataParser(MSG);
     if (MSG->err_code)
     {
-        jwOpen(MSG->outputDataBuffer, MSG->outputDataLength, JW_OBJECT, JW_PRETTY);
-        jwObj_int("msgid", MSG->parsedData.msgID);
+        struct jWriteControl jwc;
+        jwOpen(&jwc, MSG->outputDataBuffer, MSG->outputDataLength, JW_OBJECT, JW_PRETTY);
+        jwObj_int(&jwc, "msgid", MSG->parsedData.msgID);
         char time[RFC3339_TIMESTAMP_LENGTH];
         GetRFC3339Time(time);
-        jwObj_string("time", time);
-        jwObj_int("messtype", DATA_MESSAGE_TYPE_RESPONSE);
+        jwObj_string(&jwc, "time", time);
+        jwObj_int(&jwc, "messtype", DATA_MESSAGE_TYPE_RESPONSE);
         const char *err_br;
         const char *err_desc;
         GetAppErrorDetales((app_error_code) MSG->err_code, &err_br, &err_desc);
-        jwObj_string("error", (char*) err_br);
-        jwObj_string("error_descr", (char*) err_desc);
-        jwEnd();
-        jwClose();
+        jwObj_string(&jwc, "error", (char*) err_br);
+        jwObj_string(&jwc, "error_descr", (char*) err_desc);
+        jwEnd(&jwc);
+        jwClose(&jwc);
     }
 
     return ESP_OK;

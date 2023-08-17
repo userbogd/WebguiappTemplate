@@ -21,7 +21,6 @@
  *	\copyright Apache License, Version 2.0
  */
 #include "webguiapp.h"
-#include "jWrite.h"
 #include "AppConfiguration.h"
 #include "CronTimers.h"
 

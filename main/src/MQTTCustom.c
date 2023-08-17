@@ -21,7 +21,7 @@
  *	\copyright Apache License, Version 2.0
  */
 
-#include "Application.h"
+#include "webguiapp.h"
 
 #define TAG "MQTTCustom"
 
@@ -130,8 +130,12 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
                     M.chlidx = idx;
                     M.outputDataBuffer = respbuf;
                     M.outputDataLength = EXPECTED_MAX_DATA_RESPONSE_SIZE;
-                    AppServiceDataHandler(&M);
+
+                    SysServiceDataHandler(&M);
+                    //AppServiceDataHandler(&M);
                     AppServiceMQTTSend(M.outputDataBuffer, strlen(M.outputDataBuffer), idx);
+
+
                     free(respbuf);
 #if(MQTT_CUSTOM_HANDLER_DEBUG > 0)
                     ESP_LOGI(TAG, "SERVICE data handler on client %d", idx);

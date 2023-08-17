@@ -21,8 +21,8 @@
  *	\copyright Apache License, Version 2.0
  */
 
-#include "Application.h"
-#include "SystemApplication.h"
+#include "webguiapp.h"
+#include "AppConfiguration.h"
 
 extern APP_CONFIG AppConfig;
 

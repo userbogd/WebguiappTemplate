@@ -24,11 +24,8 @@
 
 #include "webguiapp.h"
 #include "esp_err.h"
-#include "jRead.h"
-#include "jWrite.h"
 #include "AppConfiguration.h"
-
-#define EXPECTED_MAX_DATA_RESPONSE_SIZE (2048)
+#include "SystemApplication.h"
 
 typedef enum
 {
@@ -71,6 +68,7 @@ int key2;
 #define DATA_MESSAGE_TYPE_REQUEST  (2)
 #define DATA_MESSAGE_TYPE_RESPONSE  (3)
 
+/*
 typedef struct
 {
     char *inputDataBuffer;
@@ -89,6 +87,7 @@ typedef struct
     } parsedData;
     int err_code;
 } data_message_t;
+*/
 
 typedef struct
 {

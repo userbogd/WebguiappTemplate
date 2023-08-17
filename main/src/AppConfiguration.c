@@ -35,7 +35,7 @@
 #define STORAGE_NAMESPACE "storage"
 #define TAG "AppConfiguration"
 
-static APP_CONFIG AppConfig;
+APP_CONFIG AppConfig;
 
 void UserAppInit(void)
 {

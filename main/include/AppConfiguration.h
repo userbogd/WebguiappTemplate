@@ -60,5 +60,6 @@ esp_err_t ResetInitAppConfig(void);
 
 void LoadDefaultReset(void);
 void DelayedRestart(void);
+void RegAppVariables(void);
 
 #endif /* MAIN_INCLUDE_APPCONFIGURATION_H_ */

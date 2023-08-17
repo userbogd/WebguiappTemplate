@@ -22,6 +22,8 @@ void app_main(void)
     regUserEventHandler(&UserMQTTEventHndlr, (void*)my_context_data);
     regTimeSyncCallback(&TimeObtainHandler);
 
+    RegAppVariables();
+
     WebGuiAppInit();
     if (GetUserAppNeedReset())
     {

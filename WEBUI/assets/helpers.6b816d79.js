@@ -1,1 +1,0 @@
-import"./index.e05c0c8e.js";function h(o){o=Number(o);var s=Math.floor(o/86400),r=Math.floor(o%86400/3600),a=Math.floor(o%3600/60),t=Math.floor(o%3600%60);return" "+s+"d "+(r<10?"0":"")+r+":"+(a<10?"0":"")+a+":"+(t<10?"0":"")+t}export{h as s};

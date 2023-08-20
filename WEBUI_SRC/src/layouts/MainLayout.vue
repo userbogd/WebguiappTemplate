@@ -3,7 +3,7 @@
     <q-header>
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
-        <q-toolbar-title> ESP32 WEBGUIAPP </q-toolbar-title>
+        <q-toolbar-title>{{ data.net_bios_name }} {{ data.dev_id }}</q-toolbar-title>
       </q-toolbar>
     </q-header>
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
@@ -17,10 +17,9 @@
   </q-layout>
 </template>
 
-
-
 <script setup>
-import { ref, defineAsyncComponent } from "vue";
+import { ref, reactive } from "vue";
+import { PostData } from "src/components/webguicomp/network";
 import EssentialLink from "components/webguicomp/EssentialLink.vue";
 
 const linksList = [
@@ -33,5 +32,9 @@ const linksList = [
 
 function toggleLeftDrawer() { leftDrawerOpen.value = !leftDrawerOpen.value; }
 const leftDrawerOpen = ref(false);
+
+const init = { dev_id: '', net_bios_name: '' }
+const data = reactive(init);
+PostData(data, 2, 0, null);
 
 </script>

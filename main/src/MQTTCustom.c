@@ -25,6 +25,11 @@
 
 #define TAG "MQTTCustom"
 
+#define APP_SERVICE_NAME "APPNAME"          // Dedicated service name
+#define APP_UPLINK_SUBTOPIC "UPLINK"        // Device publish to this topic
+#define APP_DOWNLINK_SUBTOPIC "DWLINK"      // Device listen from this topic
+
+
 esp_err_t AppServiceMQTTSend(char *data, int len, int idx)
 {
     if (GetMQTTHandlesPool(idx)->mqtt_queue == NULL)
@@ -34,7 +39,7 @@ esp_err_t AppServiceMQTTSend(char *data, int len, int idx)
     {
         memcpy(buf, data, len);
         MQTT_DATA_SEND_STRUCT DSS;
-        ComposeTopic(DSS.topic, idx, "APP", "UPLINK");
+        ComposeTopic(DSS.topic, idx, APP_SERVICE_NAME, APP_UPLINK_SUBTOPIC);
         DSS.raw_data_ptr = buf;
         DSS.data_length = len;
         if (xQueueSend(GetMQTTHandlesPool(idx)->mqtt_queue, &DSS, pdMS_TO_TICKS(1000)) == pdPASS)
@@ -88,7 +93,7 @@ esp_err_t AppLog(esp_log_level_t level, char *format, ...)
             strcat(buf, "  ");
             strcat(buf, data);
             MQTT_DATA_SEND_STRUCT DSS;
-            ComposeTopic(DSS.topic, idx, "LOG", "UPLINK");
+            ComposeTopic(DSS.topic, idx, "LOG", APP_UPLINK_SUBTOPIC);
             DSS.raw_data_ptr = buf;
             DSS.data_length = strlen(buf);
             if (xQueueSend(GetMQTTHandlesPool(idx)->mqtt_queue, &DSS, pdMS_TO_TICKS(1000)) != pdPASS)
@@ -111,14 +116,14 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
     switch ((esp_mqtt_event_id_t) event_id)
     {
         case MQTT_EVENT_CONNECTED:
-            ComposeTopic(topic, idx, "APP", "DWLINK");
+            ComposeTopic(topic, idx, APP_SERVICE_NAME, APP_DOWNLINK_SUBTOPIC);
             //Subscribe to the service called "APP"
             msg_id = esp_mqtt_client_subscribe(client, (const char*) topic, 0);
             ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
 
         break;
         case MQTT_EVENT_DATA:
-            ComposeTopic(topic, idx, "APP", "DWLINK");
+            ComposeTopic(topic, idx, APP_SERVICE_NAME, APP_DOWNLINK_SUBTOPIC);
             if (!memcmp(topic, event->topic, event->topic_len))
             {
                 char *respbuf = malloc(EXPECTED_MAX_DATA_RESPONSE_SIZE);
@@ -131,7 +136,7 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
                     M.outputDataBuffer = respbuf;
                     M.outputDataLength = EXPECTED_MAX_DATA_RESPONSE_SIZE;
 
-                    SysServiceDataHandler(&M);
+                    ServiceDataHandler(&M);
                     //AppServiceDataHandler(&M);
                     AppServiceMQTTSend(M.outputDataBuffer, strlen(M.outputDataBuffer), idx);
 
@@ -169,9 +174,9 @@ void PublishTestApp(int idx)
     strcat(resp, ":");
     strcat(resp, tmp);
     jwObj_string(&jwc,"url", resp);
-    ComposeTopic(resp, idx, "APP", "UPLINK");
+    ComposeTopic(resp, idx, APP_SERVICE_NAME, APP_UPLINK_SUBTOPIC);
     jwObj_string(&jwc,"tx_topic", resp);
-    ComposeTopic(resp, idx, "APP", "DWLINK");
+    ComposeTopic(resp, idx, APP_SERVICE_NAME, APP_DOWNLINK_SUBTOPIC);
     jwObj_string(&jwc,"rx_topic", resp);
     jwEnd(&jwc);
     jwClose(&jwc);

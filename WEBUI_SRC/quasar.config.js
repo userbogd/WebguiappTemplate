@@ -80,7 +80,6 @@ module.exports = configure(function (/* ctx */) {
           {
             deleteOriginalAssets: true,
             filename: "[path][base]",
-            threshold: 4096,
           },
         ],
       ],

@@ -37,6 +37,11 @@
 
 APP_CONFIG AppConfig;
 
+void SaveUserConf()
+{
+    WriteNVSAppConfig(&AppConfig);
+}
+
 void UserAppInit(void)
 {
     if (GetUserAppNeedReset())

@@ -126,7 +126,7 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
             ComposeTopic(topic, idx, APP_SERVICE_NAME, APP_DOWNLINK_SUBTOPIC);
             if (!memcmp(topic, event->topic, event->topic_len))
             {
-                char *respbuf = malloc(EXPECTED_MAX_DATA_RESPONSE_SIZE);
+                char *respbuf = malloc(EXPECTED_MAX_DATA_SIZE);
                 if (respbuf != NULL)
                 {
                     data_message_t M = { 0 };
@@ -134,7 +134,7 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
                     M.inputDataLength = event->data_len;
                     M.chlidx = idx;
                     M.outputDataBuffer = respbuf;
-                    M.outputDataLength = EXPECTED_MAX_DATA_RESPONSE_SIZE;
+                    M.outputDataLength = EXPECTED_MAX_DATA_SIZE;
 
                     ServiceDataHandler(&M);
                     //AppServiceDataHandler(&M);

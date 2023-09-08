@@ -1,7 +1,17 @@
 // app global css in SCSS form
-.body {
-   background: #e0e0e0;
+.body.body--light {
+   background: #e0e0dd;
 }
+
+.body.body--dark {
+  background: #1D2327;
+}
+
+.btn{
+  border:1px solid rgba(128,128,128, 0.4);
+	border-radius: 5px;
+}
+
 .card {
   border-radius: 10px;
   font-family: monospace;
@@ -10,10 +20,14 @@
   margin: 0 0 10px 10px;
 }
 
+.cardheader
+{
+  font-size: x-large;
+}
+
 .cardholder {
   column-count: 1;
   column-gap: 0;
-
   padding: 10px 10px 10px 0;
 }
 @media (min-width: 1024px) {

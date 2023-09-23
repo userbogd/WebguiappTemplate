@@ -1,9 +1,6 @@
 [submodule "components/esp_modem"]
 	path = components/esp_modem
 	url = https://github.com/userbogd/esp_modem.git
-[submodule "components/ttn-esp32"]
-	path = components/ttn-esp32
-	url = https://github.com/userbogd/ttn-esp32.git
 [submodule "components/webguiapp"]
 	path = components/webguiapp
 	url = https://gitlab.com/userbogd/webguiapp.git

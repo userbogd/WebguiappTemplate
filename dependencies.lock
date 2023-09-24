@@ -1,9 +1,29 @@
 dependencies:
+  espressif/esp_modem:
+    component_hash: db634499298a3335367039b07838e9fcc1dd44e8c44bb67c2a6d7cc26b6d8ca4
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.1
   idf:
     component_hash: null
     source:
       type: idf
     version: 5.1.1
-manifest_hash: cc4f7a08a6eeed39d05fbfb84ff3df9215bdf0009945794b887b5e99cbaee95b
+  userbogd/esp_cron:
+    component_hash: 35344073b39c4022e240a7883651ec8fefc30275a9e36267870146a7430a852d
+    source:
+      git: https://github.com/userbogd/esp_cron.git
+      path: .
+      type: git
+    version: 6785ad092344b6c391fa24b0a0b25ffd258d79e6
+  userbogd/ttn-esp32:
+    component_hash: 46673f2091b28f3f22d594c77bc863ef52d4abeea3f3ecc5c4ba46c35e7a862d
+    source:
+      git: https://github.com/userbogd/ttn-esp32.git
+      path: .
+      type: git
+    version: b42825192c6455569f1a047b21140d6d1fe5e4ef
+manifest_hash: 446959d56081bfd5b420df23a35b4f768ad01638e35f733064160719c7d291ae
 target: esp32
 version: 1.0.0

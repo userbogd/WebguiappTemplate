@@ -1,6 +1,6 @@
 [submodule "components/webguiapp"]
 	path = components/webguiapp
-	url = https://gitlab.com/userbogd/webguiapp.git
+	url = https://github.com/userbogd/esp_cron.git
 [submodule "WEBUI_SRC/src/components/webguicomp"]
 	path = WEBUI_SRC/src/components/webguicomp
-	url = https://gitlab.com/userbogd/webguicomp.git
+	url = https://github.com/userbogd/webguicomp.git

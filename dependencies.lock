@@ -11,12 +11,12 @@ dependencies:
       type: idf
     version: 5.1.1
   userbogd/esp_cron:
-    component_hash: 35344073b39c4022e240a7883651ec8fefc30275a9e36267870146a7430a852d
+    component_hash: 3fe2d37fc6473034b4d8328d9a113465b2521b4284649fe29ac676025b6bd7b5
     source:
       git: https://github.com/userbogd/esp_cron.git
       path: .
       type: git
-    version: 6785ad092344b6c391fa24b0a0b25ffd258d79e6
+    version: 7266718a6be804ca280a6921795fc75e4d044eeb
   userbogd/ttn-esp32:
     component_hash: 46673f2091b28f3f22d594c77bc863ef52d4abeea3f3ecc5c4ba46c35e7a862d
     source:
@@ -24,6 +24,6 @@ dependencies:
       path: .
       type: git
     version: b42825192c6455569f1a047b21140d6d1fe5e4ef
-manifest_hash: f2b73d2131559de982a5eb7d9536f35c19e58c3610c8f1b7a1fe1b318cd0090f
+manifest_hash: 72c85554bdb043aee14114593fa390acd2be020b5c66d5b678e73ac548fbbfa9
 target: esp32
 version: 1.0.0

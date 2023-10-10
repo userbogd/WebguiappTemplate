@@ -3,6 +3,7 @@ dependencies:
   userbogd/ttn-esp32:
     git: https://github.com/userbogd/ttn-esp32.git
   userbogd/esp_cron:
+    version: main
     git: https://github.com/userbogd/esp_cron.git  
   espressif/esp_modem: "==1.0.2"
   ## Required IDF version

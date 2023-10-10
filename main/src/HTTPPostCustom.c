@@ -56,57 +56,8 @@ HTTP_IO_RESULT AfterPostHandlerCustom(httpd_req_t *req, const char *filename, ch
 
 static HTTP_IO_RESULT HTTPPostApplication(httpd_req_t *req, char *PostData)
 {
-    char tmp[512];
-    if (httpd_query_key_value(PostData, "tmrec", tmp, sizeof(tmp)) == ESP_OK)
-    {
-        ESP_LOGI("HTTP_POST", "%s", tmp);
-        struct jReadElement result;
-        cron_timer_t T = {0};
-        jRead(tmp, "", &result);
-        if (result.dataType == JREAD_OBJECT)
-        {
-            T.num = jRead_int(tmp, "{'num'", NULL);
-            T.del = jRead_int(tmp, "{'del'", NULL);
-            T.enab = jRead_int(tmp, "{'enab'", NULL);
-            T.prev = jRead_int(tmp, "{'prev'", NULL);
-            jRead_string(tmp, "{'name'", T.name, sizeof(T.name), NULL);
-            T.obj = jRead_int(tmp, "{'obj'", NULL);
-            T.act = jRead_int(tmp, "{'act'", NULL);
-            jRead_string(tmp, "{'cron'", T.cron, sizeof(T.cron), NULL);
 
-            memcpy(&GetAppConf()->Timers[T.num-1], &T, sizeof(cron_timer_t));
-            WriteNVSAppConfig(GetAppConf());
-            ReloadCronSheduler();
-        }
-    }
-    if (httpd_query_key_value(PostData, "deltimer", tmp, sizeof(tmp)) == ESP_OK)
-    {
-        int num = (atoi(tmp) - 1);
-        if(num >= 0 && num < 16)
-        {
-            GetAppConf()->Timers[num].del = true;
-            WriteNVSAppConfig(GetAppConf());
-            ReloadCronSheduler();
-        }
-        return HTTP_IO_DONE;
-    }
-    if (httpd_query_key_value(PostData, "addtimer", tmp, sizeof(tmp)) == ESP_OK)
-    {
-        for(int i = 0; i< CRON_TIMERS_NUMBER; i++)
-        {
-            if(GetAppConf()->Timers[i].del == true)
-            {
-                GetAppConf()->Timers[i].del = false;
-                WriteNVSAppConfig(GetAppConf());
-                ReloadCronSheduler();
-                return HTTP_IO_DONE;
-            }
-        }
-    }
-    if (httpd_query_key_value(PostData, "tmrdbg", tmp, sizeof(tmp)) == ESP_OK)
-    {
-        DebugTimer();
-    }
+
 
     return HTTP_IO_DONE;
 }

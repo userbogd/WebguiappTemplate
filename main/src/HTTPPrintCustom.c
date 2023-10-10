@@ -26,7 +26,8 @@
 
 static void HTTPPrint_crontmr(char *VarData, void *arg)
 {
-   int idx = *((int*)(arg));
+   /*
+    int idx = *((int*)(arg));
    if(idx < CRON_TIMERS_NUMBER)
    {
     char data[MAX_DYNVAR_LENGTH];
@@ -46,14 +47,16 @@ static void HTTPPrint_crontmr(char *VarData, void *arg)
     jwClose(&jwc);
     snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", data);
    }
+   */
 }
 
 static void HTTPPrint_cronerr(char *VarData, void *arg)
 {
-    snprintf(VarData, MAX_DYNVAR_LENGTH, GetCronError());
+    //snprintf(VarData, MAX_DYNVAR_LENGTH, GetCronError());
 }
 static void HTTPPrint_cronobjs(char *VarData, void *arg)
 {
+    /*
     char data[MAX_DYNVAR_LENGTH];
     int idx = *((int*)(arg));
       if(idx < CRON_OBJECTS_NUMBER)
@@ -66,11 +69,12 @@ static void HTTPPrint_cronobjs(char *VarData, void *arg)
           jwClose(&jwc);
           snprintf(VarData, MAX_DYNVAR_LENGTH, "%s", data);
       }
+      */
 }
 static void HTTPPrint_cronacts(char *VarData, void *arg)
 {
-    int idx = *((int*) (arg));
-    snprintf(VarData, MAX_DYNVAR_LENGTH, "\"%s\"", GetCronActionName(idx));
+    //int idx = *((int*) (arg));
+    //snprintf(VarData, MAX_DYNVAR_LENGTH, "\"%s\"", GetCronActionName(idx));
 }
 
 

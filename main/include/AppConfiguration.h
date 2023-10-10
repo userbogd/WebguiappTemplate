@@ -42,8 +42,7 @@
 typedef struct appconf
 {
 int test;
-cron_timer_t Timers[CRON_TIMERS_NUMBER];
-cron_obj_t CronObjects[CRON_OBJECTS_NUMBER];
+
 } APP_CONFIG;
 
 void UserInitIO(void);

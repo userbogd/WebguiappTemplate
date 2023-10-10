@@ -30,12 +30,12 @@ static int ExecCommandParseApp(char *cmd);
 
 static void APPLICATION_TEST1_handle(char *obj, char *com, char *arg)
 {
-    ESP_LOGI(TAG, "INPUTS handler command %s with argument %s", com, arg);
+    ESP_LOGI(TAG, "Object:%s, Command:%s, Argument %s",obj, com, arg);
 }
 
 static void APPLICATION_TEST2_handle(char *obj, char *com, char *arg)
 {
-    ESP_LOGI(TAG, "SYSTEM handler command %s with argument %s", com, arg);
+    ESP_LOGI(TAG, "Object:%s, Command:%s, Argument %s",obj, com, arg);
 }
 
 typedef struct

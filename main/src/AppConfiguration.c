@@ -118,23 +118,7 @@ void ResetAppConfig(APP_CONFIG *Conf)
 {
     //default init test param
     GetAppConf()->test = 0;
-    for (int i = 0; i < CRON_TIMERS_NUMBER; i++ )
-    {
-        GetAppConf()->Timers[i].num = i+1;
-        GetAppConf()->Timers[i].del = true;
-        GetAppConf()->Timers[i].enab = false;
-        GetAppConf()->Timers[i].prev = false;
-        GetAppConf()->Timers[i].obj = 0;
-        GetAppConf()->Timers[i].act = 0;
-        strcpy(GetAppConf()->Timers[i].name, "Timer Name");
-        strcpy(GetAppConf()->Timers[i].cron, "* * * * * *");
 
-    }
-    for (int i = 0; i < CRON_OBJECTS_NUMBER; i++ )
-    {
-        strcpy(GetAppConf()->CronObjects[i].objname, GetCronObjectNameDef(i));
-        GetAppConf()->CronObjects[i].idx = i;
-    }
 
 }
 

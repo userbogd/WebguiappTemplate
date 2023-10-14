@@ -42,7 +42,7 @@ const obj_struct_t app_com_obj_arr[] = {
                 .command_handlers = { &APPLICATION_TEST1_handle, &APPLICATION_TEST2_handle }
         },
         {
-                .index = 0,
+                .index = 1,
                 .object_name = "APPLICATION2",
                 .allowed_actions = { "TEST1", "TEST2", "TEST3" },
                 .command_handlers = { &APPLICATION_TEST1_handle, &APPLICATION_TEST2_handle }

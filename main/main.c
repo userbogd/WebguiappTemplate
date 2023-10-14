@@ -12,6 +12,11 @@ HTTP_IO_RESULT AfterPostHandlerCustom(httpd_req_t *req, const char *filename, ch
 void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data);
 void SaveUserConf();
 
+sys_error_code CustomPayloadHandler(data_message_t *MSG)
+{
+    return SYS_ERROR_HANDLER_NOT_SET;
+}
+
 const char my_context_data[] = "MyContextDataPassedIntoMQTTHandler";
 
 void app_main(void)
@@ -20,6 +25,7 @@ void app_main(void)
     regAfterPostHandlerCustom(&AfterPostHandlerCustom);
     regUserEventHandler(&UserMQTTEventHndlr, (void*) my_context_data);
     regCustomSaveConf(&SaveUserConf);
+    regCustomPayloadTypeHandler(&CustomPayloadHandler);
 
     RegAppVariables();
     RegObjects();

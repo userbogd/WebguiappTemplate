@@ -29,6 +29,7 @@
 #define APP_UPLINK_SUBTOPIC "UPLINK"        // Device publish to this topic
 #define APP_DOWNLINK_SUBTOPIC "DWLINK"      // Device listen from this topic
 
+#define MQTT_CUSTOM_HANDLER_DEBUG  CONFIG_WEBGUIAPP_MQTT_DEBUG_LEVEL
 
 esp_err_t AppServiceMQTTSend(char *data, int len, int idx)
 {
@@ -109,8 +110,6 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
 {
     esp_mqtt_event_handle_t event = event_data;
     esp_mqtt_client_handle_t client = event->client;
-    //mqtt_client_t *ctx = (mqtt_client_t*) event->user_context;
-    ESP_LOGI(TAG, "%s", (char*)(((mqtt_client_t*)(handler_args))->user_arg));
     int msg_id;
     char topic[CONFIG_WEBGUIAPP_MQTT_MAX_TOPIC_LENGTH];
     switch ((esp_mqtt_event_id_t) event_id)
@@ -119,7 +118,10 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
             ComposeTopic(topic, idx, APP_SERVICE_NAME, APP_DOWNLINK_SUBTOPIC);
             //Subscribe to the service called "APP"
             msg_id = esp_mqtt_client_subscribe(client, (const char*) topic, 0);
+#if(MQTT_CUSTOM_HANDLER_DEBUG > 0)
             ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
+            ESP_LOGI(TAG, "Subscribe to %s", topic);
+#endif
 
         break;
         case MQTT_EVENT_DATA:
@@ -135,12 +137,8 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
                     M.chlidx = idx;
                     M.outputDataBuffer = respbuf;
                     M.outputDataLength = EXPECTED_MAX_DATA_SIZE;
-
                     ServiceDataHandler(&M);
-                    //AppServiceDataHandler(&M);
                     AppServiceMQTTSend(M.outputDataBuffer, strlen(M.outputDataBuffer), idx);
-
-
                     free(respbuf);
 #if(MQTT_CUSTOM_HANDLER_DEBUG > 0)
                     ESP_LOGI(TAG, "SERVICE data handler on client %d", idx);

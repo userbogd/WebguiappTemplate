@@ -1750,6 +1750,12 @@ CONFIG_LORA_APP_KEY="CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
 # end of LoRaWAN settings
 
 #
+# Serial port configuration
+#
+# CONFIG_WEBGUIAPP_UART_TRANSPORT_ENABLE is not set
+# end of Serial port configuration
+
+#
 # Modbus settings
 #
 # CONFIG_WEBGUIAPP_MBTCP_ENABLED is not set

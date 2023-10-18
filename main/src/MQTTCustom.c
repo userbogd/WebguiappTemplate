@@ -42,7 +42,7 @@ esp_err_t AppServiceMQTTSend(char *data, int len, int idx)
         ComposeTopic(DSS.topic, idx, APP_SERVICE_NAME, APP_UPLINK_SUBTOPIC);
         DSS.raw_data_ptr = buf;
         DSS.data_length = len;
-        if (xQueueSend(GetMQTTHandlesPool(idx)->mqtt_queue, &DSS, pdMS_TO_TICKS(1000)) == pdPASS)
+        if (xQueueSend(GetMQTTHandlesPool(idx)->mqtt_queue, &DSS, 0) == pdPASS)
             return ESP_OK;
         else
         {
@@ -96,7 +96,7 @@ esp_err_t AppLog(esp_log_level_t level, char *format, ...)
             ComposeTopic(DSS.topic, idx, "LOG", APP_UPLINK_SUBTOPIC);
             DSS.raw_data_ptr = buf;
             DSS.data_length = strlen(buf);
-            if (xQueueSend(GetMQTTHandlesPool(idx)->mqtt_queue, &DSS, pdMS_TO_TICKS(1000)) != pdPASS)
+            if (xQueueSend(GetMQTTHandlesPool(idx)->mqtt_queue, &DSS, 0) != pdPASS)
                 free(buf);
             continue;
         }

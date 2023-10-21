@@ -82,6 +82,14 @@ module.exports = configure(function (/* ctx */) {
             filename: "[path][base]",
           },
         ],
+/*
+        [
+			"vite-plugin-chunk-split",
+			{
+			      strategy: 'single-vendor'
+			},
+		],
+*/
       ],
     },
 

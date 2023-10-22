@@ -78,7 +78,10 @@ module.exports = configure(function (/* ctx */) {
         [
           "vite-plugin-compression2",
           {
+            algorithm: "gzip",
+            skipIfLargerOrEqual: false,
             deleteOriginalAssets: true,
+            threshold: 1024,
             filename: "[path][base]",
           },
         ],

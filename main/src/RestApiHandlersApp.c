@@ -31,7 +31,7 @@ static void funct_time(char *argres, int rw)
 {
     time_t now;
     time(&now);
-    snprintf(argres, MAX_DYNVAR_LENGTH, "%d", (int) now);
+    snprintf(argres, VAR_MAX_VALUE_LENGTH, "%d", (int) now);
 }
 
 const rest_var_t ApplicationVariables[] =

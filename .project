@@ -1604,11 +1604,6 @@
 			<location>/home/bogd/esp-idf-v5.1.1/components/esp_netif/lwip/esp_netif_lwip_defaults.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/esp_netif/lwip/esp_netif_lwip_ppp.c</name>
-			<type>1</type>
-			<location>/home/bogd/esp-idf-v5.1.1/components/esp_netif/lwip/esp_netif_lwip_ppp.c</location>
-		</link>
-		<link>
 			<name>build/ide/esp_idf_components/esp_netif/lwip/esp_netif_sntp.c</name>
 			<type>1</type>
 			<location>/home/bogd/esp-idf-v5.1.1/components/esp_netif/lwip/esp_netif_sntp.c</location>
@@ -4032,31 +4027,6 @@
 			<name>build/ide/esp_idf_components/efuse/src/efuse_controller/keys/without_key_purposes/three_key_blocks/esp_efuse_api_key.c</name>
 			<type>1</type>
 			<location>/home/bogd/esp-idf-v5.1.1/components/efuse/src/efuse_controller/keys/without_key_purposes/three_key_blocks/esp_efuse_api_key.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/arc4.c</name>
-			<type>1</type>
-			<location>/home/bogd/esp-idf-v5.1.1/components/lwip/lwip/src/netif/ppp/polarssl/arc4.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/des.c</name>
-			<type>1</type>
-			<location>/home/bogd/esp-idf-v5.1.1/components/lwip/lwip/src/netif/ppp/polarssl/des.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/md4.c</name>
-			<type>1</type>
-			<location>/home/bogd/esp-idf-v5.1.1/components/lwip/lwip/src/netif/ppp/polarssl/md4.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/md5.c</name>
-			<type>1</type>
-			<location>/home/bogd/esp-idf-v5.1.1/components/lwip/lwip/src/netif/ppp/polarssl/md5.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/sha1.c</name>
-			<type>1</type>
-			<location>/home/bogd/esp-idf-v5.1.1/components/lwip/lwip/src/netif/ppp/polarssl/sha1.c</location>
 		</link>
 	</linkedResources>
 </projectDescription>

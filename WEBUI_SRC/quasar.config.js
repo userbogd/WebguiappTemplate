@@ -79,20 +79,19 @@ module.exports = configure(function (/* ctx */) {
           "vite-plugin-compression2",
           {
             algorithm: "gzip",
-            skipIfLargerOrEqual: false,
             deleteOriginalAssets: true,
-            threshold: 1024,
+            threshold: 0,
             filename: "[path][base]",
           },
         ],
-/*
-        [
-			"vite-plugin-chunk-split",
-			{
-			      strategy: 'single-vendor'
-			},
-		],
-*/
+        /*
+                [
+              "vite-plugin-chunk-split",
+              {
+                    strategy: 'single-vendor'
+              },
+            ],
+        */
       ],
     },
 

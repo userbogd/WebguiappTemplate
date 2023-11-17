@@ -9,7 +9,7 @@ dependencies:
     component_hash: null
     source:
       type: idf
-    version: 5.1.1
+    version: 5.1.2
   userbogd/esp_cron:
     component_hash: 3fe2d37fc6473034b4d8328d9a113465b2521b4284649fe29ac676025b6bd7b5
     source:

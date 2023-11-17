@@ -117,7 +117,7 @@ void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int3
         case MQTT_EVENT_CONNECTED:
             ComposeTopic(topic, idx, APP_SERVICE_NAME, APP_DOWNLINK_SUBTOPIC);
             //Subscribe to the service called "APP"
-            msg_id = esp_mqtt_client_subscribe(client, (const char*) topic, 0);
+            msg_id = esp_mqtt_client_subscribe(client, (char*) topic, 0);
 #if(MQTT_CUSTOM_HANDLER_DEBUG > 0)
             ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
             ESP_LOGI(TAG, "Subscribe to %s", topic);

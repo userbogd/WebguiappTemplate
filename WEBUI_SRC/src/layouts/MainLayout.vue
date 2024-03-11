@@ -28,7 +28,8 @@ const linksList = [
   { title: "SETTINGS", caption: "Application settings", icon: "apps", link: "#/appset" },
   { title: "NETWORK", caption: "Network settings", icon: "public", link: "#/ifsettings" },
   { title: "SERVICES", caption: "System services", icon: "miscellaneous_services", link: "#/services" },
-  { title: "SYSTEM", caption: "System tools", icon: "build", link: "#/system" }
+  { title: "SYSTEM", caption: "System tools", icon: "build", link: "#/system" },
+  { title: "STORAGE", caption: "Local storage", icon: "storage", link: "#/storage" }
 ];
 
 function toggleLeftDrawer() { leftDrawerOpen.value = !leftDrawerOpen.value; }

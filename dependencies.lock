@@ -9,7 +9,7 @@ dependencies:
     component_hash: null
     source:
       type: idf
-    version: 5.1.2
+    version: 5.2.1
   userbogd/esp_cron:
     component_hash: 3fe2d37fc6473034b4d8328d9a113465b2521b4284649fe29ac676025b6bd7b5
     source:
@@ -24,6 +24,6 @@ dependencies:
       path: .
       type: git
     version: b42825192c6455569f1a047b21140d6d1fe5e4ef
-manifest_hash: 90cab1184d16388de19caf118e4ca86bb9fc8d9eb03c930a246bd81fb024e623
+manifest_hash: bb1ddeca2f8f875fd80aeaa1f304b975d64dc55389809a6bd093955332cdd3f7
 target: esp32s3
 version: 1.0.0

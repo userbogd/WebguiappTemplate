@@ -66,7 +66,7 @@ module.exports = configure(function (/* ctx */) {
       //env: { UITYPE: "sampleapp" },
       //rawDefine: { curapp: "sampleapp" },
       // ignorePublicFolder: true,
-       minify: true,
+      minify: true,
       // polyfillModulePreload: true,
       //distDir: "/home/bogdan/BOGD_PROJECTS/WebguiappTemplate/WEBUI",
       //distDir: "C:\\BOGD-PROJECTS\\WebguiappTemplate\\WEBUI",
@@ -80,6 +80,7 @@ module.exports = configure(function (/* ctx */) {
           {
             algorithm: "gzip",
             deleteOriginalAssets: true,
+            skipIfLargerOrEqual: false,
             threshold: 0,
             filename: "[path][base]",
           },

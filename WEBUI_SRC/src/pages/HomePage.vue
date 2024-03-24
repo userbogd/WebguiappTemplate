@@ -1,11 +1,11 @@
 <template>
   <div class="cardholder">
-    <FilesCard></FilesCard>
+    <HomeCard></HomeCard>
   </div>
 </template>
 
 <script setup>
-import FilesCard from "src/components/webguicomp/cards/FilesCard.vue";
+import HomeCard from "src/components/webguicomp/cards/HomeCard.vue";
 import { defineComponent } from "vue";
 
 defineOptions({

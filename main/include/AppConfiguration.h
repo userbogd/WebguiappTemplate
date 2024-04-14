@@ -28,6 +28,7 @@
 #include <stdbool.h>
 #include "../../components/webguiapp/include/CronTimers.h"
 #include "esp_netif.h"
+#include "led_strip.h"
 
 /// Application-dependent structure used to contain address information
 
@@ -61,5 +62,9 @@ void LoadDefaultReset(void);
 void DelayedRestart(void);
 void RegAppVariables(void);
 void RegObjects(void);
+
+void LEDStripInit(int gpio);
+led_strip_handle_t * LEDStripGetHandle();
+
 
 #endif /* MAIN_INCLUDE_APPCONFIGURATION_H_ */

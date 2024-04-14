@@ -1,13 +1,11 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="q-gutter-md row justify-center" style="font-size: 15em">
-      <q-spinner-clock color="brown" />
-    </div>
-  </q-page>
+  <div class="cardholder">
+    <ColorCard></ColorCard>
+  </div>
 </template>
 
 <script setup>
-
+import ColorCard from "src/components/ColorCard.vue";
 defineOptions({
   name: 'AppSettingsPage'
 })

@@ -7,6 +7,7 @@
       <div class="q-pa-md">
         <q-color v-model="hex" :format-model="rgb" @change="UpdateColor" />
       </div>
+      <div class="colorPicker"></div>
     </q-card-section>
   </q-card>
 </template>
@@ -14,7 +15,9 @@
 <script setup>
 import { computed, onUnmounted, reactive, onMounted, ref } from "vue";
 import { PostData } from "components/webguicomp/network";
+import iro from '@jaames/iro';
 
+var colorPicker;
 
 defineOptions({
   name: 'ColorCard'
@@ -35,6 +38,22 @@ function UpdateColor() {
     PostData(data, 1, 0, null);
   }
 }
+
+onMounted(() => {
+  colorPicker = new iro.ColorPicker(".colorPicker", {
+    width: 280,
+    color: "rgb(255, 0, 0)",
+    borderWidth: 1,
+    borderColor: "#fff",
+  });
+  colorPicker.on('color:change', function (color) {
+    // log the current color as a HEX string
+    hex.value = color.hexString;
+    UpdateColor();
+  });
+})
+
+
 
 const data = reactive(init);
 PostData(data, 2, 0, null);

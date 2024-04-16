@@ -44,15 +44,15 @@ static int GammaCorrection(int input, float gamma)
     return (int) ((float) 255 * pow(((float) input / 255), gamma));
 }
 
-static void funct_RGB(char *argres, int rw)
+static void funct_color(char *argres, int rw)
 {
     struct jReadElement result;
     jRead(argres, "", &result);
     if (result.dataType == JREAD_OBJECT)
     {
-        int R = jRead_int(argres, "{'R'", 0);
-        int G = jRead_int(argres, "{'G'", 0);
-        int B = jRead_int(argres, "{'B'", 0);
+        int R = jRead_int(argres, "{'r'", 0);
+        int G = jRead_int(argres, "{'g'", 0);
+        int B = jRead_int(argres, "{'b'", 0);
 
         R = GammaCorrection(R, GAMMA_R);
         G = GammaCorrection(G, GAMMA_G);
@@ -63,9 +63,9 @@ static void funct_RGB(char *argres, int rw)
 
         struct jWriteControl jwc;
         jwOpen(&jwc, argres, VAR_MAX_VALUE_LENGTH, JW_OBJECT, JW_COMPACT);
-        jwObj_int(&jwc, "R", R);
-        jwObj_int(&jwc, "G", G);
-        jwObj_int(&jwc, "B", B);
+        jwObj_int(&jwc, "r", R);
+        jwObj_int(&jwc, "g", G);
+        jwObj_int(&jwc, "b", B);
         jwEnd(&jwc);
         jwClose(&jwc);
     }
@@ -77,7 +77,7 @@ const rest_var_t ApplicationVariables[] =
 
     {   0, "mytime", &funct_time, VAR_FUNCT, R, 0, 0},
     {   0, "myvar", &AppConfig.test, VAR_INT, R, 0, 0},
-    {   0, "RGB", &funct_RGB, VAR_FUNCT, R, 0, 0},
+    {   0, "color", &funct_color, VAR_FUNCT, R, 0, 0},
 
 };
 

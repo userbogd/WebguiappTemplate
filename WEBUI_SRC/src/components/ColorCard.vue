@@ -4,37 +4,15 @@
       <div class="text-h6">Color picker</div>
     </q-card-section>
     <q-card-section class="q-pt-none">
-      <div class="q-pa-md">
-        <div class="colorPicker"></div>
-        <div id="values"></div>
+      <div class="row justify-center">
+        <div class="q-pa-xs col-auto">
+          <div class="colorPicker"></div>
+          <div class="q-mt-md" id="values"></div>
+        </div>
       </div>
     </q-card-section>
   </q-card>
 </template>
-
-<style>
-#values {
-  font-family: monospace;
-  line-height: 150%;
-}
-
-.swatchGrid {
-  display: grid;
-  grid-template-columns: repeat(8, 28px);
-  grid-template-rows: repeat(2, 28px);
-  grid-gap: 6px;
-  margin-bottom: 1em;
-}
-
-.swatch {
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-a {
-  color: MediumSlateBlue;
-}
-</style>
 
 <script setup>
 import { computed, onUnmounted, reactive, onMounted, ref } from "vue";
@@ -53,13 +31,25 @@ const init = {
 
 onMounted(() => {
   colorPicker = new iro.ColorPicker(".colorPicker", {
-    width: 320,
-    color: "rgb(127, 255, 127)",
+    width: 300,
+    color: "rgb(64, 128, 64)",
     borderWidth: 1,
-    borderColor: "#aaaaaa",
+    borderColor: "#ffffff",
     layout: [
       {
         component: iro.ui.Box,
+      },
+      {
+        component: iro.ui.Slider,
+        options: {
+          sliderType: 'value',
+        }
+      },
+      {
+        component: iro.ui.Slider,
+        options: {
+          sliderType: 'saturation'
+        }
       },
       {
         component: iro.ui.Slider,
@@ -72,12 +62,8 @@ onMounted(() => {
         component: iro.ui.Slider,
         options: {
           sliderType: 'kelvin',
-        }
-      },
-      {
-        component: iro.ui.Slider,
-        options: {
-          sliderType: 'saturation'
+          minTemperature: 3600,
+          maxTemperature: 9600
         }
       },
       {

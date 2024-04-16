@@ -44,6 +44,8 @@ static int GammaCorrection(int input, float gamma)
     return (int) ((float) 255 * pow(((float) input / 255), gamma));
 }
 
+extern led_strip_handle_t led_strip;
+
 static void funct_color(char *argres, int rw)
 {
     struct jReadElement result;
@@ -54,13 +56,6 @@ static void funct_color(char *argres, int rw)
         int G = jRead_int(argres, "{'g'", 0);
         int B = jRead_int(argres, "{'b'", 0);
 
-        R = GammaCorrection(R, GAMMA_R);
-        G = GammaCorrection(G, GAMMA_G);
-        B = GammaCorrection(B, GAMMA_B);
-
-        led_strip_set_pixel(*LEDStripGetHandle(), 0, R, G, B);
-        led_strip_refresh(*LEDStripGetHandle());
-
         struct jWriteControl jwc;
         jwOpen(&jwc, argres, VAR_MAX_VALUE_LENGTH, JW_OBJECT, JW_COMPACT);
         jwObj_int(&jwc, "r", R);
@@ -68,18 +63,28 @@ static void funct_color(char *argres, int rw)
         jwObj_int(&jwc, "b", B);
         jwEnd(&jwc);
         jwClose(&jwc);
+
+        R = GammaCorrection(R, GAMMA_R);
+        G = GammaCorrection(G, GAMMA_G);
+        B = GammaCorrection(B, GAMMA_B);
+
+        for (int i = 0; i < 49; i++)
+        {
+            led_strip_set_pixel(led_strip, i, R, G, B);
+        }
+        led_strip_refresh(led_strip);
     }
 }
 
 const rest_var_t ApplicationVariables[] =
-{
-    /*FUNCTIONS*/
+        {
+                /*FUNCTIONS*/
 
-    {   0, "mytime", &funct_time, VAR_FUNCT, R, 0, 0},
-    {   0, "myvar", &AppConfig.test, VAR_INT, R, 0, 0},
-    {   0, "color", &funct_color, VAR_FUNCT, R, 0, 0},
+                { 0, "mytime", &funct_time, VAR_FUNCT, R, 0, 0 },
+                { 0, "myvar", &AppConfig.test, VAR_INT, R, 0, 0 },
+                { 0, "color", &funct_color, VAR_FUNCT, R, 0, 0 },
 
-};
+        };
 
 void RegAppVariables(void)
 {

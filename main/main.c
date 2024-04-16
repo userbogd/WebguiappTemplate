@@ -5,7 +5,7 @@
 #include "AppConfiguration.h"
 
 //#define LED_STRIP_GPIO 21
-#define LED_STRIP_GPIO 35
+#define LED_STRIP_GPIO 1
 
 void UserMQTTEventHndlr(int idx, void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data);
 void SaveUserConf();
@@ -30,6 +30,6 @@ void app_main(void)
 
     while (true)
     {
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(300));
     }
 }

@@ -224,9 +224,19 @@
 			<location>/home/bogd/esp-idf-v5.1.2/components/esp_hw_support/sar_periph_ctrl_common.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_hw_support/sleep_console.c</name>
+			<type>1</type>
+			<location>/home/bogdan/esp-idf-v5.1.4/components/esp_hw_support/sleep_console.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_hw_support/sleep_cpu.c</name>
 			<type>1</type>
 			<location>/home/bogd/esp-idf-v5.1.2/components/esp_hw_support/sleep_cpu.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_hw_support/sleep_event.c</name>
+			<type>1</type>
+			<location>/home/bogdan/esp-idf-v5.1.4/components/esp_hw_support/sleep_event.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_hw_support/sleep_gpio.c</name>
@@ -597,6 +607,11 @@
 			<name>build/ide/esp_idf_components/hal/usb_dwc_hal.c</name>
 			<type>1</type>
 			<location>/home/bogd/esp-idf-v5.1.2/components/hal/usb_dwc_hal.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/hal/usb_fsls_phy_hal.c</name>
+			<type>1</type>
+			<location>/home/bogdan/esp-idf-v5.1.4/components/hal/usb_fsls_phy_hal.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/hal/usb_hal.c</name>
@@ -1924,6 +1939,11 @@
 			<location>/home/bogd/esp-idf-v5.1.2/components/espcoredump/src/core_dump_common.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/espcoredump/src/core_dump_crc.c</name>
+			<type>1</type>
+			<location>/home/bogdan/esp-idf-v5.1.4/components/espcoredump/src/core_dump_crc.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/espcoredump/src/core_dump_elf.c</name>
 			<type>1</type>
 			<location>/home/bogd/esp-idf-v5.1.2/components/espcoredump/src/core_dump_elf.c</location>
@@ -1932,6 +1952,11 @@
 			<name>build/ide/esp_idf_components/espcoredump/src/core_dump_flash.c</name>
 			<type>1</type>
 			<location>/home/bogd/esp-idf-v5.1.2/components/espcoredump/src/core_dump_flash.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/espcoredump/src/core_dump_sha.c</name>
+			<type>1</type>
+			<location>/home/bogdan/esp-idf-v5.1.4/components/espcoredump/src/core_dump_sha.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/espcoredump/src/core_dump_uart.c</name>
@@ -2172,6 +2197,11 @@
 			<name>build/ide/esp_idf_components/nvs_flash/src/nvs_partition_manager.cpp</name>
 			<type>1</type>
 			<location>/home/bogd/esp-idf-v5.1.2/components/nvs_flash/src/nvs_partition_manager.cpp</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/nvs_flash/src/nvs_platform.cpp</name>
+			<type>1</type>
+			<location>/home/bogdan/esp-idf-v5.1.4/components/nvs_flash/src/nvs_platform.cpp</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/nvs_flash/src/nvs_storage.cpp</name>

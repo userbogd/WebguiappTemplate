@@ -1,12 +1,11 @@
 <template>
   <div class="cardholder">
-    <HomeCard></HomeCard>
+    <ColorCard></ColorCard>
   </div>
 </template>
 
 <script setup>
-import HomeCard from "src/components/webguicomp/cards/HomeCard.vue";
-import { defineComponent } from "vue";
+import ColorCard from "src/components/ColorCard.vue";
 
 defineOptions({
   name: 'HomePage'

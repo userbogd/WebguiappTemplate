@@ -1,6 +1,5 @@
 <template>
   <div class="cardholder">
-    <ColorCard></ColorCard>
   </div>
 </template>
 

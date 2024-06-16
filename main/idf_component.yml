@@ -1,6 +1,5 @@
 ## IDF Component Manager Manifest File
 dependencies:
-  espressif/nghttp: "^1.58.0"
   espressif/led_strip: "^2.5.3"
   userbogd/ttn-esp32:
     git: https://github.com/userbogd/ttn-esp32.git

@@ -1,0 +1,28 @@
+menu "LED app settings"    
+	
+	config GPIO_RANGE_MIN
+        int
+        default -1
+
+    config GPIO_RANGE_MAX
+        int
+        default 39 if IDF_TARGET_ESP32
+        default 46 if IDF_TARGET_ESP32S2
+        default 19 if IDF_TARGET_ESP32C3
+        default 48 if IDF_TARGET_ESP32S3    
+        
+	
+	menu "LED strip settings"
+		
+		config LED_STRIP_NUMBER
+        	int "LED's number in strip"
+        	default 1
+        	range 1 1024
+        
+        config LED_STRIP_GPIO
+            int "LED strip GPIO"
+            default 35
+            range 0 GPIO_RANGE_MAX
+	endmenu                
+
+endmenu

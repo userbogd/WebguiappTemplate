@@ -1,7 +1,7 @@
 <template>
   <q-card flat class="card">
     <q-card-section>
-      <div class="text-h6">Color picker</div>
+      <div class="text-h6">LED Control</div>
     </q-card-section>
     <q-card-section class="q-pt-none">
       <div class="row justify-center">
@@ -26,18 +26,18 @@ defineOptions({
 })
 
 const init = {
-  color: { r: 0, g: 0, b: 0 }
+  color: { r: 255, g: 255, b: 255 }
 }
 
 onMounted(() => {
   colorPicker = new iro.ColorPicker(".colorPicker", {
     width: 300,
-    color: "rgb(64, 128, 64)",
+    color: "rgb(255, 255, 255)",
     borderWidth: 1,
     borderColor: "#ffffff",
     layout: [
       {
-        component: iro.ui.Box,
+        component: iro.ui.Wheel,
       },
       {
         component: iro.ui.Slider,

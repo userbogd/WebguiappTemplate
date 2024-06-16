@@ -11,12 +11,6 @@ dependencies:
       service_url: https://api.components.espressif.com/
       type: service
     version: 2.5.3
-  espressif/nghttp:
-    component_hash: 5e55c2fc982f7ddd257818be86f50d60705f3fd3a39d709c399434e81d458e1e
-    source:
-      service_url: https://api.components.espressif.com/
-      type: service
-    version: 1.58.0
   idf:
     component_hash: null
     source:
@@ -36,6 +30,6 @@ dependencies:
       path: .
       type: git
     version: b42825192c6455569f1a047b21140d6d1fe5e4ef
-manifest_hash: ba8c8e1bf1956a4d7b47c774d3c07c50258ddf74d313aceb76bc97417ee1419f
+manifest_hash: 4d4cb17db234a67f0eef5372d15aa4c784cf28c7cc9746b2442a01126ce5775c
 target: esp32s3
 version: 1.0.0

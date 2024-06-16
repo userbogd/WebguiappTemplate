@@ -68,7 +68,7 @@ static void funct_color(char *argres, int rw)
         G = GammaCorrection(G, GAMMA_G);
         B = GammaCorrection(B, GAMMA_B);
 
-        for (int i = 0; i < 49; i++)
+        for (int i = 0; i < CONFIG_LED_STRIP_NUMBER; i++)
         {
             led_strip_set_pixel(led_strip, i, R, G, B);
         }

@@ -80,6 +80,9 @@ esp_err_t AppLog(esp_log_level_t level, char *format, ...)
         case ESP_LOG_ERROR:
             ESP_LOGE(APP_LOG_TAG, "%s", data);
             break;
+#if (ESP_IDF_VERSION_MAJOR == 5	&& ESP_IDF_VERSION_MINOR > 1)
+			case ESP_LOG_MAX:	
+#endif			
     }
 
     for (int idx = 0; idx < 2; idx++)

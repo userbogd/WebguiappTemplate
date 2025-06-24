@@ -68,10 +68,9 @@ module.exports = configure(function (/* ctx */) {
       // ignorePublicFolder: true,
       minify: true,
       // polyfillModulePreload: true,
-      //distDir: "/home/bogdan/BOGD_PROJECTS/WebguiappTemplate/WEBUI",
-      //distDir: "C:\\BOGD-PROJECTS\\WebguiappTemplate\\WEBUI",
-
-      // extendViteConf (viteConf) {},
+      extendViteConf(viteConf) {
+        viteConf.base = "";
+      },
       // viteVuePluginOptions: {},
 
       vitePlugins: [

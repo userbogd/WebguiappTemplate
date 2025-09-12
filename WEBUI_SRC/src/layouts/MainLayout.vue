@@ -36,6 +36,7 @@ function toggleLeftDrawer() { leftDrawerOpen.value = !leftDrawerOpen.value; }
 const leftDrawerOpen = ref(false);
 
 const init = {
+  model_name: '',
   dev_id: '',
   net_bios_name: '',
   primary_color: '',

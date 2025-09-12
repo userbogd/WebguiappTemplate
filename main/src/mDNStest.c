@@ -259,7 +259,7 @@ static void initialise_button(void)
 {
     gpio_config_t io_conf = {0};
     io_conf.intr_type = GPIO_INTR_DISABLE;
-    io_conf.pin_bit_mask = BIT64(GPIO_NUM_41);
+    io_conf.pin_bit_mask = BIT64(GPIO_NUM_6);
     io_conf.mode = GPIO_MODE_INPUT;
     io_conf.pull_up_en = 1;
     io_conf.pull_down_en = 0;
@@ -269,7 +269,7 @@ static void initialise_button(void)
 static void check_button(void)
 {
     static bool old_level = true;
-    bool new_level = gpio_get_level(GPIO_NUM_41);
+    bool new_level = gpio_get_level(GPIO_NUM_6);
     if (!new_level && old_level) {
         query_mdns_hosts_async("esp32-mdns");
 #ifdef CONFIG_LWIP_IPV4

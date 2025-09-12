@@ -22,6 +22,8 @@
 #include "AppConfiguration.h"
 #include "webguiapp.h"
 
+#define LED_STRIP_USE_DMA  1
+
 led_strip_handle_t led_strip;
 
 led_strip_handle_t * LEDStripGetHandle()
@@ -44,7 +46,7 @@ void LEDStripInit(int gpio)
 
     .clk_src = RMT_CLK_SRC_DEFAULT, // different clock source can lead to different power consumption
     .resolution_hz = 10 * 1000 * 1000, // 10MHz
-    .flags.with_dma = true, // whether to enable the DMA feature
+    .flags.with_dma = LED_STRIP_USE_DMA, // whether to enable the DMA feature
 
             };
     ESP_ERROR_CHECK(led_strip_new_rmt_device(&strip_config, &rmt_config, &led_strip));

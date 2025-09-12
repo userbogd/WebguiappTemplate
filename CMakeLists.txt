@@ -11,4 +11,4 @@ project(${ProjectId})
 
 # Include espfs ROM in foldef HTML
 include(components/webguiapp/extlibs/libespfs/cmake/include.cmake)
-target_add_espfs(WebguiappTemplate.elf espfs WEBUI_DIST)
+target_add_espfs(WebguiappTemplate.elf espfs webui/dist/spa)

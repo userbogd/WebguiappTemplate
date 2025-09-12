@@ -25,13 +25,14 @@ void app_main(void)
     ESP_ERROR_CHECK(InitAppConfig());
 
 	//mDNSstart();
-    LEDStripInit(CONFIG_LED_STRIP_GPIO);
-
+    //LEDStripInit(CONFIG_LED_STRIP_GPIO);
+    
     static bool BtnPressed = false;
     while (true)
     {
         vTaskDelay(pdMS_TO_TICKS(100));
-        if(gpio_get_level(GPIO_NUM_41) == 0 && !BtnPressed)
+        /*
+		if(gpio_get_level(GPIO_NUM_41) == 0 && !BtnPressed)
         {
             PublicTestMQTT(MQTT1);
             PublicTestMQTT(MQTT2);
@@ -39,6 +40,6 @@ void app_main(void)
         }
         if(gpio_get_level(GPIO_NUM_41) == 1 && BtnPressed)
             BtnPressed = false;
-
+		*/
     }
 }

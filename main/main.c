@@ -25,7 +25,7 @@ void app_main(void)
     ESP_ERROR_CHECK(InitAppConfig());
 
 	//mDNSstart();
-    //LEDStripInit(CONFIG_LED_STRIP_GPIO);
+    LEDStripInit(CONFIG_LED_STRIP_GPIO);
     
     static bool BtnPressed = false;
     while (true)

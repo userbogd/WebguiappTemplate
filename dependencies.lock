@@ -57,5 +57,5 @@ direct_dependencies:
 - userbogd/esp_cron
 - userbogd/ttn-esp32
 manifest_hash: b677dc3b3f572766fa1338bc44c3fb365bb7c8a85ff5df1bf6ed188ecd617e63
-target: esp32c3
+target: esp32s3
 version: 2.0.0

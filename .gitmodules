@@ -1,7 +1,4 @@
 
-[submodule "WEBUI_SRC/src/components/webguicomp"]
-	path = WEBUI_SRC/src/components/webguicomp
-	url = https://gitlab.com/userbogd/webguicomp.git
 [submodule "components/webguiapp"]
 	path = components/webguiapp
 	url = https://gitlab.com/userbogd/webguiapp.git

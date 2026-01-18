@@ -2,7 +2,13 @@
 # CMakeLists in this exact order for cmake to work correctly
 cmake_minimum_required(VERSION 3.5)
 
-SET (PROJECT_VER 0.0.0.0)
+execute_process(
+    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/version_generator.sh # Path to your script
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}      # Set working directory
+    RESULT_VARIABLE SCRIPT_RESULT                      # Store the result code
+    OUTPUT_VARIABLE SCRIPT_OUTPUT                      # Store the script's stdout
+    ERROR_VARIABLE SCRIPT_ERROR                        # Store the script's stderr
+)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 get_filename_component(ProjectId ${CMAKE_CURRENT_LIST_DIR} NAME)

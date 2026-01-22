@@ -67,4 +67,5 @@ void LEDStripInit(int gpio);
 led_strip_handle_t * LEDStripGetHandle();
 void mDNSstart(void);
 
+
 #endif /* MAIN_INCLUDE_APPCONFIGURATION_H_ */

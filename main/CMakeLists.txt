@@ -2,6 +2,6 @@
 # for more information about component CMakeLists.txt files.
 idf_component_register(
     SRC_DIRS "."
-    		 "src"
+    		 "src" 
     INCLUDE_DIRS "include"
 )
